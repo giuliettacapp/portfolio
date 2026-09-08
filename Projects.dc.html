@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;500;700&amp;family=Karla:ital,wght@0,300;0,400;0,500;1,400&amp;family=Shantell+Sans:ital,wght@0,400;0,600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{--bg:#F4F1EA;--fg:#171512;--fg-soft:#6E675C;--line:rgba(23,21,18,.14);--dots:rgba(23,21,18,.11);--surface:#FCFAF5;--tint:#E9E4D8;
+--a1:#74A7F4;--a2:oklch(0.72 0.15 265);}
+[data-theme="dark"]{--bg:#14120F;--fg:#F1EDE4;--fg-soft:#9C9488;--line:rgba(241,237,228,.16);--dots:rgba(241,237,228,.13);--surface:#1D1A16;--tint:#221E19;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1px,transparent 1px);background-size:24px 24px;background-position:0 0;background-attachment:fixed;color:var(--fg);font-family:'Karla',system-ui,sans-serif;transition:background .4s ease,color .4s ease;overflow-x:clip}
+a{color:var(--fg);text-underline-offset:4px}
+a:hover{color:var(--a1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes riseIn{from{opacity:0;translate:0 54px}to{opacity:1;translate:none}}
+@keyframes trailPop{from{opacity:.85}to{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+
+<div style="min-height: 100vh">
+  <dc-import name="Nav" active="projects" hint-size="100%,66px"></dc-import>
+
+  <header style="max-width: 1240px; margin: 0 auto; padding: 64px 26px 40px; animation: fadeUp .6s ease both">
+    <p style="font-family:'Shantell Sans',cursive;font-size:22px;color:var(--fg-soft);margin:0 0 8px">Projects</p>
+    <h1 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(40px,6.2vw,80px);line-height:1;letter-spacing:-.01em;margin:0;max-width:940px;text-wrap:balance">Interfaces, mechanics and the reasons behind them.</h1>
+    <p style="max-width:520px;margin:24px 0 0;font-size:18px;line-height:1.6;color:var(--fg-soft);text-wrap:pretty">Product work and game work, mostly the same problem: giving people a reason to keep going. Case studies include the parts that went sideways.</p>
+  </header>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 0 26px">
+    <div ref="{{ staggerRef }}" style="display:flex;flex-direction:column;gap:22px">
+      <a href="./Case Study Tagalong.dc.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));text-decoration:none;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(23,21,18,.13);color:var(--fg)">
+        <div style="min-height:260px;background:#F86A54">
+          <image-slot id="pj-5" shape="rect" fit="contain" src="./images/tagalong-card-cover.webp" placeholder="Project cover: wide 16:9"></image-slot>
+        </div>
+        <div style="padding:36px;display:flex;flex-direction:column;justify-content:center">
+          <h2 style="font-family:'Solway',serif;font-weight:400;font-size:30px;margin:0 0 10px;line-height:1.15">Planning a trip with five people and one budget</h2>
+          <p style="margin:0 0 12px;font-size:15px;color:var(--fg-soft)">Tagalong · UX/UI, 2026</p>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--fg-soft);text-wrap:pretty">A group travel app where the itinerary, the voting and the money live in the same place. Polls decide where to eat, places move from the map into the plan, and every expense can be split by person or by item until nobody owes anything. Clickable prototype of the whole flow.</p>
+        </div>
+      </a>
+
+      <div style="display:flex;flex-wrap:wrap;gap:22px;align-items:stretch">
+
+      <a href="./Case Study.dc.html" style="flex:1 1 360px;display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(23,21,18,.13);color:var(--fg)">
+        <div style="position:relative;flex:1;min-height:420px">
+          <image-slot id="pj-1" shape="rect" src="./images/furbrawl-cover.webp" placeholder="Project cover: tall 4:5"></image-slot>
+        </div>
+        <div style="padding:24px 26px 28px">
+          <h2 style="font-family:'Solway',serif;font-weight:400;font-size:28px;margin:0 0 8px;line-height:1.15">A chaotic multiplayer brawler, starring cats</h2>
+          <p style="margin:0 0 12px;font-size:15px;color:var(--fg-soft)">Furbrawl · University project, 2021, redesigned in 2024</p>
+          <p style="margin:0;font-size:16px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">Team leader on a fast-paced multiplayer fighting game: game design, art and UX/UI, from Unity greybox to a full interface redesign three years later.</p>
+        </div>
+      </a>
+
+      <div style="flex:1 1 360px;display:flex;flex-direction:column;gap:22px">
+      <a href="./Case Study Gymboo.dc.html" style="flex:1;display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(23,21,18,.13);color:var(--fg)">
+        <div style="flex:1;min-height:200px;background:#FDF1F4">
+          <image-slot id="pj-2" shape="rect" fit="contain" src="./images/gymboo-cover.webp" placeholder="Project cover: 16:9"></image-slot>
+        </div>
+        <div style="padding:22px 24px 26px">
+          <h2 style="font-family:'Solway',serif;font-weight:400;font-size:25px;margin:0 0 6px;line-height:1.15">Training together, apart</h2>
+          <p style="margin:0;font-size:15px;color:var(--fg-soft)">Gymboo · University project, 2020</p>
+        </div>
+      </a>
+
+      <a href="./Case Study So Fur So Good.dc.html" style="flex:1;display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(23,21,18,.13);color:var(--fg)">
+        <div style="flex:1;min-height:200px">
+          <image-slot id="pj-3" shape="rect" placeholder="Project cover: 16:9"></image-slot>
+        </div>
+        <div style="padding:22px 24px 26px">
+          <h2 style="font-family:'Solway',serif;font-weight:400;font-size:25px;margin:0 0 6px;line-height:1.15">A board game about catcalling</h2>
+          <p style="margin:0;font-size:15px;color:var(--fg-soft)">So Fur So Good · Master's thesis, 2022</p>
+        </div>
+      </a>
+
+      </div>
+      </div>
+
+      <a href="./Case Study.dc.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));text-decoration:none;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(23,21,18,.13);color:var(--fg)">
+        <div style="min-height:260px">
+          <image-slot id="pj-4" shape="rect" placeholder="Project cover: wide 16:9"></image-slot>
+        </div>
+        <div style="padding:36px;display:flex;flex-direction:column;justify-content:center">
+          <h2 style="font-family:'Solway',serif;font-weight:400;font-size:30px;margin:0 0 10px;line-height:1.15">Serious games that don't feel like training</h2>
+          <p style="margin:0 0 12px;font-size:15px;color:var(--fg-soft)">Imaginary srl · 2021 to 2022</p>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--fg-soft);text-wrap:pretty">Mechanics and graphics for games on workplace safety, inclusivity, health and rehabilitation. Gamification used as structure and pacing, not as a badge on top.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">class Component extends DCLogic {
+  // le cover stanno dentro i link delle card: senza questo, un click sui
+  // controlli dello slot (Replace / Edit) o un drop aprirebbe il progetto
+  componentDidMount() {
+    const root = document.getElementById("dc-root") || document;
+    const stop = (e) => {
+      if (e.target.closest && e.target.closest("image-slot")) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+    ["click", "dragover", "drop"].forEach((t) =>
+      root.addEventListener(t, stop, true)
+    );
+    this._stop = stop;
+    this._root = root;
+  }
+
+  componentWillUnmount() {
+    if (!this._stop) return;
+    ["click", "dragover", "drop"].forEach((t) =>
+      this._root.removeEventListener(t, this._stop, true)
+    );
+    if (this._io) this._io.disconnect();
+  }
+
+  renderVals() {
+    const dist = 36, step = 130;
+    return {
+      staggerRef: (el) => {
+        if (!el || el.dataset.stag) return;
+        el.dataset.stag = "1";
+        [...el.children].forEach((k, i) => {
+          k.style.opacity = "0";
+          k.style.translate = "0 " + dist + "px";
+          k.style.transition = "opacity .7s cubic-bezier(.2,.7,.3,1) " + (i * step) + "ms,translate .7s cubic-bezier(.2,.7,.3,1) " + (i * step) + "ms";
+        });
+        const show = () => [...el.children].forEach((k) => { k.style.opacity = "1"; k.style.translate = "none"; });
+        const check = () => {
+          const r = el.getBoundingClientRect();
+          if (r.top < innerHeight * 0.92 && r.bottom > 0) { show(); if (this._io) this._io.unobserve(el); }
+        };
+        requestAnimationFrame(check);
+        if (!this._checks) {
+          this._checks = [];
+          this._onScroll = () => requestAnimationFrame(() => this._checks.forEach((f) => f()));
+          window.addEventListener("scroll", this._onScroll, { passive: true, capture: true });
+          document.addEventListener("scroll", this._onScroll, { passive: true, capture: true });
+          window.addEventListener("resize", this._onScroll);
+          window.addEventListener("load", this._onScroll);
+          this._io = new IntersectionObserver((es) => {
+            es.forEach((e) => {
+              if (!e.isIntersecting) return;
+              [...e.target.children].forEach((k) => { k.style.opacity = "1"; k.style.translate = "none"; });
+              this._io.unobserve(e.target);
+            });
+          }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
+        }
+        this._checks.push(check);
+        setTimeout(show, 2000);
+        this._io.observe(el);
+      }
+    };
+  }
+}</script>
+</body>
+</html>

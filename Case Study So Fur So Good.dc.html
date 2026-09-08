@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;500;700&family=Karla:ital,wght@0,300;0,400;0,500;1,400&family=Shantell+Sans:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{--bg:#F4F1EA;--fg:#171512;--fg-soft:#6E675C;--line:rgba(23,21,18,.14);--dots:rgba(23,21,18,.11);--surface:#FCFAF5;--tint:#E9E4D8;
+--a1:#74A7F4;--a2:oklch(0.72 0.15 265);}
+[data-theme="dark"]{--bg:#14120F;--fg:#F1EDE4;--fg-soft:#9C9488;--line:rgba(241,237,228,.16);--dots:rgba(241,237,228,.13);--surface:#1D1A16;--tint:#221E19;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1px,transparent 1px);background-size:24px 24px;background-position:0 0;background-attachment:fixed;color:var(--fg);font-family:'Karla',system-ui,sans-serif;transition:background .4s ease,color .4s ease;overflow-x:clip}
+a{color:var(--fg);text-underline-offset:4px}
+a:hover{color:var(--a1)}
+@keyframes trailPop{from{opacity:.85}to{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+  <dc-import name="Nav" active="projects" hint-size="100%,66px"></dc-import>
+
+  <!-- cover con bordo curvo in basso, come nei riferimenti -->
+  <div style="position:relative;height:clamp(260px,36vw,440px);background:oklch(0.72 0.14 60)">
+    <image-slot id="sf-hero" shape="rect" placeholder="Case study hero: wide"></image-slot>
+    <div style="position:absolute;left:-6%;right:-6%;bottom:-2px;height:90px;background:var(--bg);border-radius:100% 100% 0 0 / 90px 90px 0 0;pointer-events:none"></div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:0 26px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:56px;align-items:start">
+    <aside style="position:sticky;top:90px;padding-top:20px;max-width:230px">
+      <a href="./Projects.dc.html" style="display:inline-block;margin-bottom:24px;font-size:15px;text-decoration:none">← All projects</a>
+      <nav style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ toc }}" as="t" hint-placeholder-count="5">
+          <a href="{{ t.href }}" style="padding:7px 12px;border-radius:8px;font-size:15px;text-decoration:none;transition:transform .28s cubic-bezier(.4,0,.2,1),color .28s ease;color:{{ t.color }};transform:translateX({{ t.shift }})" style-hover="background:var(--tint)">{{ t.label }}</a>
+        </sc-for>
+      </nav>
+    </aside>
+
+    <main style="padding-top:20px;max-width:660px;grid-column:span 2">
+      <p style="font-family:'Shantell Sans',cursive;font-size:34px;color:var(--a1);margin:0 0 6px">So Fur So Good</p>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-soft);margin:0 0 18px">Research, game design & graphic design</p>
+
+      <h1 id="overview" style="font-family:'Solway',serif;font-weight:400;font-size:clamp(36px,5vw,58px);line-height:1.05;margin:0 0 24px;text-wrap:balance">A board game about catcalling, disguised as a cat world tour.</h1>
+
+      <p style="font-size:18px;line-height:1.7;color:var(--fg-soft);margin:0 0 36px;text-wrap:pretty">So Fur So Good is a 4-player board game developed as a master's thesis to raise awareness about catcalling. By experiencing firsthand episodes in a playful way, players reflect on the issue without negative emotions. A game that turns design into a tool for social change.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:22px;padding:24px 0;border-block:1px solid var(--line);margin-bottom:52px">
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Role</p>
+          <p style="margin:0;font-size:16px">Researcher, Game Designer, Graphic Designer, UI/UX Designer</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Scope</p>
+          <p style="margin:0;font-size:16px">Master's degree thesis project · 2022</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Read time</p>
+          <p style="margin:0;font-size:16px">5 minutes</p>
+        </div>
+      </div>
+
+      <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+        <section id="{{ s.id }}" style="margin-bottom:76px;scroll-margin-top:100px">
+          <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">{{ s.kicker }}</p>
+          <h2 ref="{{ typeRef }}" style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">{{ s.title }}</h2>
+          <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">{{ s.body }}</p>
+          <sc-if value="{{ s.body2 }}" hint-placeholder-val="{{ true }}">
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">{{ s.body2 }}</p>
+          </sc-if>
+          <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line)">
+            <image-slot id="{{ s.slot }}" shape="rect" placeholder="{{ s.caption }}"></image-slot>
+          </div>
+          <sc-if value="{{ s.hmw }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:26px;padding:clamp(48px,7vw,88px) clamp(32px,6vw,72px);border-radius:30px 22px 32px 24px;background:#E08A2B;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:clamp(240px,28vw,340px)">
+              <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,248,239,.8);margin:0">How might we</p>
+              <p ref="{{ typeRef }}" style="margin:0;max-width:760px;text-align:center;font-family:'Solway',serif;font-weight:400;font-size:clamp(24px,2.9vw,34px);line-height:1.35;color:#FFF8EF;text-wrap:pretty">{{ s.hmw }}</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.features }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+              <sc-for list="{{ s.features }}" as="f" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+                    <image-slot id="{{ f.slot }}" shape="rect" placeholder="{{ f.name }}"></image-slot>
+                  </div>
+                  <div>
+                    <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">{{ f.name }}</p>
+                    <p style="margin:0;font-size:15px;line-height:1.5;color:var(--fg-soft);text-wrap:pretty">{{ f.note }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+      </sc-for>
+
+      <section id="takeaways" style="margin-bottom:44px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Takeaways</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">What I took away from it.</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">This project was a valuable learning experience that deepened my understanding of game design as a medium for impact. Through research, testing, and iteration, I explored how to handle serious topics with care while still creating an engaging experience.</p>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0;text-wrap:pretty">I discovered the power of games as tools for social change, learned to balance a sensitive topic with enjoyable gameplay, and saw how firsthand experience builds empathy in a way a lecture never does. The digital version on Tabletopia also taught me a lot about accessibility, and about how much user-friendly design matters in game development.</p>
+      </section>
+
+      <div style="padding:32px;border-radius:28px 20px 30px 18px;background:var(--surface);display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap">
+        <div style="text-align:center">
+          <p style="font-family:'Shantell Sans',cursive;font-size:24px;margin:0 0 6px">Thanks for reading :-)</p>
+          <p style="margin:0 0 18px;color:var(--fg-soft);font-size:16px">Happy to walk you through the messy middle bits.</p>
+          <a href="./Portfolio.dc.html#contact" style="display:inline-block;padding:12px 26px;border-radius:999px;background:var(--fg);color:var(--bg);text-decoration:none;font-size:16px" style-hover="background:var(--a1);color:#1a1512">Get in touch</a>
+        </div>
+        <img src="./images/ashi.svg" alt="Ashi the cat" style="display:block;height:150px;width:auto" />
+      </div>
+
+      <div style="margin-top:36px;padding-top:20px;border-top:1px solid var(--line)">
+        <p style="margin:0 0 18px;font-size:16px;color:var(--fg-soft)">Next up</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px">
+          <a href="./Case Study Tagalong.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="sf-next-1" shape="rect" fit="cover" src="./images/tagalong-cover.webp" placeholder="Tagalong cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Tagalong</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">Group travel app · UX/UI</p>
+            </div>
+          </a>
+          <a href="./Case Study Gymboo.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="sf-next-2" shape="rect" fit="cover" src="./images/gymboo-cover.webp" placeholder="Gymboo cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Gymboo</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">App design &amp; user research</p>
+            </div>
+          </a>
+        </div>
+        <a href="./Projects.dc.html" style="display:inline-block;margin-top:24px;font-size:17px">See all work →</a>
+      </div>
+    </main>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">
+class Component extends DCLogic {
+  state = { active: "overview" };
+  componentDidMount() {
+    const ids = this.vals().toc.map(t => t.href.slice(1));
+    this.io = new IntersectionObserver((entries) => {
+      const vis = entries.filter(e => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (vis && vis.target.id !== this.state.active) this.setState({ active: vis.target.id });
+    }, { rootMargin: "-20% 0px -65% 0px", threshold: 0 });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) this.io.observe(el); });
+  }
+  componentWillUnmount() { if (this.io) this.io.disconnect(); }
+  typeRef = (el) => {
+    if (!el || el.dataset.typed) return;
+    el.dataset.typed = "1";
+    const words = el.textContent.split(" ");
+    const run = () => {
+      el.textContent = "";
+      const spans = words.map((w, i) => {
+        const s = document.createElement("span");
+        s.textContent = i < words.length - 1 ? w + " " : w;
+        s.style.opacity = "0";
+        s.style.transition = "opacity .32s ease";
+        el.appendChild(s);
+        return s;
+      });
+      spans.forEach((s, i) => setTimeout(() => { s.style.opacity = "1"; }, i * 90));
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { io.disconnect(); run(); } });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  };
+  renderVals() {
+    const vals = this.vals();
+    vals.typeRef = this.typeRef;
+    vals.toc = vals.toc.map(t => {
+      const on = t.href.slice(1) === this.state.active;
+      return { ...t, color: on ? "var(--a1)" : "var(--fg-soft)", shift: on ? "10px" : "0px" };
+    });
+    return vals;
+  }
+  vals() {
+    return {
+      toc: [
+        { label: "Intro", href: "#overview" },
+        { label: "Research", href: "#research" },
+        { label: "The game", href: "#game" },
+        { label: "Prototype", href: "#prototype" },
+        { label: "Playtest", href: "#playtest" },
+        { label: "Validation", href: "#validation" },
+        { label: "Conclusion", href: "#conclusion" },
+        { label: "Takeaways", href: "#takeaways" }
+      ],
+      sections: [
+        {
+          id: "research",
+          kicker: "Research",
+          title: "A problem most people are told to take as a compliment.",
+          slot: "sf-1",
+          body: "For this project I decided to explore the topic of street harassment and catcalling, issues often underestimated despite their serious impact. Studies reveal alarming data: according to a 2018 Istat report, over a third of women in Italy avoid going out at night due to fear, while an international study by Hollaback! and Cornell University found that 84% of women experience catcalling before the age of 17.",
+          body2: "These experiences can lead to anxiety, low self-esteem, and major lifestyle changes, such as avoiding certain places or even turning down job opportunities. Despite its consequences, catcalling is frequently dismissed as harmless or even flattering. This lack of awareness motivated me to design a game to change this.",
+          caption: "Research findings and desk research"
+        },
+        {
+          id: "game",
+          kicker: "The game",
+          title: "Win by collecting good experiences, not by finishing first.",
+          slot: "sf-2",
+          body: "In So Fur So Good players embark on a whimsical Cat World Tour, traveling through famous cat-related locations worldwide. While the theme is lighthearted, the game subtly raises awareness about street harassment, encouraging discussion in an accessible and playful way.",
+          body2: "The aim is not to reach the end first but to collect as many positive experiences as possible. Players step into the shoes of travelers exploring new places, tasting local delicacies, and gathering souvenirs, while also encountering moments that reflect real-life experiences of catcalling. By facing these challenges together, players learn how verbal harassment affects individuals and how to respond with awareness and support.",
+          caption: "Board, cards and pieces"
+        },
+        {
+          id: "prototype",
+          kicker: "Prototype",
+          title: "Seven travelers, seven tile types, five regions.",
+          slot: "sf-3",
+          body: "The game features seven unique travelers and, unlike stereotypical portrayals often seen in media, these characters are diverse in age, ethnicity, and style, emphasizing that harassment is not dictated by appearance or clothing. Each traveler has a different profession, granting them unique abilities that shape their journey.",
+          body2: "The board carries seven types of tiles, airport, food stall, landmark, bank, cat shelter, encounter and cat sanctuary, across five regions chosen for their historical or narrative link to cats: Rome, Amsterdam, Cairo, St. Petersburg and Tokyo. The board is modular, so future expansions can add regions and players can choose fewer depending on the time available.",
+          caption: "Characters, tiles and board regions",
+          features: [
+            { slot: "sf-f1", name: "Encounter", note: "A stray cat to feed, or a catcaller to face with a defense roll" },
+            { slot: "sf-f2", name: "Cat sanctuary", note: "A Wise Cat gives +1 to defense rolls and a piece of advice" },
+            { slot: "sf-f3", name: "Market & landmark", note: "Draw three, buy one, food and souvenir sets score points" }
+          ]
+        },
+        {
+          id: "playtest",
+          kicker: "Playtest",
+          title: "Five regions turned out to be four too many.",
+          slot: "sf-4",
+          body: "After creating the rules and provisional graphics, playtests were conducted with friends and family who were aware of the game's theme and were therefore not suitable for the later validation phase. Feedback led to adjustments in mechanics: tile placement, character ability balancing, and clearer card icons.",
+          body2: "To shorten gameplay, the board was reduced from five to three regions. The sessions confirmed a fun, interactive atmosphere, with players balancing competition and collaboration, especially during catcaller attacks. The game was fine-tuned to keep outcomes unpredictable and engagement high.",
+          caption: "Playtest sessions"
+        },
+        {
+          id: "validation",
+          kicker: "Data collection & validation",
+          title: "Twenty-eight players who had no idea what the game was about.",
+          slot: "sf-5",
+          body: "Participants were unaware of the game's theme and objectives to avoid bias, with a balanced mix of genders to observe differences in responses and interactions. Players varied in gaming experience, hardcore gamers, casual players and complete beginners, in groups of four, with at least two knowing each other to encourage interaction.",
+          body2: "Seven playtest sessions were conducted with 28 different players. My role was to observe player choices and interactions without intervening, noting key dialogues. Effectiveness was assessed by comparing pre- and post-game questionnaire responses, and players described their experience by picking from 14 emotions, seven positive and seven negative.",
+          caption: "Questionnaire results and emotion mapping"
+        },
+        {
+          id: "conclusion",
+          kicker: "Conclusion",
+          title: "The topic never overshadowed the fun.",
+          slot: "sf-6",
+          body: "After the game, players rated street harassment and verbal abuse as more important issues: higher ratings increased while the lowest ones dropped, indicating a shift in perception. A lasting change in mindset takes time, but the game may influence future behavior, encouraging bystanders to help, or victims to feel less guilt.",
+          body2: "Concerns about discomfort, or the topic overshadowing the fun, were unfounded thanks to Embedded Design. Both competitive and casual players enjoyed it, with many eager to replay. Some initially overlooked the theme, but the discussions it opened, like a female player explaining real-life catcalling to the table, shifted perspectives.",
+          caption: "Final game and printed components"
+        }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

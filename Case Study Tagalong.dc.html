@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;500;700&family=Karla:ital,wght@0,300;0,400;0,500;1,400&family=Shantell+Sans:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{--bg:#F4F1EA;--fg:#171512;--fg-soft:#6E675C;--line:rgba(23,21,18,.14);--dots:rgba(23,21,18,.11);--surface:#FCFAF5;--tint:#E9E4D8;
+--a1:#FA5C45;--a2:oklch(0.72 0.15 265);}
+[data-theme="dark"]{--bg:#14120F;--fg:#F1EDE4;--fg-soft:#9C9488;--line:rgba(241,237,228,.16);--dots:rgba(241,237,228,.13);--surface:#1D1A16;--tint:#221E19;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1px,transparent 1px);background-size:24px 24px;background-position:0 0;background-attachment:fixed;color:var(--fg);font-family:'Karla',system-ui,sans-serif;transition:background .4s ease,color .4s ease;overflow-x:clip}
+a{color:var(--fg);text-underline-offset:4px}
+a:hover{color:var(--a1)}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+  <dc-import name="Nav" active="projects" hint-size="100%,66px"></dc-import>
+
+  <div style="position:relative;height:clamp(260px,36vw,440px)">
+    <image-slot id="tg-hero" shape="rect" src="./images/tagalong-cover.webp" placeholder="Case study hero, wide"></image-slot>
+    <div style="position:absolute;left:-6%;right:-6%;bottom:-2px;height:90px;background:var(--bg);border-radius:100% 100% 0 0 / 90px 90px 0 0;pointer-events:none"></div>
+  </div>
+
+  <div style="max-width:1200px;margin:0 auto;padding:0 34px 40px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:72px;align-items:start">
+    <aside style="position:sticky;top:90px;padding-top:20px;max-width:230px">
+      <a href="./Projects.dc.html" style="display:inline-block;margin-bottom:24px;font-size:15px;text-decoration:none">← All projects</a>
+      <nav style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ toc }}" as="t" hint-placeholder-count="8">
+          <a href="{{ t.href }}" style="padding:7px 12px;border-radius:8px;font-size:15px;text-decoration:none;transition:transform .28s cubic-bezier(.4,0,.2,1),color .28s ease;color:{{ t.color }};transform:translateX({{ t.shift }})" style-hover="background:var(--tint)">{{ t.label }}</a>
+        </sc-for>
+      </nav>
+    </aside>
+
+    <main style="padding-top:20px;min-width:0;max-width:860px">
+      <p style="font-family:'Shantell Sans',cursive;font-size:34px;color:var(--a1);margin:0 0 6px">Tagalong</p>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-soft);margin:0 0 18px">UX/UI design · Group travel app</p>
+
+      <h1 id="overview" style="font-family:'Solway',serif;font-weight:400;font-size:clamp(36px,5vw,58px);line-height:1.05;margin:0 0 24px;text-wrap:balance">Planning a trip with friends, without the group chat.</h1>
+
+      <p style="font-size:18px;line-height:1.7;color:var(--fg-soft);margin:0 0 36px;max-width:660px;text-wrap:pretty">A group-travel app where deciding, remembering and paying live in one place, and where every decision the group makes leaves a trace in the plan.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px;padding:24px 0;border-block:1px solid var(--line);margin-bottom:52px">
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Role</p>
+          <p style="margin:0;font-size:16px">UX/UI Designer</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Tools</p>
+          <p style="margin:0;font-size:16px">Figma</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Year</p>
+          <p style="margin:0;font-size:16px">2026</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:60px">
+        <div style="aspect-ratio:1870 / 2774;border-radius:26px 18px 24px 20px;overflow:hidden">
+          <image-slot id="tg-intro-quote" shape="rect" fit="cover" src="./images/tagalong-intro-quote.webp" placeholder="Positioning statement"></image-slot>
+        </div>
+        <div style="aspect-ratio:1870 / 2774;border-radius:18px 26px 20px 24px;overflow:hidden">
+          <image-slot id="tg-intro-home" shape="rect" fit="cover" src="./images/tagalong-intro-home.webp" placeholder="Home screen"></image-slot>
+        </div>
+        <div style="grid-column:1 / -1;aspect-ratio:2576 / 1364;border-radius:24px 18px 26px 20px;overflow:hidden">
+          <image-slot id="tg-intro-duo" shape="rect" fit="cover" src="./images/tagalong-intro-duo.webp" placeholder="Explore and itinerary"></image-slot>
+        </div>
+      </div>
+
+      <section id="problem" style="margin-bottom:96px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">The problem</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Death by small decisions</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 30px;max-width:660px;text-wrap:pretty">Planning a trip with friends means constant small decisions about where to eat, who is coming, and who paid for what, and today those get scattered across multiple apps, group chats and screenshots which leaves one person holding the whole thing together.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:24px">
+          <sc-for list="{{ problems }}" as="p" hint-placeholder-count="3">
+            <div style="padding:28px 30px;border-radius:26px 18px 28px 20px;background:var(--surface)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 16px">
+                <p style="margin:0;font-size:13px;color:var(--a1);font-variant-numeric:tabular-nums">{{ p.num }}</p>
+                <div style="height:64px;width:64px;background-image:url({{ p.icon }});background-repeat:no-repeat;background-position:center right;background-size:contain"></div>
+              </div>
+              <p style="font-family:'Solway',serif;font-size:21px;margin:0 0 10px;text-wrap:pretty">{{ p.title }}</p>
+              <p style="margin:0;font-size:16px;line-height:1.6;color:var(--fg-soft);text-wrap:pretty">{{ p.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:clamp(48px,7vw,88px) clamp(32px,6vw,72px);border-radius:30px 22px 32px 24px;background:#FA5C45;min-height:clamp(280px,32vw,400px)">
+          <p ref="{{ typeRef }}" style="margin:0;max-width:760px;text-align:center;font-family:'Solway',serif;font-weight:400;font-size:clamp(24px,2.9vw,34px);line-height:1.35;color:#FDF8F3;text-wrap:pretty;min-height:2.7em">How might we bring deciding, tracking and settling into one place, without one person having to run everything?</p>
+        </div>
+      </section>
+
+
+      <section id="ia" style="margin-bottom:96px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Information architecture</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Two levels deep, on purpose.</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;max-width:660px;text-wrap:pretty">The structure follows <strong style="font-weight:700;color:var(--fg-soft)">how a trip is actually used</strong>. Home lists the trips with the current one first, and each trip is a hub with four tabs: Itinerary, Explore, Chat and Expenses. Every action lives <strong style="font-weight:700;color:var(--fg-soft)">one level below the tab it belongs to</strong>, so polls open from the itinerary, splitting opens from an expense, and inviting opens from the member list. <strong style="font-weight:700;color:var(--fg-soft)">Nothing important sits more than two taps from the hub.</strong></p>
+        <div style="border-radius:24px 18px 26px 20px;overflow:hidden;aspect-ratio:2620 / 1432">
+          <image-slot id="tg-sitemap" shape="rect" fit="contain" src="./images/tagalong-sitemap.webp" placeholder="Sitemap"></image-slot>
+        </div>
+      </section>
+
+      <section id="wireframes" style="margin-bottom:96px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Wireframes</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Structure before style</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;max-width:660px;text-wrap:pretty">The wireframes started from <strong style="font-weight:700;color:var(--fg-soft)">the three things a group actually does on a trip</strong>: make a decision, add an expense, and settle up. Each was drawn in greyscale with real copy and no color, then laid out as <strong style="font-weight:700;color:var(--fg-soft)">a connected flow rather than isolated screens</strong>, which made the gaps obvious. <strong style="font-weight:700;color:var(--fg-soft)">Visual design only started once all three held up end to end.</strong></p>
+        <div style="margin-bottom:30px">
+          <div style="border-radius:24px 18px 26px 20px;overflow:hidden;aspect-ratio:2800 / 2087">
+            <image-slot id="tg-wire-montage" shape="rect" fit="cover" src="./images/tagalong-wire-montage.webp" placeholder="Wireframe set"></image-slot>
+          </div>
+        </div>
+      </section>
+
+      <section id="sections" style="margin-bottom:96px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Inside a trip</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Four sections, one trip</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 30px;max-width:660px;text-wrap:pretty">A trip is split into four sections that stay in the same place for the whole journey: the plan, the places, the conversation and the money. Everything the group does happens inside one of them.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:0 0 34px">
+          <sc-for list="{{ features }}" as="ft" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;border-radius:24px 18px 26px 20px;overflow:hidden;background:var(--surface);border:1px solid var(--line)">
+              <div style="position:relative;padding:16px 16px 0;background:#FA5C45">
+                <div style="aspect-ratio:{{ ft.ratio }};overflow:hidden;border-radius:16px 12px 16px 12px">
+                  <image-slot id="{{ ft.slot }}" shape="rect" fit="cover" src="{{ ft.src }}" placeholder="{{ ft.title }}"></image-slot>
+                </div>
+                <div style="position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(to bottom,rgba(252,250,245,0),var(--surface));pointer-events:none"></div>
+              </div>
+              <div style="padding:20px 22px 26px;text-align:center">
+                <p style="margin:0 0 8px;font-family:'Solway',serif;font-size:20px">{{ ft.title }}</p>
+                <p style="margin:0;font-size:15px;line-height:1.6;color:var(--fg-soft);text-wrap:pretty">{{ ft.body }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section id="flows" style="margin-bottom:96px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Core flows</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Three moments that matter</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 34px;max-width:660px;text-wrap:pretty">Designing TagAlong I focused on <strong style="font-weight:700;color:var(--fg-soft)">the three moments where a group trip creates the most friction</strong>: making a decision in the moment, splitting an expense, and settling up. They are the points where people give up on the app and fall back to the group chat, so <strong style="font-weight:700;color:var(--fg-soft)">getting them right matters more than covering every screen</strong>.</p>
+        <div style="display:flex;flex-direction:column;gap:72px">
+          <sc-for list="{{ flows }}" as="f" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:26px">
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <div style="display:flex;align-items:center;gap:14px">
+                  <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--a1);font-family:'Shantell Sans',cursive;font-size:17px;color:#FDF8F3">{{ f.n }}</span>
+                  <p style="font-family:'Solway',serif;font-size:22px;margin:0;text-wrap:pretty">{{ f.title }}</p>
+                </div>
+                <p style="margin:0;font-size:17px;line-height:1.7;color:var(--fg-soft);max-width:660px;text-wrap:pretty">{{ f.body }}</p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:20px">
+                <div style="padding:22px 24px;border-radius:26px 18px 28px 20px;background:var(--surface);overflow:hidden">
+                  <div ref="{{ mqRef }}" style="display:flex;flex-wrap:nowrap;gap:18px;align-items:flex-start;will-change:transform">
+                  <sc-for list="{{ f.shots }}" as="sh" hint-placeholder-count="4">
+                    <div style="flex:{{ f.shotFlex }};min-width:0;display:flex;flex-direction:column;gap:10px">
+                      <div style="aspect-ratio:804 / 1748;border-radius:14px 10px 15px 11px;overflow:hidden">
+                        <image-slot id="{{ sh.slot }}" shape="rect" fit="contain" src="{{ sh.src }}" placeholder="{{ sh.label }}"></image-slot>
+                      </div>
+                      <p style="margin:0;font-size:13px;line-height:1.45;color:var(--fg-soft);text-wrap:pretty">{{ sh.label }}</p>
+                    </div>
+                  </sc-for>
+                  </div>
+                </div>
+              </div>
+              <div style="grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:24px">
+                <sc-for list="{{ f.videos }}" as="v" hint-placeholder-count="1">
+                  <div style="flex:1 1 0;min-width:0;padding:32px 20px;border-radius:30px 22px 32px 24px;background:#FA5C45;display:flex;flex-direction:column;align-items:center;gap:14px">
+                    <div style="width:min(440px,100%);aspect-ratio:{{ v.ratio }};overflow:hidden;border-radius:22px;background:#FA5C45">
+                      <video ref="{{ vidRef }}" data-src="{{ v.src }}" data-clip-start="{{ v.clipStart }}" data-clip-end="{{ v.clipEnd }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center top"></video>
+                    </div>
+                    <sc-if value="{{ v.caption }}" hint-placeholder-val="{{ true }}">
+                      <div style="width:min(440px,100%)">
+                        <p style="margin:0;font-size:16px;line-height:1.6;color:#FDF8F3;text-wrap:pretty">{{ v.caption }}</p>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+
+      <section id="screens" style="margin-bottom:96px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Final design</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Warm ground, one accent</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 30px;max-width:660px;text-wrap:pretty">The interface is <strong style="font-weight:700;color:var(--fg-soft)">clean and minimal</strong>: warm paper tones carry the screens, with <strong style="font-weight:700;color:var(--fg-soft)">a single coral accent reserved for the one action that matters</strong> on each of them, whether that is vote, pay, or invite. Cards, avatars, buttons and the tab bar are built as reusable components on shared color and type tokens, so <strong style="font-weight:700;color:var(--fg-soft)">the whole product reads as one system</strong>.</p>
+        <div style="border-radius:24px 18px 26px 20px;overflow:hidden;aspect-ratio:2546 / 1410;background:var(--surface)">
+          <image-slot id="tg-system" shape="rect" fit="contain" src="./images/tagalong-system.webp" placeholder="Logo, colour and typography"></image-slot>
+        </div>
+        <div style="width:100%;border-radius:24px 18px 26px 20px;overflow:hidden;aspect-ratio:1400 / 2196;margin-top:30px">
+          <image-slot id="tg-design-hero" shape="rect" fit="cover" src="./images/tagalong-design-hero.webp" placeholder="Finished screens"></image-slot>
+        </div>
+      </section>
+
+
+      <section id="takeaways" style="margin-bottom:44px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Takeaways</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">What I took away from it.</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 12px;text-wrap:pretty">Tagalong started as a planning app and turned into a money app halfway through. Once expenses entered the picture, every screen had to answer two questions at once, what we are doing and who owes what, and keeping those two layers in the same product without doubling the interface was the real design work.</p>
+        <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:17px;line-height:1.7;color:var(--fg-soft)">
+          <li>Designed decisions and expenses as one system instead of two separate tools</li>
+          <li>Reserved a single accent for the one action that matters on each screen</li>
+          <li>Built the UI on shared tokens and components, so the product scales past twelve screens</li>
+          <li>Prototyped the flows end to end to test where a group actually drops out</li>
+        </ul>
+      </section>
+
+      <div style="padding:32px;border-radius:28px 20px 30px 18px;background:var(--surface);display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap">
+        <div style="text-align:center">
+          <p style="font-family:'Shantell Sans',cursive;font-size:24px;margin:0 0 6px">Thanks for reading :-)</p>
+          <p style="margin:0 0 18px;color:var(--fg-soft);font-size:16px">Happy to walk you through the messy middle bits.</p>
+          <a href="./Portfolio.dc.html#contact" style="display:inline-block;padding:12px 26px;border-radius:999px;background:var(--fg);color:var(--bg);text-decoration:none;font-size:16px" style-hover="background:var(--a1);color:#1a1512">Get in touch</a>
+        </div>
+        <img src="./images/ashi.svg" alt="Ashi the cat" style="display:block;height:150px;width:auto" />
+      </div>
+
+      <div style="margin-top:36px;padding-top:20px;border-top:1px solid var(--line)">
+        <p style="margin:0 0 18px;font-size:16px;color:var(--fg-soft)">Next up</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px">
+          <a href="./Case Study.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="tg-next-1" shape="rect" fit="cover" src="./images/furbrawl-cover.webp" placeholder="Furbrawl cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Furbrawl</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">Game design &amp; UI</p>
+            </div>
+          </a>
+          <a href="./Case Study Gymboo.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="tg-next-2" shape="rect" fit="cover" src="./images/gymboo-cover.webp" placeholder="Gymboo cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Gymboo</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">App design &amp; user research</p>
+            </div>
+          </a>
+        </div>
+        <a href="./Projects.dc.html" style="display:inline-block;margin-top:24px;font-size:17px">See all work →</a>
+      </div>
+    </main>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">
+class Component extends DCLogic {
+  state = { active: "overview" };
+  galRef = React.createRef();
+  galPaused = false;
+  galPos = 0;
+  galTick = (t) => {
+    const el = this.galRef.current;
+    const dt = this.galLast ? Math.min(64, t - this.galLast) : 16;
+    this.galLast = t;
+    if (el && !this.galPaused) {
+      const half = el.scrollWidth / 2;
+      if (half > 1) {
+        this.galPos += (dt / 1000) * 22;
+        if (this.galPos >= half) this.galPos -= half;
+        el.style.transform = "translateX(" + -this.galPos + "px)";
+      }
+    }
+    this.galRaf = requestAnimationFrame(this.galTick);
+  };
+  componentDidMount() { this.observeSections(); }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    if (this.galRaf) cancelAnimationFrame(this.galRaf);
+  }
+  observeSections() {
+    const ids = this.vals().toc.map(t => t.href.slice(1));
+    const io = new IntersectionObserver((entries) => {
+      const vis = entries.filter(e => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (vis && vis.target.id !== this.state.active) this.setState({ active: vis.target.id });
+    }, { rootMargin: "-20% 0px -65% 0px", threshold: 0 });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+    this.io = io;
+  }
+  renderVals() {
+    const vals = this.vals();
+    vals.toc = vals.toc.map(t => {
+      const on = t.href.slice(1) === this.state.active;
+      return { ...t, color: on ? "var(--a1)" : "var(--fg-soft)", shift: on ? "10px" : "0px" };
+    });
+    vals.flows = vals.flows.map(f => ({
+      ...f,
+      shotFlex: (f.shots || []).length > 3 ? "0 0 210px" : "1 1 0",
+      videos: (f.videos || (f.video ? [{ src: f.video, clipStart: f.clipStart, clipEnd: f.clipEnd }] : []))
+        .map(v => ({ ...v, ratio: v.caption ? "790 / 900" : "790 / 1080" }))
+    }));
+    vals.features = [
+      { slot: "tg-feat-1", ratio: "1701 / 1457", src: "./images/feat-itinerary.webp", title: "Itinerary", body: "The day-by-day plan, with every stop in the order it happens." },
+      { slot: "tg-feat-2", ratio: "1884 / 1457", src: "./images/feat-explore.webp", title: "Explore", body: "Nearby places, ready to become a poll option or a stop." },
+      { slot: "tg-feat-3", ratio: "1884 / 1457", src: "./images/feat-chat.webp", title: "Chat", body: "Where the group talks, without decisions getting lost." },
+      { slot: "tg-feat-4", ratio: "1884 / 1457", src: "./images/feat-expenses.webp", title: "Expenses", body: "Who paid, who owes, and what is left to settle." }
+    ];
+    vals.gallery = [
+      { slot: "tg-s1", src: "./images/screen-01.webp", caption: "01 Home" },
+      { slot: "tg-s2", src: "./images/screen-02.webp", caption: "02 Itinerary" },
+      { slot: "tg-s3", src: "./images/screen-03.webp", caption: "03 Explore" },
+      { slot: "tg-s4", src: "./images/screen-04.webp", caption: "04 Chat" },
+      { slot: "tg-s5", src: "./images/screen-05.webp", caption: "05 Expenses" },
+      { slot: "tg-s6", src: "./images/screen-06.webp", caption: "06 Trip members" },
+      { slot: "tg-s8", src: "./images/screen-08.webp", caption: "08 Add a poll" },
+      { slot: "tg-s9", src: "./images/screen-09.webp", caption: "09 Search map" },
+      { slot: "tg-s10", src: "./images/screen-10.webp", caption: "10 Add expense" },
+      { slot: "tg-s11", src: "./images/screen-11.webp", caption: "11 Settle up" },
+      { slot: "tg-s12", src: "./images/screen-12.webp", caption: "12 All settled up" }
+    ];
+    vals.gallery = vals.gallery.concat(vals.gallery.map((g, i) => ({ ...g, slot: g.slot + "-dup" + i })));
+    vals.mqRef = (el) => {
+      if (!el || el.dataset.mq) return;
+      el.dataset.mq = "1";
+      const wrap = el.parentElement;
+      let pos = 0, last = 0, paused = false;
+      wrap.addEventListener("pointerenter", () => { paused = true; });
+      wrap.addEventListener("pointerleave", () => { paused = false; });
+      const tick = (t) => {
+        const dt = last ? Math.min(64, t - last) : 16;
+        last = t;
+        if (!paused) {
+          const max = el.scrollWidth - wrap.clientWidth;
+          if (max > 1) {
+            pos += (dt / 1000) * 26;
+            if (pos >= max) pos = 0;
+            el.style.transform = "translateX(" + -pos + "px)";
+          }
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    vals.galRef = (el) => {
+      this.galRef.current = el;
+      if (el && !this.galRunning) {
+        this.galRunning = true;
+        this.galRaf = requestAnimationFrame(this.galTick);
+      }
+    };
+    vals.typeRef = (el) => {
+      if (!el || el.dataset.typed) return;
+      el.dataset.typed = "1";
+      const words = el.textContent.split(" ");
+      const run = () => {
+        el.textContent = "";
+        const spans = words.map((w, i) => {
+          const s = document.createElement("span");
+          s.textContent = i < words.length - 1 ? w + " " : w;
+          s.style.opacity = "0";
+          s.style.transition = "opacity .32s ease";
+          el.appendChild(s);
+          return s;
+        });
+        spans.forEach((s, i) => setTimeout(() => { s.style.opacity = "1"; }, i * 90));
+      };
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { io.disconnect(); run(); }
+        });
+      }, { threshold: 0.4 });
+      io.observe(el);
+    };
+    vals.vidRef = (el) => {
+      if (!el || el.dataset.wired) return;
+      el.dataset.wired = "1";
+      el.muted = true;
+      el.playsInline = true;
+      if (el.dataset.src && !el.src) el.src = el.dataset.src;
+      const start = parseFloat(el.dataset.clipStart) || 0;
+      const end = parseFloat(el.dataset.clipEnd) || 0;
+      if (start || end) {
+        el.loop = false;
+        const seekStart = () => { if (Math.abs(el.currentTime - start) > 0.05) el.currentTime = start; };
+        el.addEventListener("loadedmetadata", seekStart);
+        if (el.readyState >= 1) seekStart();
+        el.addEventListener("timeupdate", () => {
+          if (end && el.currentTime >= end) { el.currentTime = start; el.play().catch(() => {}); }
+        });
+        el.addEventListener("ended", () => { el.currentTime = start; el.play().catch(() => {}); });
+      }
+      const play = () => el.play().catch(() => {});
+      play();
+      el.addEventListener("canplay", play);
+    };
+    vals.galPause = () => { this.galPaused = true; };
+    vals.galResume = () => { this.galPaused = false; };
+    return vals;
+  }
+  vals() {
+    return {
+      toc: [
+        { label: "Overview", href: "#overview" },
+        { label: "The problem", href: "#problem" },
+        { label: "Architecture", href: "#ia" },
+        { label: "Wireframes", href: "#wireframes" },
+        { label: "Inside a trip", href: "#sections" },
+        { label: "Core flows", href: "#flows" },
+        { label: "Final design", href: "#screens" },
+        { label: "Takeaways", href: "#takeaways" }
+      ],
+      problems: [
+        { num: "01", icon: "./images/icon-chat.svg", title: "Decisions never close", body: "Twelve messages about where to eat, no deadline and no record of what was agreed. The loudest person decides, or nobody does." },
+        { num: "02", icon: "./images/icon-compass.svg", title: "The plan lives in five places", body: "A restaurant found on a map never reaches the itinerary. The itinerary never reaches the person who booked. Context is retyped, or lost." },
+        { num: "03", icon: "./images/icon-money.svg", title: "Money is the awkward part", body: "Somebody fronts the museum tickets and then has to chase four friends for €15 each. The social cost of asking is higher than the amount." }
+      ],
+      principles: [
+        { title: "Decisions are objects, not messages", body: "A poll is not a chat message, it is a stop in the itinerary with a deadline, a result and a winner that turns into a real plan item at 20:00. The decision and the plan are the same record.", tag: "Poll → stop" },
+        { title: "Money follows the plan", body: "An expense starts from a place that is already in the trip: pick it from the itinerary, keep its name and icon. Splitting is the default path, not a settings screen: equally, by percent, or line by line off a scanned receipt.", tag: "Place → expense → balance" },
+        { title: "The group is always on screen", body: "Avatars, who paid, who voted, who has not answered yet. Social pressure is the feature: seeing that three of five have voted is what closes a poll on time.", tag: "Always five faces" }
+      ],
+      levels: [
+        { title: "Root tabs", body: "Explore · Home · Profile, persistent, hidden inside a trip." },
+        { title: "Section tabs", body: "Itinerary · Explore · Chat · Expenses, state rather than navigation." },
+        { title: "Task stack", body: "Full-screen forms and sheets that always return you where you started." }
+      ],
+      wires: [
+        { label: "Invitation flow", slot: "tg-wire-1", src: "./images/tagalong-wire-invite.webp", ratio: "2800 / 1855" },
+        { label: "Create poll flow", slot: "tg-wire-2", src: "./images/tagalong-wire-poll.webp", ratio: "2800 / 1801" },
+        { label: "Add expense and split flow", slot: "tg-wire-3", src: "./images/tagalong-wire-expense.webp", ratio: "2800 / 2672" }
+      ],
+      flows: [
+        {
+          n: "1",
+          num: "01",
+          title: "Making a decision",
+          body: "Most group choices happen on the fly, usually while everyone is already hungry. Creating a poll takes a title, a few options pulled straight from the map, and nothing else. Results update live as votes come in, and when the poll closes the winning place moves into the itinerary on its own.",
+          shots: [
+            { slot: "tg-f1a", src: "./images/flow1-01-itinerary.webp", label: "Itinerary: the day the decision belongs to" },
+            { slot: "tg-f1b", src: "./images/flow1-02-map.webp", label: "Search Map: find real places nearby" },
+            { slot: "tg-f1c", src: "./images/flow1-03-place.webp", label: "Place detail: reviews, distance, add to the poll" },
+            { slot: "tg-f1d", src: "./images/flow1-04-poll.webp", label: "Add a Poll: options, deadline, auto-add when closed" },
+            { slot: "tg-f1e", src: "./images/flow1-05-vote.webp", label: "Itinerary: the group votes, the winner becomes a stop" }
+          ],
+          videos: [
+            { src: "./images/tagalong-flow1.mp4", clipEnd: 14, kicker: "GIF 1", caption: "Opening a trip drops you straight into the group's plan. Explore sits one tap away, with nearby places ready to be turned into an option instead of a message in the chat." },
+            { src: "./images/tagalong-flow1.mp4", clipStart: 15, kicker: "GIF 2", caption: "Voting updates the result live, so the group can see where it is leaning before the poll even closes. When it does, the winning place moves into the itinerary on its own, with no one having to copy it over." }
+          ],
+          meta: "4 screens · 1 group decision",
+          notes: [
+            { title: "Placed in time", body: "The poll sits at 20:00 in the timeline, not in a separate tab." },
+            { title: "Shared search", body: "Options come from the same map search used everywhere else." },
+            { title: "Closes itself", body: "A deadline plus a visible vote count is what ends the discussion." }
+          ]
+        },
+        {
+          n: "2",
+          num: "02",
+          title: "Splitting an expense",
+          body: "Not every bill splits evenly, and the moment it does not is where most apps get abandoned. Alongside an even split, an expense can be broken into single items so each one is shared only with the people it belongs to, and every balance updates as the selection changes.",
+          shots: [
+            { slot: "tg-f2a", src: "./images/flow2-01-expenses.webp", label: "Expenses: running totals and group balances" },
+            { slot: "tg-f2b", src: "./images/flow2-02-add.webp", label: "Add Expense: amount, payer, split mode" },
+            { slot: "tg-f2c", src: "./images/flow2-03-category.webp", label: "Category picker: tie the expense to a stop" }
+          ],
+          video: "./images/tagalong-flow2.mp4",
+          clipStart: 1,
+          clipEnd: 17,
+          meta: "3 screens · itemised or equal split",
+          notes: [
+            { title: "Three split modes", body: "Equally, by percent, or line by line off the same list of faces." },
+            { title: "Receipt as input", body: "Scanning fills title, amount and items, so the fiddly path is the fast one." }
+          ]
+        },
+        {
+          n: "3",
+          num: "03",
+          title: "Settling up",
+          body: "At the end of a trip, what people want is the smallest number of payments possible. Debts are consolidated across the group so no one sends three separate transfers, and each one can be marked as paid or settled directly in the app.",
+          shots: [
+            { slot: "tg-f3a", src: "./images/flow3-01-expenses.webp", label: "Expenses: Settle Up sits next to the balances" },
+            { slot: "tg-f3b", src: "./images/flow3-02-settle.webp", label: "Settle Up: debts consolidated, pay or mark as paid" },
+            { slot: "tg-f3c", src: "./images/flow3-03-done.webp", label: "All settled up: nobody owes anything" }
+          ],
+          video: "./images/tagalong-flow2.mp4",
+          clipStart: 20,
+          meta: "3 screens · fewest possible payments",
+          notes: [
+            { title: "Simplify by default", body: "Five debts become two payments; the toggle explains the trade in one line." },
+            { title: "Success is a screen", body: "“All settled up” is a full-screen moment, not a toast that disappears." }
+          ]
+        }
+      ],
+      counts: [
+        { n: "41", label: "colour tokens" },
+        { n: "27", label: "numeric tokens" },
+        { n: "18", label: "text styles" },
+        { n: "6", label: "elevation styles" },
+        { n: "26", label: "components" },
+        { n: "12", label: "screens" }
+      ],
+      panels: true
+    };
+  }
+}
+</script>
+</body>
+</html>

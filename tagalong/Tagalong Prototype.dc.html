@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FA5C45;font-family:-apple-system,"SF Pro Display","SF Pro Text",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#F14B2F;text-decoration:none}a:hover{color:#c93b22}
+*{-webkit-tap-highlight-color:transparent}
+@keyframes su-bg{from{background-color:#FDF8F3}to{background-color:#F14B2F}}
+@keyframes su-pop{0%{transform:scale(.2);opacity:0}60%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+@keyframes su-ring{0%{transform:scale(.7);opacity:.55}100%{transform:scale(2.4);opacity:0}}
+@keyframes su-check{from{stroke-dashoffset:52}to{stroke-dashoffset:0}}
+@keyframes su-rise{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
+::-webkit-scrollbar{width:0;height:0}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;align-items:flex-start;justify-content:center;gap:44px;padding:56px 40px 80px;box-sizing:border-box">
+
+<div style="display:flex;flex-direction:column;gap:18px;align-items:center">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ darkChrome }}" hint-size="402px,874px">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="height:874px;background:#FDF8F3;box-sizing:border-box;overflow:hidden;position:relative">
+  <div style="height:100%;overflow:auto;padding:66px 20px 0;box-sizing:border-box">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+    <div>
+      <div style="font-size: 28px; font-weight: 800; color: #191512; letter-spacing: -0.6px; padding-top: 32px">Good evening, Ari!</div>
+      <div style="font-size:15px;color:#6C635C;margin-top:4px">Ready for your next <span style="color:#F14B2F;font-weight:700">adventure?</span></div>
+    </div>
+    <div style="width:40px;height:40px;border-radius:999px;border:1.5px solid #F14B2F;display:flex;align-items:center;justify-content:center;flex:none">
+      <svg width="16" height="18" viewBox="0 0 16 18"><path d="M8 1a5 5 0 015 5v4l2 3H1l2-3V6a5 5 0 015-5z" fill="none" stroke="#F14B2F" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="8" cy="16" r="1.6" fill="#F14B2F"></circle></svg>
+    </div>
+  </div>
+
+  <div style="font-size:17px;font-weight:600;color:#191512;margin:24px 0 10px">Current Trip</div>
+  <div style="background:#fff;border-radius:20px;padding:12px;box-shadow:0 2px 14px rgba(25,21,18,.07)">
+    <div style="height:150px;border-radius:14px;background:url('./lisbona.webp') center/cover no-repeat"></div>
+    <div style="padding:12px 6px 4px">
+      <div style="font-size:12px;color:#8A7F77;font-weight:500">Apr 27–29</div>
+      <div style="font-size:20px;font-weight:700;color:#191512;margin-top:2px">Lisbona Getaway</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:10px">
+        <div style="display:flex">
+          <div style="width:28px;height:28px;border-radius:999px;background:#C98A5E;border:2px solid #fff;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">A</div>
+          <div style="width:28px;height:28px;border-radius:999px;background:#7E9B86;border:2px solid #fff;margin-left:-9px;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">N</div>
+          <div style="width:28px;height:28px;border-radius:999px;background:#9A7FA8;border:2px solid #fff;margin-left:-9px;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">P</div>
+          <div style="width:28px;height:28px;border-radius:999px;background:#2F6FE0;border:2px solid #fff;margin-left:-9px;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center">+2</div>
+        </div>
+        <span style="font-size:13px;color:#6C635C">5 members</span>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <div onClick="{{ openTrip }}" style="flex:1;height:46px;border-radius:12px;background:#F14B2F;color:#fff;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#DC3F25">Continue Planning</div>
+        <div style="width: 46px; height: 46px; border-radius: 12px; border: 1.5px solid #F5C9BE; display: flex; align-items: center; justify-content: center; gap: 4px; cursor: pointer">
+          <div style="width:4px;height:4px;border-radius:9px;background:#F14B2F"></div><div style="width:4px;height:4px;border-radius:9px;background:#F14B2F"></div><div style="width:4px;height:4px;border-radius:9px;background:#F14B2F"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:17px;font-weight:600;color:#191512;margin:22px 0 10px">Upcoming Trips</div>
+  <div style="background: #fff; border-radius: 20px; padding: 12px; box-shadow: 0 2px 14px rgba(25,21,18,.07); margin-bottom: 120px; position: relative">
+    <div style="height: 120px; border-radius: 14px; background: url(&quot;./kyoto-msoomw3c-fsqx.webp&quot;) center / cover no-repeat"></div>
+    <div style="padding:12px 6px 4px">
+      <div style="font-size:12px;color:#8A7F77;font-weight:500">Oct 12–20</div>
+      <div style="font-size:20px;font-weight:700;color:#191512;margin-top:2px">Kyoto in Autumn</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:10px">
+        <div style="display:flex">
+          <div style="width:28px;height:28px;border-radius:999px;background:#C98A5E;border:2px solid #fff;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">A</div>
+          <div style="width:28px;height:28px;border-radius:999px;background:#5E9B9B;border:2px solid #fff;margin-left:-9px;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">R</div>
+          <div style="width:28px;height:28px;border-radius:999px;background:#5E86C9;border:2px solid #fff;margin-left:-9px;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">J</div>
+        </div>
+        <span style="font-size:13px;color:#6C635C">3 members</span>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <div style="flex:1;height:46px;box-sizing:border-box;border-radius:12px;border:1.5px solid #F5C9BE;color:#F14B2F;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">Start Planning</div>
+        <div style="width:46px;height:46px;box-sizing:border-box;border-radius:12px;border:1.5px solid #F5C9BE;display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer">
+          <div style="width:4px;height:4px;border-radius:9px;background:#F14B2F"></div><div style="width:4px;height:4px;border-radius:9px;background:#F14B2F"></div><div style="width:4px;height:4px;border-radius:9px;background:#F14B2F"></div>
+        </div>
+      </div>
+    </div>
+  <div style="position: absolute; width: 60px; height: 60px; border-radius: 999px; background: #F14B2F; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 22px rgba(241,75,47,.4); cursor: pointer; left: 297px; top: 78px">
+    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" stroke="#fff" stroke-width="2.6" stroke-linecap="round"></path></svg>
+  </div></div>
+  </div>
+
+  
+
+  <div style="position:absolute;left:0;right:0;bottom:0;height:96px;background:rgba(253,248,243,.94);backdrop-filter:blur(12px);border-top:1px solid rgba(25,21,18,.07);display:flex;align-items:flex-start;justify-content:space-around;padding-top:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;width:70px">
+      <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9.2" fill="none" stroke="#9A8F87" stroke-width="1.7"></circle><path d="M14.5 7.5l-2.2 5-5 2.2 2.2-5 5-2.2z" fill="#9A8F87"></path></svg>
+      <span style="font-size:11px;color:#9A8F87;font-weight:600">Explore</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;width:70px">
+      <svg width="22" height="22" viewBox="0 0 22 22"><path d="M2.5 9.5L11 2.5l8.5 7v9a1 1 0 01-1 1h-15a1 1 0 01-1-1v-9z" fill="#F14B2F"></path></svg>
+      <span style="font-size:11px;color:#F14B2F;font-weight:600">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;width:70px">
+      <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.8" fill="none" stroke="#9A8F87" stroke-width="1.7"></circle><path d="M3.8 19.5c1.2-3.8 4-5.6 7.2-5.6s6 1.8 7.2 5.6" fill="none" stroke="#9A8F87" stroke-width="1.7" stroke-linecap="round"></path></svg>
+      <span style="font-size:11px;color:#9A8F87;font-weight:600">Profile</span>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTrip }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#FDF8F3;overflow:hidden;position:relative">
+  <div style="height:100%;overflow:auto">
+  <div style="height:210px;background:url('./lisbon-castle.webp') center 60%/cover no-repeat;position:relative">
+    <div onClick="{{ goHome }}" style="position:absolute;top:62px;left:16px;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="11" height="18" viewBox="0 0 11 18"><path d="M9 2L2 9l7 7" fill="none" stroke="#191512" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <div style="position:absolute;top:62px;right:16px;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;gap:4px">
+      <div style="width:4px;height:4px;border-radius:9px;background:#191512"></div><div style="width:4px;height:4px;border-radius:9px;background:#191512"></div><div style="width:4px;height:4px;border-radius:9px;background:#191512"></div>
+    </div>
+  </div>
+
+  <div style="background:#FDF8F3;border-radius:24px 24px 0 0;margin-top:-24px;position:sticky;top:56px;z-index:5;padding:18px 20px 0">
+    <div style="font-size:12px;color:#8A7F77;font-weight:500">Apr 27–29</div>
+    <div style="font-size:24px;font-weight:700;color:#191512;margin-top:2px;letter-spacing:-0.4px">Lisbona Getaway</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="display:flex">
+          <div style="width:28px;height:28px;border-radius:999px;background:#C98A5E;border:2px solid #FDF8F3;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">A</div>
+          <div style="width:28px;height:28px;border-radius:999px;background:#7E9B86;border:2px solid #FDF8F3;margin-left:-9px;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">N</div>
+          <div style="width:28px;height:28px;border-radius:999px;background:#9A7FA8;border:2px solid #FDF8F3;margin-left:-9px;color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center">P</div>
+          <div style="width:28px;height:28px;border-radius:999px;background:#2F6FE0;border:2px solid #FDF8F3;margin-left:-9px;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center">+2</div>
+        </div>
+        <span style="font-size:13px;color:#6C635C">{{ memberCount }} members</span>
+      </div>
+      <div onClick="{{ openMembers }}" style="width:40px;height:40px;border-radius:999px;border:1.5px solid #F5C9BE;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="20" height="16" viewBox="0 0 20 16"><circle cx="7" cy="5" r="3.4" fill="none" stroke="#F14B2F" stroke-width="1.6"></circle><path d="M1.5 15c.9-2.8 3-4.2 5.5-4.2S12 12.2 12.9 15" fill="none" stroke="#F14B2F" stroke-width="1.6" stroke-linecap="round"></path><path d="M16 4v6M13 7h6" stroke="#F14B2F" stroke-width="1.6" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:22px;margin-top:16px;border-bottom:1px solid rgba(25,21,18,.09)">
+      <div onClick="{{ tabItinerary }}" style="padding-bottom:10px;font-size:15px;font-weight:600;cursor:pointer;color:{{ cItin }};border-bottom:2.5px solid {{ bItin }}">Itinerary</div>
+      <div onClick="{{ tabExplore }}" style="padding-bottom:10px;font-size:15px;font-weight:600;cursor:pointer;color:{{ cExp }};border-bottom:2.5px solid {{ bExp }}">Explore</div>
+      <div onClick="{{ tabChat }}" style="padding-bottom:10px;font-size:15px;font-weight:600;cursor:pointer;color:{{ cChat }};border-bottom:2.5px solid {{ bChat }}">Chat</div>
+      <div onClick="{{ tabExpenses }}" style="padding-bottom:10px;font-size:15px;font-weight:600;cursor:pointer;color:{{ cMoney }};border-bottom:2.5px solid {{ bMoney }}">Expenses</div>
+    </div>
+  </div>
+
+  <sc-if value="{{ onItinerary }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:16px 20px 130px">
+    <div style="display:flex;gap:8px">
+      <sc-for list="{{ dayChips }}" as="d" hint-placeholder-count="2">
+        <div onClick="{{ d.onPick }}" style="height:34px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:600;display:flex;align-items:center;cursor:pointer;background:{{ d.bg }};color:{{ d.fg }};border:1px solid {{ d.border }}">{{ d.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:16px">
+      <div style="font-size:19px;font-weight:700;color:#191512">{{ dayTitle }}</div>
+      <div style="font-size:11.5px;color:#8A7F77;font-weight:600">{{ dayCount }}</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;margin-top:12px">
+      <sc-for list="{{ stops }}" as="st" hint-placeholder-count="4">
+        <div style="display:flex;gap:12px">
+          <div style="width:52px;flex:none;display:flex;flex-direction:column;align-items:center">
+            <div style="font-size:11.5px;font-weight:600;color:#8A7F77;font-variant-numeric:tabular-nums">{{ st.time }}</div>
+            <div style="width:16px;height:16px;border-radius:999px;background:{{ st.dot }};margin-top:5px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700">{{ st.mark }}</div>
+            <div style="flex:1;width:2px;background:{{ st.rail }};margin:4px 0 0"></div>
+          </div>
+          <div style="flex:1;min-width:0;padding-bottom:14px">
+            <sc-if value="{{ st.isPoll }}" hint-placeholder-val="{{ false }}">
+              <div style="background:#fff;border-radius:18px;padding:16px;box-shadow:0 2px 12px rgba(25,21,18,.06);border:1.5px solid #F5C9BE">
+                <div style="display:flex;align-items:baseline;justify-content:space-between">
+                  <div style="font-size:11px;font-weight:600;color:#F14B2F;letter-spacing:.6px">POLL · {{ pollClosing }}</div>
+                  <div style="font-size:11px;color:#8A7F77;font-weight:600">Ends in 3 h</div>
+                </div>
+                <div style="font-size:16px;font-weight:600;color:#191512;margin-top:6px">{{ pollTitle }}</div>
+                <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+                  <sc-for list="{{ pollRows }}" as="opt" hint-placeholder-count="2">
+                    <div onClick="{{ opt.onVote }}" style="position:relative;border-radius:12px;overflow:hidden;border:1.5px solid {{ opt.border }};cursor:pointer;background:#FDF8F3">
+                      <div style="position:absolute;top:0;bottom:0;left:0;width:{{ opt.bar }};background:{{ opt.fill }};transition:width .45s cubic-bezier(.2,.8,.2,1)"></div>
+                      <div style="position:relative;display:flex;align-items:center;gap:10px;padding:10px 12px">
+                        <div style="flex:1;min-width:0">
+                          <div style="font-size:14px;font-weight:600;color:#191512">{{ opt.name }}</div>
+                          <div style="font-size:11px;color:#8A7F77;margin-top:2px">{{ opt.meta }}</div>
+                        </div>
+                        <div style="text-align:right;flex:none">
+                          <div style="font-size:15px;font-weight:600;color:#191512">{{ opt.pct }}</div>
+                          <div style="font-size:10.5px;color:#8A7F77">{{ opt.votes }}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="font-size:11.5px;color:#8A7F77;margin-top:10px">{{ voteHint }}</div>
+                <div style="display:flex;gap:10px;margin-top:12px">
+                  <div onClick="{{ openSearch }}" style="flex:1;height:42px;border-radius:11px;border:1.5px solid #F5C9BE;color:#F14B2F;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">+ Add Option</div>
+                  <div onClick="{{ confirmVote }}" style="flex:1;height:42px;border-radius:11px;background:#F14B2F;color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">Close poll</div>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ st.isStop }}" hint-placeholder-val="{{ true }}">
+              <div style="background:#fff;border-radius:16px;padding:12px;display:flex;gap:12px;box-shadow:0 2px 12px rgba(25,21,18,.06);border:1.5px solid {{ st.cardBorder }};opacity:{{ st.cardOpacity }}">
+                <div style="width:64px;height:64px;border-radius:12px;background:repeating-linear-gradient(135deg,#EFE7DE 0 8px,#E5D9CD 8px 16px);flex:none"></div>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <div style="font-size:11px;font-weight:600;color:{{ st.kindColor }};background:{{ st.kindBg }};display:inline-block;padding:3px 7px;border-radius:6px">{{ st.kind }}</div>
+                    <sc-if value="{{ st.won }}" hint-placeholder-val="{{ false }}">
+                      <div style="font-size:11px;font-weight:600;color:#fff;background:#F14B2F;padding:3px 7px;border-radius:6px">Won the vote</div>
+                    </sc-if>
+                  </div>
+                  <div style="font-size:16px;font-weight:600;color:#191512;margin-top:6px">{{ st.name }}</div>
+                  <div style="font-size:12px;color:#8A7F77;margin-top:3px">{{ st.meta }}</div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ onExplore }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:16px 20px 130px">
+    <div onClick="{{ openSearch }}" style="height:44px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;gap:10px;padding:0 14px;cursor:pointer">
+      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="5" fill="none" stroke="#9A8F87" stroke-width="1.6"></circle><path d="M10.6 10.6L15 15" stroke="#9A8F87" stroke-width="1.6" stroke-linecap="round"></path></svg>
+      <span style="font-size:14px;color:#9A8F87">Search places in Lisbon</span>
+    </div>
+    <div onClick="{{ openSearch }}" style="height:150px;border-radius:16px;margin-top:14px;background:url('./map-lisbon.webp') center/cover no-repeat;position:relative;overflow:hidden;cursor:pointer">
+      <div style="position:absolute;left:90px;top:58px;width:16px;height:16px;border-radius:999px;background:#2F6FE0;border:3px solid #fff"></div>
+      <div style="position:absolute;left:190px;top:34px;width:16px;height:16px;border-radius:999px;background:#2F6FE0;border:3px solid #fff"></div>
+      <div style="position:absolute;left:172px;top:88px;width:22px;height:22px;border-radius:999px;background:#F14B2F;border:3px solid #fff"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.85))"></div>
+      <div style="position:absolute;left:14px;bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#7F776E">tap to open map search</div>
+    </div>
+    <div style="font-size:15px;font-weight:600;color:#191512;margin:18px 0 10px">Nearby restaurants</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ places }}" as="p" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:14px;padding:10px;display:flex;gap:10px;align-items:center;box-shadow:0 2px 10px rgba(25,21,18,.05)">
+          <div style="width:52px;height:52px;border-radius:11px;background:repeating-linear-gradient(135deg,#EFE7DE 0 8px,#E5D9CD 8px 16px);flex:none"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14.5px;font-weight:600;color:#191512">{{ p.name }}</div>
+            <div style="font-size:11.5px;color:#8A7F77;margin-top:2px">{{ p.meta }}</div>
+          </div>
+          <div onClick="{{ p.onAdd }}" style="height:34px;padding:0 12px;border-radius:9px;border:1.5px solid #F5C9BE;color:#F14B2F;font-size:12.5px;font-weight:600;display:flex;align-items:center;cursor:pointer;flex:none">{{ p.cta }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ onChat }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:18px 20px 130px;display:flex;flex-direction:column;gap:12px">
+    <div style="align-self:center;font-size:11px;color:#9A8F87;font-weight:600">Today</div>
+    <sc-for list="{{ messages }}" as="msg" hint-placeholder-count="3">
+      <div style="display:flex;gap:8px;align-items:flex-end;align-self:{{ msg.align }}">
+        <sc-if value="{{ msg.theirs }}" hint-placeholder-val="{{ true }}">
+          <div style="width:28px;height:28px;border-radius:999px;background:{{ msg.tint }};color:#fff;font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:none">{{ msg.initial }}</div>
+        </sc-if>
+        <div style="background:{{ msg.bg }};border-radius:{{ msg.radius }};padding:10px 13px;max-width:250px;font-size:14px;color:{{ msg.fg }};box-shadow:0 2px 10px rgba(25,21,18,.05)">{{ msg.text }}</div>
+      </div>
+    </sc-for>
+    <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
+      <div style="align-self:flex-end;width:180px;height:130px;border-radius:14px 14px 4px 14px;background:repeating-linear-gradient(135deg,#EFE7DE 0 10px,#E4D8CB 10px 20px);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8E7F72">shared photo</div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ onExpenses }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:16px 20px 130px">
+    <div style="display:flex;gap:12px">
+      <div style="flex:1;background:#fff;border-radius:16px;padding:14px;text-align:center;box-shadow:0 2px 12px rgba(25,21,18,.06)">
+        <div style="font-size:12px;color:#8A7F77">You've Spent:</div>
+        <div style="font-size:24px;font-weight:700;color:#2F6FE0;margin-top:4px">{{ spent }}</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:16px;padding:14px;text-align:center;box-shadow:0 2px 12px rgba(25,21,18,.06)">
+        <div style="font-size:12px;color:#8A7F77">You Owe:</div>
+        <div style="font-size:24px;font-weight:700;color:#F14B2F;margin-top:4px">{{ owe }}</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:20px">
+      <div style="font-size: 16px; font-weight: 600; color: #191512">Group Expenses:</div>
+      <div style="font-size:13px;color:#8A7F77;font-weight:600">See all</div>
+    </div>
+    <div style="font-size:11.5px;color:#9A8F87;font-weight:600;margin:8px 0 6px">Today</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ expenseRows }}" as="e" hint-placeholder-count="2">
+        <div style="background:#fff;border-radius:14px;padding:11px 13px;display:flex;align-items:center;gap:11px;box-shadow:0 2px 10px rgba(25,21,18,.05)">
+          <div style="width:38px;height:38px;border-radius:10px;background:{{ e.tint }};display:flex;align-items:center;justify-content:center;flex:none;font-size:17px;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif">{{ e.glyph }}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size: 14.5px; font-weight: 600; color: #191512">{{ e.title }}</div>
+            <div style="font-size:11.5px;color:#8A7F77;margin-top:2px">Paid by {{ e.payer }}</div>
+          </div>
+          <div style="font-size:14.5px;font-weight:600;color:#191512">{{ e.amount }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:20px">
+      <div style="font-size: 16px; font-weight: 600; color: #191512">Balance:</div>
+      <div style="font-size:13px;color:#8A7F77;font-weight:600">See all</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+      <sc-for list="{{ balanceRows }}" as="b" hint-placeholder-count="2">
+        <div style="background:#fff;border-radius:14px;padding:11px 13px;display:flex;align-items:center;gap:11px;box-shadow:0 2px 10px rgba(25,21,18,.05)">
+          <div style="width:34px;height:34px;border-radius:999px;background:{{ b.tint }};color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:none">{{ b.initial }}</div>
+          <div style="flex:1;font-size:14.5px;font-weight:600;color:#191512">{{ b.name }}</div>
+          <span style="font-size:12px;color:#8A7F77;margin-right:6px">{{ b.verb }}</span>
+          <div style="font-size:14.5px;font-weight:600;color:{{ b.color }}">{{ b.amount }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+  </div>
+  <sc-if value="{{ onExpenses }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:14px 20px 34px;background:linear-gradient(rgba(253,248,243,0),#FDF8F3 40%);display:flex;gap:10px">
+    <div onClick="{{ openSettle }}" style="flex:1;height:50px;border-radius:13px;border:1.5px solid #F5C9BE;color:#F14B2F;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">Settle Up</div>
+    <div onClick="{{ openAddExpense }}" style="flex:1;height:50px;border-radius:13px;background:#F14B2F;color:#fff;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">Add Expense</div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ onChat }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:12px 16px 34px;background:rgba(253,248,243,.96);border-top:1px solid rgba(25,21,18,.07);display:flex;align-items:center;gap:9px">
+    <div onClick="{{ sendPhoto }}" style="width:44px;height:44px;flex:none;border-radius:999px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="20" height="18" viewBox="0 0 20 18"><rect x="1" y="2" width="18" height="14" rx="3" fill="none" stroke="#8A7F77" stroke-width="1.6"></rect><circle cx="6.6" cy="7" r="1.8" fill="#8A7F77"></circle><path d="M2.5 14l5-4.5L12 14" fill="none" stroke="#8A7F77" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    </div>
+    <input value="{{ draft }}" onChange="{{ onDraft }}" onKeyDown="{{ onDraftKey }}" placeholder="Message the group" style="flex:1;height:44px;border-radius:999px;background:#fff;border:1px solid rgba(25,21,18,.1);padding:0 16px;font-size:14.5px;font-family:inherit;color:#191512;outline:none;box-sizing:border-box">
+    <div onClick="{{ sendMessage }}" style="width:44px;height:44px;flex:none;border-radius:999px;background:#F14B2F;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="19" height="19" viewBox="0 0 19 19"><path d="M2 9.5L17 2l-5 15.5-3-6-7-2z" fill="#fff"></path></svg>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ showAddBar }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:14px 20px 34px;background:linear-gradient(rgba(253,248,243,0),#FDF8F3 40%);display:flex;gap:10px">
+    <div style="flex:1;height:50px;border-radius:13px;background:#fff;border:1px solid rgba(25,21,18,.12);color:#8A7F77;font-size:14.5px;display:flex;align-items:center;padding:0 16px;box-sizing:border-box">+ Add Activity</div>
+    <div onClick="{{ openAddPoll }}" style="width: 50px; height: 50px; flex: none; box-sizing: border-box; border-radius: 13px; display: flex; align-items: center; justify-content: center; gap: 3px; cursor: pointer; background-color: #F14B2F">
+      <div style="width:4px;height:10px;background:#fff;border-radius:2px"></div><div style="width:4px;height:17px;background:#fff;border-radius:2px"></div><div style="width:4px;height:13px;background:#fff;border-radius:2px"></div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMembers }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#FDF8F3;padding:62px 20px 0;box-sizing:border-box;overflow:auto">
+  <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:38px;text-align:center">
+    <div onClick="{{ backToTrip }}" style="position:absolute;left:0;top:0;width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid rgba(25,21,18,.08);display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="11" height="18" viewBox="0 0 11 18"><path d="M9 2L2 9l7 7" fill="none" stroke="#191512" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <div>
+      <div style="font-size:19px;font-weight:700;color:#191512">Trip Members</div>
+      <div style="font-size:12px;color:#8A7F77">{{ memberCount }} members</div>
+    </div>
+  </div>
+
+  <div onClick="{{ openInvite }}" style="height:46px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;gap:10px;padding:0 14px;margin-top:18px;cursor:pointer">
+    <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="5" fill="none" stroke="#9A8F87" stroke-width="1.6"></circle><path d="M10.6 10.6L15 15" stroke="#9A8F87" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    <span style="font-size:14px;color:#9A8F87">Write email, name or phone number</span>
+  </div>
+
+  <div style="font-size:14px;font-weight:600;color:#191512;margin:20px 0 10px">Invite with:</div>
+  <div style="display:flex;gap:10px">
+    <sc-for list="{{ shareChannels }}" as="ch" hint-placeholder-count="5">
+      <div style="flex:1;aspect-ratio:1;border-radius:14px;background:#fff;border:1px solid rgba(25,21,18,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+        <div style="width:22px;height:22px;border-radius:7px;background:{{ ch.tint }}"></div>
+        <span style="font-size:9.5px;color:#8A7F77;font-weight:600">{{ ch.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="font-size:14px;font-weight:600;color:#191512;margin:22px 0 10px">Members:</div>
+  <div style="display:flex;flex-direction:column;gap:2px;background:#fff;border-radius:16px;padding:6px 0;box-shadow:0 2px 12px rgba(25,21,18,.05)">
+    <sc-for list="{{ memberRows }}" as="m" hint-placeholder-count="5">
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px">
+        <div style="width:38px;height:38px;border-radius:999px;background:{{ m.tint }};color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:none">{{ m.initial }}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:15px;font-weight:600;color:#191512">{{ m.name }}</div>
+          <div style="font-size:11.5px;color:#8A7F77;margin-top:1px">{{ m.role }}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;padding:6px">
+          <div style="width:3.5px;height:3.5px;border-radius:9px;background:#9A8F87"></div><div style="width:3.5px;height:3.5px;border-radius:9px;background:#9A8F87"></div><div style="width:3.5px;height:3.5px;border-radius:9px;background:#9A8F87"></div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isInvite }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#FDF8F3;padding:62px 20px 0;box-sizing:border-box;overflow:hidden;position:relative">
+  <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:38px;text-align:center">
+    <div onClick="{{ openMembers }}" style="position:absolute;left:0;top:0;width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid rgba(25,21,18,.08);display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="11" height="18" viewBox="0 0 11 18"><path d="M9 2L2 9l7 7" fill="none" stroke="#191512" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <div style="font-size:19px;font-weight:700;color:#191512">Invite Friends</div>
+  </div>
+  <div style="height:46px;border-radius:12px;background:#fff;border:1.5px solid #F14B2F;display:flex;align-items:center;gap:10px;padding:0 14px;margin-top:18px">
+    <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="5" fill="none" stroke="#9A8F87" stroke-width="1.6"></circle><path d="M10.6 10.6L15 15" stroke="#9A8F87" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    <span style="font-size:14.5px;color:#191512;font-weight:600">Ron</span>
+    <div style="flex:1"></div>
+    <div style="width:18px;height:18px;border-radius:999px;background:#DED3C8;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center">✕</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:2px;margin-top:14px">
+    <sc-for list="{{ inviteRows }}" as="r" hint-placeholder-count="3">
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 4px">
+        <div style="width:38px;height:38px;border-radius:999px;background:{{ r.tint }};color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:none">R</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:15px;font-weight:600;color:#191512">{{ r.name }}</div>
+          <div style="font-size:11.5px;color:#8A7F77;margin-top:1px">{{ r.handle }}</div>
+        </div>
+        <div onClick="{{ r.onInvite }}" style="height:32px;padding:0 14px;border-radius:9px;font-size:12.5px;font-weight:600;display:flex;align-items:center;cursor:pointer;background:{{ r.bg }};color:{{ r.fg }};border:1.5px solid {{ r.border }}">{{ r.cta }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0">{{ keyboard }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAddPoll }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#FDF8F3;padding:62px 20px 0;box-sizing:border-box;overflow:auto;position:relative">
+  <div style="position:relative;display:flex;align-items:center;justify-content:center">
+    <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:38px;text-align:center;width:100%">
+      <div onClick="{{ backToTrip }}" style="position:absolute;left:0;top:0;width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid rgba(25,21,18,.08);display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="11" height="18" viewBox="0 0 11 18"><path d="M9 2L2 9l7 7" fill="none" stroke="#191512" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+      <div style="font-size:19px;font-weight:700;color:#191512">Add a Poll</div>
+    </div>
+    <div style="position:absolute;right:0;display:flex;flex-direction:column;gap:3px;padding:8px">
+      <div style="width:16px;height:2px;background:#191512;border-radius:2px"></div><div style="width:12px;height:2px;background:#191512;border-radius:2px"></div><div style="width:8px;height:2px;background:#191512;border-radius:2px"></div>
+    </div>
+  </div>
+
+  <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:22px 0 8px">Category</div>
+  <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-right:-20px;padding-right:20px">
+    <sc-for list="{{ categoryChips }}" as="c" hint-placeholder-count="3">
+      <div onClick="{{ c.onPick }}" style="height:34px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:600;display:flex;align-items:center;cursor:pointer;flex:none;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.border }}">{{ c.label }}</div>
+    </sc-for>
+  </div>
+
+  <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:20px 0 8px">Title</div>
+  <div style="height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;padding:0 14px;font-size:15px;color:#191512;font-weight:600;box-sizing:border-box">{{ draftTitle }}</div>
+
+  <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:20px 0 8px">Options</div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <sc-for list="{{ draftOptions }}" as="o" hint-placeholder-count="2">
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;padding:0 14px;font-size:15px;color:{{ o.color }};box-sizing:border-box">{{ o.label }}</div>
+        <div onClick="{{ openSearch }}" style="width:52px;height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;box-sizing:border-box">
+          <svg width="18" height="20" viewBox="0 0 18 20"><path d="M9 1a6 6 0 016 6c0 4.4-6 12-6 12S3 11.4 3 7a6 6 0 016-6z" fill="none" stroke="#F14B2F" stroke-width="1.7"></path><circle cx="9" cy="7" r="2.1" fill="#F14B2F"></circle></svg>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:44px;border-radius:12px;border:1.5px dashed #E0D3C7;color:#8A7F77;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:8px">+ Add Another Option</div>
+
+  <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:20px 0 8px">Poll Duration</div>
+  <div style="height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:15px;color:#191512;font-weight:600;box-sizing:border-box">
+    <span>{{ pollDuration }}</span>
+    <svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="#8A7F77" stroke-width="1.8" stroke-linecap="round"></path></svg>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;margin:22px 0 120px">
+    <sc-for list="{{ pollFlags }}" as="f" hint-placeholder-count="3">
+      <div onClick="{{ f.onToggle }}" style="display:flex;align-items:center;gap:11px;cursor:pointer">
+        <div style="width:22px;height:22px;border-radius:6px;border:1.5px solid {{ f.border }};background:{{ f.bg }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600">{{ f.mark }}</div>
+        <span style="font-size:14px;color:#191512">{{ f.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:14px 20px 34px;background:linear-gradient(rgba(253,248,243,0),#FDF8F3 40%)">
+    <div onClick="{{ createPoll }}" style="height:52px;border-radius:14px;background:#F14B2F;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">Create Poll</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSearch }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#EAE4DC;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:url('./map-lisbon.webp') center/cover no-repeat"></div>
+  <div style="position:absolute;inset:0">
+    <sc-for list="{{ mapPins }}" as="pin" hint-placeholder-count="6">
+      <div onClick="{{ pin.onPick }}" style="position:absolute;left:{{ pin.x }};top:{{ pin.y }};width:{{ pin.size }};height:{{ pin.size }};border-radius:999px;background:{{ pin.color }};border:3px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.18);cursor:pointer"></div>
+    </sc-for>
+  </div>
+
+  <div style="position:absolute;top:62px;left:16px;right:16px;display:flex;align-items:center;gap:10px">
+    <div onClick="{{ backFromSearch }}" style="width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="11" height="18" viewBox="0 0 11 18"><path d="M9 2L2 9l7 7" fill="none" stroke="#191512" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <div style="flex:1;height:40px;border-radius:999px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600;color:#191512">
+      Searching: Food
+      <div style="width:17px;height:17px;border-radius:999px;background:#F14B2F;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✕</div>
+    </div>
+    <div style="width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;flex:none">
+      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="5" fill="none" stroke="#191512" stroke-width="1.7"></circle><path d="M10.6 10.6L15 15" stroke="#191512" stroke-width="1.7" stroke-linecap="round"></path></svg>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:0;right:0;bottom:34px;padding:0 16px">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+      <div onClick="{{ backFromSearch }}" style="width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;font-size:14px;color:#191512;cursor:pointer">✕</div>
+    </div>
+    <div style="display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;padding:2px 16px 4px;margin:0 -16px;scroll-snap-type:x mandatory;scroll-padding-left:16px">
+      <sc-for list="{{ placeCards }}" as="pc" hint-placeholder-count="3">
+        <div style="width:300px;flex:none;scroll-snap-align:start;background:#fff;border-radius:18px;padding:12px;box-shadow:0 8px 26px rgba(0,0,0,.16)">
+          <div style="height:120px;border-radius:13px;background:repeating-linear-gradient(135deg,#EFE7DE 0 10px,#E4D8CB 10px 20px);position:relative">
+            <sc-if value="{{ pc.vegan }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;top:10px;left:10px;background:#1FA855;color:#fff;font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.18)">Vegan</div>
+            </sc-if>
+          </div>
+          <div style="padding:11px 4px 0">
+            <div style="font-size:17px;font-weight:700;color:#191512">{{ pc.name }}</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#6C635C;margin-top:5px">
+              <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.8" fill="none" stroke="#8A7F77" stroke-width="1.4"></circle><path d="M7 4v3.4l2.4 1.4" fill="none" stroke="#8A7F77" stroke-width="1.4" stroke-linecap="round"></path></svg>
+              {{ pc.hours }}
+            </div>
+            <div style="display:flex;gap:8px;margin-top:11px">
+              <div style="background:#FDF0DC;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:600;color:#191512;display:flex;align-items:center;gap:5px">
+                <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 .8l1.6 3.4 3.6.5-2.6 2.6.6 3.7L6 9.3 2.8 11l.6-3.7L.8 4.7l3.6-.5z" fill="#F5A524"></path></svg>{{ pc.rating }}
+              </div>
+              <div style="background:#E4F3E9;border-radius:999px;padding:5px 13px;font-size:12px;font-weight:600;color:#191512">{{ pc.price }}</div>
+              <div style="background:#E5ECFA;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:600;color:#191512;display:flex;align-items:center;gap:5px">
+                <svg width="11" height="13" viewBox="0 0 11 13"><path d="M5.5.8a4.2 4.2 0 014.2 4.2c0 3-4.2 7.2-4.2 7.2S1.3 8 1.3 5A4.2 4.2 0 015.5.8z" fill="#2F6FE0"></path><circle cx="5.5" cy="4.9" r="1.5" fill="#fff"></circle></svg>{{ pc.dist }}
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:12px">
+              <div onClick="{{ pc.onAdd }}" style="flex:1;height:42px;border-radius:11px;background:#F14B2F;color:#fff;font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+                <svg width="12" height="15" viewBox="0 0 12 15"><path d="M1 1.6A.6.6 0 011.6 1h8.8a.6.6 0 01.6.6V14L6 10.6 1 14V1.6z" fill="#fff"></path></svg>{{ pc.cta }}
+              </div>
+              <div style="width:48px;height:42px;border-radius:11px;border:1.5px solid #E4DAD0;display:flex;align-items:center;justify-content:center;gap:3px;flex:none">
+                <div style="width:3.5px;height:3.5px;border-radius:9px;background:#8A7F77"></div><div style="width:3.5px;height:3.5px;border-radius:9px;background:#8A7F77"></div><div style="width:3.5px;height:3.5px;border-radius:9px;background:#8A7F77"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAddExpense }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#FDF8F3;box-sizing:border-box;overflow:hidden;position:relative">
+  <div style="height:100%;overflow:auto;padding:62px 20px 0;box-sizing:border-box">
+  <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:38px;text-align:center">
+    <div onClick="{{ backToExpenses }}" style="position:absolute;left:0;top:0;width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid rgba(25,21,18,.08);display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="11" height="18" viewBox="0 0 11 18"><path d="M9 2L2 9l7 7" fill="none" stroke="#191512" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <div style="font-size:19px;font-weight:700;color:#191512">Add Expense</div>
+  </div>
+
+  <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:20px 0 8px">Title</div>
+  <div style="display:flex;gap:8px">
+    <div style="flex:1;height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;padding:0 14px;font-size:15px;font-weight:600;color:#191512;box-sizing:border-box">{{ expenseTitle }}</div>
+    <div onClick="{{ openCategory }}" style="width:48px;height:48px;flex:none;box-sizing:border-box;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;justify-content:center;font-size:22px;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;cursor:pointer">{{ expenseGlyph }}</div>
+    <div onClick="{{ scanReceipt }}" style="width:48px;height:48px;flex:none;box-sizing:border-box;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="22" height="19" viewBox="0 0 22 19"><path d="M2 5.5h3.4L7 3h8l1.6 2.5H20a1 1 0 011 1V17a1 1 0 01-1 1H2a1 1 0 01-1-1V6.5a1 1 0 011-1z" fill="none" stroke="#191512" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="11" cy="11.5" r="3.4" fill="none" stroke="#191512" stroke-width="1.6"></circle></svg>
+    </div>
+  </div>
+  <div style="font-size:11.5px;color:{{ scanColor }};margin-top:7px">{{ scanNote }}</div>
+
+  <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:18px 0 8px">Amount</div>
+  <div style="display:flex;gap:8px">
+    <div style="flex:1;height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;padding:0 14px;font-size:18px;font-weight:600;color:#191512;box-sizing:border-box">{{ expenseAmount }}</div>
+    <div style="width:92px;height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;justify-content:center;gap:7px;font-size:14px;font-weight:600;color:#191512;box-sizing:border-box">€ EUR
+      <svg width="10" height="7" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="#8A7F77" stroke-width="1.8" stroke-linecap="round"></path></svg>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:12px;margin-top:18px">
+    <div style="flex:1">
+      <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin-bottom:8px">Paid by</div>
+      <div style="height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:14px;font-weight:600;color:#191512;box-sizing:border-box">Ari (You)
+        <svg width="10" height="7" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="#8A7F77" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+    <div style="flex:1">
+      <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin-bottom:8px">When</div>
+      <div style="height:48px;border-radius:12px;background:#fff;border:1px solid rgba(25,21,18,.1);display:flex;align-items:center;padding:0 14px;font-size:14px;font-weight:600;color:#191512;box-sizing:border-box">29 Apr 2026</div>
+    </div>
+  </div>
+
+  <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:20px 0 8px">Split</div>
+  <div style="display:flex;gap:6px;background:#F1EAE2;padding:4px;border-radius:12px">
+    <sc-for list="{{ splitModes }}" as="s" hint-placeholder-count="3">
+      <div onClick="{{ s.onPick }}" style="flex:1;height:38px;border-radius:9px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;background:{{ s.bg }};color:{{ s.fg }}">{{ s.label }}</div>
+    </sc-for>
+  </div>
+
+  <div style="font-size:11.5px;color:#8A7F77;margin:12px 0 4px">{{ splitNote }}</div>
+  <div style="display:flex;flex-direction:column;gap:2px;background:#fff;border-radius:16px;padding:6px 0;margin-top:8px;box-shadow:0 2px 12px rgba(25,21,18,.05)">
+    <sc-for list="{{ splitRows }}" as="row" hint-placeholder-count="5">
+      <div onClick="{{ row.onToggle }}" style="display:flex;align-items:center;gap:12px;padding:10px 14px;cursor:pointer">
+        <div style="width:22px;height:22px;border-radius:6px;border:1.5px solid {{ row.border }};background:{{ row.bg }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;flex:none">{{ row.mark }}</div>
+        <div style="width:32px;height:32px;border-radius:999px;background:{{ row.tint }};color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:none">{{ row.initial }}</div>
+        <div style="flex:1;font-size:15px;font-weight:600;color:#191512">{{ row.name }}</div>
+        <div style="font-size:15px;font-weight:600;color:{{ row.amountColor }}">{{ row.amount }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ byItems }}" hint-placeholder-val="{{ false }}">
+  <div style="background:#fff;border-radius:16px;padding:14px;margin-top:12px;box-shadow:0 2px 12px rgba(25,21,18,.05)">
+    <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin-bottom:10px">Items</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ itemRows }}" as="it" hint-placeholder-count="2">
+        <div onClick="{{ it.onSelect }}" style="border-radius:12px;border:1.5px solid {{ it.border }};background:{{ it.bg }};padding:10px 12px;cursor:pointer">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="flex:1;font-size:14.5px;font-weight:600;color:#191512">{{ it.name }}</div>
+            <div style="font-size:14.5px;font-weight:600;color:#191512">{{ it.price }}</div>
+            <div onClick="{{ it.onRemove }}" style="width:22px;height:22px;border-radius:999px;background:#F1EAE2;color:#8A7F77;font-size:11px;display:flex;align-items:center;justify-content:center;cursor:pointer">✕</div>
+          </div>
+          <div style="font-size:11.5px;color:#8A7F77;margin-top:4px">{{ it.shareNote }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <input value="{{ itemDraftName }}" onChange="{{ onItemName }}" placeholder="Dish or item" style="flex:1;height:42px;border-radius:11px;border:1px solid rgba(25,21,18,.12);background:#FDF8F3;padding:0 12px;font-size:14px;font-family:inherit;color:#191512;outline:none;box-sizing:border-box">
+      <input value="{{ itemDraftPrice }}" onChange="{{ onItemPrice }}" onKeyDown="{{ onItemKey }}" placeholder="€" style="width:76px;height:42px;border-radius:11px;border:1px solid rgba(25,21,18,.12);background:#FDF8F3;padding:0 12px;font-size:14px;font-family:inherit;color:#191512;outline:none;box-sizing:border-box">
+      <div onClick="{{ addItem }}" style="width:46px;height:42px;border-radius:11px;background:#F14B2F;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+        <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+    <div style="font-size:11.5px;color:#8A7F77;margin-top:10px">Selected: <span style="font-weight:700;color:#191512">{{ selectedItemName }}</span>, tap people above to share it. Total {{ itemsTotal }}</div>
+  </div>
+  </sc-if>
+
+  <div style="height:120px"></div>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:14px 20px 34px;background:linear-gradient(rgba(253,248,243,0),#FDF8F3 40%)">
+    <div onClick="{{ saveExpense }}" style="height:52px;border-radius:14px;background:#F14B2F;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">Add Expense</div>
+  </div>
+
+  <sc-if value="{{ categoryOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;inset:0;background:rgba(25,21,18,.35);display:flex;align-items:flex-end">
+    <div style="background:#FDF8F3;border-radius:22px 22px 0 0;width:100%;padding:18px 20px 34px;box-sizing:border-box">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div style="font-size:17px;font-weight:600;color:#191512">Select Category</div>
+        <div onClick="{{ closeCategory }}" style="width:28px;height:28px;border-radius:999px;background:#EDE3D9;display:flex;align-items:center;justify-content:center;font-size:13px;color:#8A7F77;cursor:pointer">✕</div>
+      </div>
+      <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:16px 0 8px">Select from Itinerary:</div>
+      <div style="display:flex;flex-direction:column;gap:2px;background:#fff;border-radius:14px;padding:4px 0">
+        <sc-for list="{{ itineraryPicks }}" as="i" hint-placeholder-count="3">
+          <div onClick="{{ i.onPick }}" style="display:flex;align-items:center;gap:11px;padding:10px 13px;cursor:pointer">
+            <div style="width:30px;height:30px;border-radius:8px;background:{{ i.tint }};display:flex;align-items:center;justify-content:center;font-size:16px;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif">{{ i.glyph }}</div>
+            <div style="font-size:14.5px;font-weight:600;color:#191512">{{ i.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size:12.5px;font-weight:600;color:#8A7F77;margin:16px 0 8px">Or Select a Category:</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+        <sc-for list="{{ categoryTiles }}" as="t" hint-placeholder-count="9">
+          <div onClick="{{ t.onPick }}" style="height:62px;border-radius:13px;background:#fff;border:1px solid rgba(25,21,18,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer">
+            <span style="font-size:19px;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif">{{ t.glyph }}</span>
+            <span style="font-size:11px;color:#6C635C;font-weight:600">{{ t.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div onClick="{{ closeCategory }}" style="height:50px;border-radius:13px;background:#F14B2F;color:#fff;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:16px;cursor:pointer">Continue</div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSettle }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#FDF8F3;padding:62px 20px 0;box-sizing:border-box;overflow:auto;position:relative">
+  <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:38px;text-align:center">
+    <div onClick="{{ backToExpenses }}" style="position:absolute;left:0;top:0;width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid rgba(25,21,18,.08);display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="11" height="18" viewBox="0 0 11 18"><path d="M9 2L2 9l7 7" fill="none" stroke="#191512" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <div style="font-size:19px;font-weight:700;color:#191512">Settle Up</div>
+  </div>
+
+  <div onClick="{{ toggleSimplify }}" style="background:#fff;border-radius:14px;padding:14px;margin-top:18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(25,21,18,.05);cursor:pointer">
+    <div>
+      <div style="font-size:14.5px;font-weight:600;color:#191512">Simplify group debts</div>
+      <div style="font-size:11.5px;color:#8A7F77;margin-top:2px">Fewer payments, same result</div>
+    </div>
+    <div style="width:46px;height:28px;border-radius:999px;background:{{ simplifyBg }};padding:3px;box-sizing:border-box;display:flex;justify-content:{{ simplifyAlign }};transition:all .2s">
+      <div style="width:22px;height:22px;border-radius:999px;background:#fff"></div>
+    </div>
+  </div>
+
+  <div style="font-size:13px;font-weight:600;color:#8A7F77;margin:22px 0 8px">You owe:</div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <sc-for list="{{ owedByMe }}" as="d" hint-placeholder-count="1">
+      <div style="background:#fff;border-radius:14px;padding:12px;box-shadow:0 2px 12px rgba(25,21,18,.05)">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:30px;height:30px;border-radius:999px;background:{{ d.tint }};color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:none">{{ d.initial }}</div>
+          <span style="font-size:14px;font-weight:600;color:#191512">{{ d.from }}</span>
+          <svg width="16" height="10" viewBox="0 0 16 10"><path d="M1 5h13m-4-4l4 4-4 4" fill="none" stroke="#8A7F77" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="font-size:14px;font-weight:600;color:#191512">{{ d.to }}</span>
+          <div style="flex:1"></div>
+          <span style="font-size:15px;font-weight:600;color:#F14B2F">{{ d.amount }}</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:11px">
+          <div onClick="{{ d.onMark }}" style="flex:1;height:38px;border-radius:10px;border:1.5px solid {{ d.markBorder }};color:{{ d.markColor }};font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ d.markLabel }}</div>
+          <sc-if value="{{ d.pending }}" hint-placeholder-val="{{ true }}">
+          <div onClick="{{ d.onMark }}" style="flex: 1; height: 38px; border-radius: 10px; color: #fff; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; cursor: pointer; background-color: #F14B2F">Pay</div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="font-size:13px;font-weight:600;color:#8A7F77;margin:22px 0 8px">You are owed:</div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:130px">
+    <sc-for list="{{ owedToMe }}" as="d" hint-placeholder-count="2">
+      <div style="background:#fff;border-radius:14px;padding:12px;box-shadow:0 2px 12px rgba(25,21,18,.05)">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:30px;height:30px;border-radius:999px;background:{{ d.tint }};color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:none">{{ d.initial }}</div>
+          <span style="font-size:14px;font-weight:600;color:#191512">{{ d.from }}</span>
+          <svg width="16" height="10" viewBox="0 0 16 10"><path d="M1 5h13m-4-4l4 4-4 4" fill="none" stroke="#8A7F77" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="font-size:14px;font-weight:600;color:#191512">{{ d.to }}</span>
+          <div style="flex:1"></div>
+          <span style="font-size:15px;font-weight:600;color:#2E9E5B">{{ d.amount }}</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:11px">
+          <div onClick="{{ d.onMark }}" style="flex:1;height:38px;border-radius:10px;border:1.5px solid {{ d.markBorder }};color:{{ d.markColor }};font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ d.markLabel }}</div>
+          <sc-if value="{{ d.pending }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:1;height:38px;border-radius:10px;border:1.5px solid #E4DAD0;color:#6C635C;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center">Request Payment</div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:14px 20px 34px;background:linear-gradient(rgba(253,248,243,0),#FDF8F3 40%)">
+    <div onClick="{{ settleAll }}" style="height: 52px; border-radius: 14px; color: #fff; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; cursor: pointer; background-color: #F14B2F">Mark Everything as Settled</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSettled }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#F14B2F;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 40px;box-sizing:border-box;position:relative;animation:su-bg .5s cubic-bezier(.4,0,.2,1) both">
+  <div style="position:relative;display:flex;align-items:center;justify-content:center">
+    <div style="position:absolute;width:74px;height:74px;border-radius:999px;border:2px solid #fff;animation:su-ring 1.1s .42s cubic-bezier(.2,.6,.2,1) both"></div>
+    <div style="width:74px;height:74px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;animation:su-pop .55s .18s cubic-bezier(.34,1.56,.64,1) both">
+      <svg width="34" height="26" viewBox="0 0 34 26"><path d="M2 13l10 10L32 3" fill="none" stroke="#F14B2F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="52" style="animation:su-check .42s .46s cubic-bezier(.4,0,.2,1) both"></path></svg>
+    </div>
+  </div>
+  <div style="font-size:26px;font-weight:700;color:#fff;margin-top:24px;animation:su-rise .5s .62s cubic-bezier(.2,.7,.2,1) both">All settled up!</div>
+  <div style="font-size:14px;color:rgba(255,255,255,.6);margin-top:8px;text-align:center;line-height:1.5;animation:su-rise .5s .72s cubic-bezier(.2,.7,.2,1) both">No one owes anything.<br>You're good to go.</div>
+  <div onClick="{{ backToTrip }}" style="position:absolute;left:20px;right:20px;bottom:34px;height:52px;border-radius:14px;border:1.5px solid rgba(255,255,255,.3);color:#fff;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease;animation:su-rise .5s .86s cubic-bezier(.2,.7,.2,1) both" style-hover="background:rgba(255,255,255,.12)">Back to trip</div>
+</div>
+</sc-if>
+
+</x-import>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.85);letter-spacing:.4px">{{ screenLabel }}</div>
+</div>
+
+<div style="width:220px;flex:none;padding-top:8px">
+  <div style="font-size:12px;font-weight:600;color:#fff;letter-spacing:1.2px;text-transform:uppercase;opacity:.9">Flows</div>
+  <div style="display:flex;flex-direction:column;gap:6px;margin-top:14px">
+    <sc-for list="{{ jumpItems }}" as="j" hint-placeholder-count="8">
+      <div onClick="{{ j.onJump }}" style="border-radius:10px;padding:9px 12px;font-size:12.5px;font-weight:600;cursor:pointer;background:{{ j.bg }};color:{{ j.fg }}">{{ j.label }}</div>
+    </sc-for>
+  </div>
+  <div style="margin-top:20px;font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.8)">Everything is clickable: vote in the poll, add a map place as an option, invite Ron, switch split modes, settle debts.</div>
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:1020}}">
+const CORAL = '#F14B2F';
+const MEMBERS = ['Ari (You)', 'Nic', 'Paul', 'Anna', 'Jane'];
+const TINTS = { 'Ari (You)': '#C98A5E', Ari: '#C98A5E', Nic: '#7E9B86', Paul: '#9A7FA8', Anna: '#C25E7A', Jane: '#5E86C9', Ron: '#5E9B9B' };
+const tintOf = (n) => TINTS[n] || TINTS[String(n).split(' ')[0]] || '#B5ABA2';
+
+class Component extends DCLogic {
+  state = {
+    screen: 'home',
+    tab: 'itinerary',
+    day: 1,
+    pollClosed: false,
+    winner: null,
+    plan: [
+      [
+        { id: 'd0a', time: '09:30', kind: 'Food', name: 'Manteigaria', meta: 'Pastéis de nata · R. do Loreto 2' },
+        { id: 'd0b', time: '11:00', kind: 'Ride', name: 'Tram 28 from Praça Martim Moniz', meta: '40 min · buy tickets on board' },
+        { id: 'd0c', time: '13:30', kind: 'Food', name: 'Time Out Market', meta: 'Lunch · 1,4 km' },
+        { id: 'd0d', time: '17:00', kind: 'View', name: 'Miradouro da Graça', meta: 'Sunset over the castle' },
+      ],
+      [
+        { id: 'd1a', time: '10:00', kind: 'Visit', name: 'Castelo de S. Jorge', meta: 'Opening Hours: 09:00–21:00' },
+        { id: 'd1b', time: '12:30', kind: 'Food', name: 'Ramiro', meta: 'Seafood · booking at 12:30' },
+        { id: 'd1c', time: '15:00', kind: 'Museum', name: 'Azulejos Museum', meta: 'Opening Hours: 19:00–23:00' },
+      ],
+    ],
+    options: [
+      { id: 'taberna', name: 'Taberna do Castelo', meta: '★ 4,5 · €€ · 1,2 km', votes: 3 },
+      { id: 'norte', name: 'Nord Alto Lisboa', meta: '★ 4,1 · €€€ · 2,4 km', votes: 1 },
+    ],
+    myVote: null,
+    voted: false,
+    invited: { 'Ron Valeris': true, 'Ron Stevenson': false, 'Ron Calder': false },
+    members: MEMBERS.slice(),
+    category: 'Restaurants',
+    pollFlagState: { multi: false, addOptions: false, itinerary: true },
+    pickedPlace: 'Taberna do Castelo',
+    draftOptionNames: ['Taberna do Castelo', ''],
+    searchReturn: 'trip',
+    expenseTitle: 'Taberna do Castelo',
+    expenseGlyph: '🍽',
+    splitMode: 'Equally',
+    items: [
+      { id: 'dinner', name: 'Dinner', price: 136, people: { 'Ari (You)': true, Nic: true, Paul: true, Anna: true } },
+      { id: 'wine', name: 'Wine', price: 44, people: { 'Ari (You)': true, Nic: true } },
+    ],
+    selectedItem: 'dinner',
+    itemDraftName: '',
+    itemDraftPrice: '',
+    included: { 'Ari (You)': true, Nic: true, Paul: true, Anna: true, Jane: false },
+    categoryOpen: false,
+    scanned: false,
+    draft: '',
+    photoSent: false,
+    messages: [
+      { text: 'Poll is up for dinner, vote before 8pm 🙏', mine: false, from: 'Anna' },
+      { text: "Voted. Taberna looked great, and it's 5 min from the museum.", mine: true, from: 'Ari (You)' },
+      { text: 'I paid the museum tickets, added to expenses.', mine: false, from: 'Nic' },
+    ],
+    simplify: true,
+    paid: {},
+    expenses: [
+      { title: 'Azulejos Museum Tickets', payer: 'Nic', amount: '€60.00', glyph: '🏛', tint: '#EFE9FB' },
+      { title: 'Lunch Paella', payer: 'Anna', amount: '€148.00', glyph: '🥘', tint: '#E7F5ED' },
+    ],
+  };
+
+  go = (screen) => this.setState({ screen });
+
+  addItem() {
+    const name = (this.state.itemDraftName || '').trim();
+    const price = parseFloat((this.state.itemDraftPrice || '').replace(',', '.'));
+    if (!name || !(price > 0)) return;
+    const id = 'i' + Date.now();
+    this.setState((s) => ({
+      items: [...s.items, { id, name, price, people: { 'Ari (You)': true } }],
+      selectedItem: id, itemDraftName: '', itemDraftPrice: '',
+    }));
+  }
+
+  removeItem(id) {
+    this.setState((s) => {
+      const items = s.items.filter((i) => i.id !== id);
+      return { items, selectedItem: s.selectedItem === id ? (items[0] ? items[0].id : null) : s.selectedItem };
+    });
+  }
+
+  toggleItemPerson(m) {
+    this.setState((s) => ({
+      items: s.items.map((i) => (i.id === (s.selectedItem || (s.items[0] && s.items[0].id))
+        ? { ...i, people: { ...i.people, [m]: !i.people[m] } }
+        : i)),
+    }));
+  }
+
+  stopsFor() {
+    const s = this.state;
+    const base = s.plan[s.day].slice();
+    if (s.day !== 1) return base;
+    if (s.pollClosed && s.winner) {
+      base.push({ id: 'winner', time: '20:00', kind: 'Dinner', name: s.winner.name, meta: s.winner.meta, won: true });
+    } else {
+      base.push({ id: 'poll', time: '20:00', kind: 'Dinner', poll: true });
+    }
+    return base;
+  }
+
+  closePoll() {
+    const s = this.state;
+    if (s.pollClosed) return;
+    const best = s.options.slice().sort((a, b) => (b.votes + (s.myVote === b.id ? 1 : 0)) - (a.votes + (s.myVote === a.id ? 1 : 0)))[0];
+    if (!best) return;
+    this.setState({ pollClosed: true, winner: { name: best.name, meta: best.meta }, voted: true });
+  }
+
+  send() {
+    const text = (this.state.draft || '').trim();
+    if (!text) return;
+    this.setState((s) => ({ messages: [...s.messages, { text, mine: true }], draft: '' }));
+  }
+
+  vote(id) {
+    this.setState((s) => {
+      if (s.myVote === id) return { myVote: null };
+      return { myVote: id };
+    });
+  }
+
+  optionVotes(o) {
+    const s = this.state;
+    return o.votes + (s.myVote === o.id ? 1 : 0);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const total = s.options.reduce((a, o) => a + this.optionVotes(o), 0) || 1;
+    const byItems = s.splitMode === 'By Items';
+    const itemsTotal = s.items.reduce((a, i) => a + i.price, 0);
+    const amount = byItems ? itemsTotal : 150;
+    const included = s.members.filter((m) => s.included[m]);
+    const share = included.length ? amount / included.length : 0;
+    const sel = s.items.find((i) => i.id === s.selectedItem) || s.items[0];
+    const itemShare = (m) => s.items.reduce((a, i) => {
+      const ppl = s.members.filter((x) => i.people[x]);
+      return a + (i.people[m] && ppl.length ? i.price / ppl.length : 0);
+    }, 0);
+
+    const screenNames = {
+      home: 'Home', trip: 'Trip page', members: 'Trip members', invite: 'Invite friends',
+      addpoll: 'Add a poll', search: 'Search map', addexpense: 'Add expense',
+      settle: 'Settle up', settled: 'All settled up',
+    };
+
+    const jumps = [
+      ['Home screen', 'home'], ['Trip page · Itinerary', 'trip'], ['Trip members', 'members'],
+      ['Invite friends', 'invite'], ['Add a poll', 'addpoll'], ['Search map', 'search'],
+      ['Expenses', 'expenses'], ['Add expense', 'addexpense'], ['Settle up', 'settle'],
+      ['All settled up', 'settled'],
+    ];
+
+    const tabColor = (t) => (s.tab === t ? CORAL : '#9A8F87');
+    const tabBorder = (t) => (s.tab === t && s.screen === 'trip' ? CORAL : 'transparent');
+
+    return {
+      isHome: s.screen === 'home',
+      isTrip: s.screen === 'trip',
+      isMembers: s.screen === 'members',
+      isInvite: s.screen === 'invite',
+      isAddPoll: s.screen === 'addpoll',
+      isSearch: s.screen === 'search',
+      isAddExpense: s.screen === 'addexpense',
+      isSettle: s.screen === 'settle',
+      isSettled: s.screen === 'settled',
+      darkChrome: s.screen === 'settled',
+      screenLabel: screenNames[s.screen] || 'Trip page',
+
+      onItinerary: s.tab === 'itinerary',
+      onExplore: s.tab === 'explore',
+      onChat: s.tab === 'chat',
+      onExpenses: s.tab === 'expenses',
+      showAddBar: s.tab === 'itinerary' || s.tab === 'explore',
+      cItin: tabColor('itinerary'), bItin: tabBorder('itinerary'),
+      cExp: tabColor('explore'), bExp: tabBorder('explore'),
+      cChat: tabColor('chat'), bChat: tabBorder('chat'),
+      cMoney: tabColor('expenses'), bMoney: tabBorder('expenses'),
+
+      memberCount: s.members.length,
+      openTrip: () => this.setState({ screen: 'trip', tab: 'itinerary' }),
+      goHome: () => this.go('home'),
+      backToTrip: () => this.setState({ screen: 'trip', tab: 'itinerary' }),
+      backToExpenses: () => this.setState({ screen: 'trip', tab: 'expenses' }),
+      openMembers: () => this.go('members'),
+      openInvite: () => this.go('invite'),
+      openAddPoll: () => this.go('addpoll'),
+      openAddExpense: () => this.go('addexpense'),
+      openSettle: () => this.go('settle'),
+      openSearch: () => this.setState({ screen: 'search', searchReturn: s.screen }),
+      backFromSearch: () => this.go(s.searchReturn === 'addpoll' ? 'addpoll' : 'trip'),
+      tabItinerary: () => this.setState({ tab: 'itinerary' }),
+      tabExplore: () => this.setState({ tab: 'explore' }),
+      tabChat: () => this.setState({ tab: 'chat' }),
+      tabExpenses: () => this.setState({ tab: 'expenses' }),
+
+      messages: s.messages.map((m) => ({
+        text: m.text,
+        theirs: !m.mine,
+        align: m.mine ? 'flex-end' : 'flex-start',
+        bg: m.mine ? CORAL : '#fff',
+        fg: m.mine ? '#fff' : '#191512',
+        radius: m.mine ? '14px 14px 4px 14px' : '14px 14px 14px 4px',
+        tint: tintOf(m.from || 'Nic'),
+        initial: (m.from || 'N')[0],
+      })),
+      hasPhoto: s.photoSent,
+      draft: s.draft,
+      onDraft: (e) => this.setState({ draft: e.target.value }),
+      onDraftKey: (e) => { if (e.key === 'Enter') this.send(); },
+      sendMessage: () => this.send(),
+      sendPhoto: () => this.setState({ photoSent: true }),
+
+      dayChips: ['Tue 27/4', 'Wed 29/4'].map((label, i) => ({
+        label,
+        bg: s.day === i ? CORAL : '#fff',
+        fg: s.day === i ? '#fff' : '#6C635C',
+        border: s.day === i ? CORAL : 'rgba(25,21,18,.1)',
+        onPick: () => this.setState({ day: i }),
+      })),
+      dayTitle: s.day === 0 ? 'Tuesday 27 April' : 'Wednesday 29 April',
+      dayCount: this.stopsFor().length + ' stops',
+      stops: this.stopsFor().map((st, i, arr) => {
+        const kindTints = {
+          Food: ['#2E9E5B', '#E7F5ED'], Museum: ['#6B4FA8', '#EFE9FB'], Visit: ['#8A6E43', '#FBF2E9'],
+          Ride: ['#2F6FE0', '#E5ECFA'], View: ['#B0563C', '#FBEDE9'], Dinner: ['#F14B2F', '#FBEDE9'],
+        };
+        const t = kindTints[st.kind] || ['#6C635C', '#F3F1EE'];
+        return {
+          time: st.time,
+          isPoll: !!st.poll,
+          isStop: !st.poll,
+          name: st.name, meta: st.meta, kind: st.kind,
+          kindColor: t[0], kindBg: t[1],
+          won: !!st.won,
+          cardBorder: st.won ? '#F5C9BE' : 'transparent',
+          dot: st.poll || st.won ? CORAL : i < arr.length - 1 ? '#2E9E5B' : '#D5C9BD',
+          mark: !st.poll && !st.won && i < arr.length - 1 ? '✓' : '',
+          cardOpacity: !st.poll && !st.won && i < arr.length - 1 ? '.62' : '1',
+          rail: i === arr.length - 1 ? 'transparent' : 'rgba(25,21,18,.1)',
+        };
+      }),
+
+      pollTitle: 'Where should we eat tonight?',
+      pollClosing: s.pollClosed ? 'Closed' : s.myVote ? 'Your vote counted' : 'Open',
+      voteHint: s.myVote ? 'Your pick is highlighted' : 'Tap an option to vote',
+      pollRows: s.options.map((o) => {
+        const v = this.optionVotes(o);
+        const pct = Math.round((v / total) * 100);
+        const mine = s.myVote === o.id;
+        return {
+          name: o.name, meta: o.meta, pct: pct + '%',
+          votes: v + (v === 1 ? ' vote' : ' votes'),
+          bar: pct + '%',
+          fill: mine ? 'rgba(241,75,47,.16)' : 'rgba(25,21,18,.06)',
+          border: mine ? CORAL : 'rgba(25,21,18,.09)',
+          onVote: () => this.vote(o.id),
+        };
+      }),
+      confirmVote: () => this.closePoll(),
+
+      places: [
+        { name: 'Taberna do Castelo', meta: '★ 4,5 · €€ · Vegan options' },
+        { name: 'Nord Alto Lisboa', meta: '★ 4,1 · €€€ · Seafood' },
+        { name: 'Fisga Bar', meta: '★ 4,3 · € · Small plates' },
+      ].map((p) => ({
+        ...p,
+        cta: s.options.some((o) => o.name === p.name) ? 'In poll' : 'Add',
+        onAdd: () => this.addOption(p.name, p.meta),
+      })),
+
+      shareChannels: [
+        { label: 'Copy link', tint: '#DDD5CB' }, { label: 'Instagram', tint: '#E7CFE0' },
+        { label: 'QR Code', tint: '#D6DCE7' }, { label: 'WhatsApp', tint: '#D2E7D8' },
+        { label: 'Message', tint: '#D6E2F0' },
+      ],
+      memberRows: s.members.map((m, i) => ({
+        name: m, initial: m[0], tint: tintOf(m), role: i === 0 ? 'Owner' : 'Member',
+      })),
+      inviteRows: ['Ron Valeris', 'Ron Stevenson', 'Ron Calder'].map((n, i) => {
+        const inv = !!s.invited[n];
+        return {
+          name: n, handle: i === 0 ? '@ronvl' : 'Suggested contact', tint: tintOf('Ron'),
+          cta: inv ? 'Invited' : 'Invite',
+          bg: inv ? '#F1EAE2' : CORAL,
+          fg: inv ? '#8A7F77' : '#fff',
+          border: inv ? '#E4DAD0' : CORAL,
+          onInvite: () => this.setState((st) => ({ invited: { ...st.invited, [n]: !st.invited[n] } })),
+        };
+      }),
+      keyboard: React.createElement(window.IOSKeyboard || 'div', {}),
+
+      categoryChips: ['General', 'Restaurants', 'Accommodation', 'Activities'].map((c) => ({
+        label: c,
+        bg: s.category === c ? CORAL : '#fff',
+        fg: s.category === c ? '#fff' : '#6C635C',
+        border: s.category === c ? CORAL : 'rgba(25,21,18,.1)',
+        onPick: () => this.setState({ category: c }),
+      })),
+      draftTitle: 'Where should we eat?',
+      pollDuration: 'Closes in 3 hours',
+      draftOptions: s.draftOptionNames.map((n, i) => ({
+        label: n || 'Option ' + (i + 1),
+        color: n ? '#191512' : '#9A8F87',
+      })),
+      pollFlags: [
+        ['multi', 'Allow multiple selections'],
+        ['addOptions', 'Allow other users to add options'],
+        ['itinerary', 'Add to itinerary when closed'],
+      ].map(([k, label]) => {
+        const on = s.pollFlagState[k];
+        return {
+          label, mark: on ? '✓' : '',
+          bg: on ? CORAL : '#fff',
+          border: on ? CORAL : '#D9CEC3',
+          onToggle: () => this.setState((st) => ({ pollFlagState: { ...st.pollFlagState, [k]: !st.pollFlagState[k] } })),
+        };
+      }),
+      createPoll: () => this.setState({ screen: 'trip', tab: 'itinerary' }),
+
+      mapPins: [
+        { x: '60px', y: '210px', s: 16 }, { x: '150px', y: '270px', s: 16 },
+        { x: '250px', y: '250px', s: 16 }, { x: '300px', y: '400px', s: 16 },
+        { x: '120px', y: '470px', s: 16 }, { x: '270px', y: '520px', s: 16 },
+      ].map((p, i) => ({
+        x: p.x, y: p.y, size: i === 2 ? '28px' : '16px',
+        color: i === 2 ? CORAL : '#2F6FE0',
+        onPick: () => this.setState({ pickedPlace: i === 2 ? 'Taberna do Castelo' : 'Nord Alto Lisboa' }),
+      })),
+      pickedPlace: s.pickedPlace,
+      placeCards: [
+        { name: 'Taberna do Castelo', vegan: true, hours: 'Opening Hours: 19:00–23:00', rating: '4,5', price: '€€', dist: '1,2 km' },
+        { name: 'Nord Alto Lisboa', vegan: false, hours: 'Opening Hours: 18:30–00:00', rating: '4,1', price: '€€€', dist: '2,4 km' },
+        { name: 'Fisga Bar', vegan: true, hours: 'Opening Hours: 17:00–01:00', rating: '4,3', price: '€', dist: '0,8 km' },
+      ].map((p) => ({
+        name: p.name, vegan: p.vegan, hours: p.hours, rating: p.rating, price: p.price, dist: p.dist,
+        cta: s.options.some((o) => o.name === p.name) ? 'In poll' : 'Add to poll',
+        onAdd: () => {
+          this.addOption(p.name, '★ ' + p.rating + ' · ' + p.price + ' · ' + p.dist);
+          this.setState({ screen: s.searchReturn === 'addpoll' ? 'addpoll' : 'trip', tab: 'itinerary' });
+        },
+      })),
+      addPickedToPoll: () => {
+        this.addOption(s.pickedPlace, '★ 4,5 · €€ · 1,2 km');
+        this.setState({ screen: s.searchReturn === 'addpoll' ? 'addpoll' : 'trip', tab: 'itinerary' });
+      },
+
+      spent: '€328.00',
+      owe: '€54.00',
+      expenseRows: s.expenses,
+      balanceRows: [
+        { name: 'Nic', verb: 'owes', amount: '€23.00', color: '#2E9E5B', tint: tintOf('Nic'), initial: 'N' },
+        { name: 'Paul', verb: 'you owe', amount: '€54.00', color: CORAL, tint: tintOf('Paul'), initial: 'P' },
+      ],
+
+      expenseTitle: s.expenseTitle,
+      expenseGlyph: s.expenseGlyph,
+      expenseAmount: amount.toFixed(2),
+      splitModes: ['Equally', 'By Percent', 'By Items'].map((m) => ({
+        label: m,
+        bg: s.splitMode === m ? '#fff' : 'transparent',
+        fg: s.splitMode === m ? '#191512' : '#8A7F77',
+        onPick: () => this.setState({ splitMode: m }),
+      })),
+      byItems,
+      splitNote: s.splitMode === 'Equally'
+        ? included.length + ' of ' + s.members.length + ' people · €' + share.toFixed(2) + ' each'
+        : s.splitMode === 'By Percent'
+          ? 'Each share is ' + (included.length ? (100 / included.length).toFixed(0) : 0) + '%, drag to adjust'
+          : 'Sharing “' + (sel ? sel.name : '') + '”, tap a person to add or remove them',
+      splitRows: s.members.map((m) => {
+        const on = byItems ? !!(sel && sel.people[m]) : !!s.included[m];
+        return {
+          name: m, initial: m[0], tint: tintOf(m), mark: on ? '✓' : '',
+          bg: on ? CORAL : '#fff',
+          border: on ? CORAL : '#D9CEC3',
+          amount: byItems
+            ? '€' + itemShare(m).toFixed(2)
+            : on
+              ? (s.splitMode === 'By Percent' ? (100 / included.length).toFixed(0) + '%' : '€' + share.toFixed(2))
+              : '€0',
+          amountColor: (byItems ? itemShare(m) > 0 : on) ? '#191512' : '#B5ABA2',
+          onToggle: () => (byItems ? this.toggleItemPerson(m) : this.setState((st) => ({ included: { ...st.included, [m]: !st.included[m] } }))),
+        };
+      }),
+      itemRows: s.items.map((i) => {
+        const ppl = s.members.filter((x) => i.people[x]);
+        const active = sel && sel.id === i.id;
+        return {
+          name: i.name,
+          price: '€' + i.price.toFixed(2),
+          shareNote: ppl.length
+            ? ppl.length + (ppl.length === 1 ? ' person · €' : ' people · €') + (i.price / ppl.length).toFixed(2) + ' each'
+            : 'No one assigned yet',
+          border: active ? CORAL : 'rgba(25,21,18,.1)',
+          bg: active ? 'rgba(241,75,47,.06)' : '#FDF8F3',
+          onSelect: () => this.setState({ selectedItem: i.id }),
+          onRemove: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.removeItem(i.id); },
+        };
+      }),
+      selectedItemName: sel ? sel.name : 'none',
+      itemsTotal: '€' + itemsTotal.toFixed(2),
+      itemDraftName: s.itemDraftName,
+      itemDraftPrice: s.itemDraftPrice,
+      onItemName: (e) => this.setState({ itemDraftName: e.target.value }),
+      onItemPrice: (e) => this.setState({ itemDraftPrice: e.target.value }),
+      onItemKey: (e) => { if (e.key === 'Enter') this.addItem(); },
+      addItem: () => this.addItem(),
+      scanNote: s.scanned
+        ? 'Receipt scanned, 3 items and €198.00 filled in automatically.'
+        : 'Tap the camera to scan a receipt and fill this in automatically.',
+      scanColor: s.scanned ? '#2E9E5B' : '#8A7F77',
+      scanReceipt: () => this.setState({
+        scanned: true,
+        expenseTitle: 'Taberna do Castelo',
+        expenseGlyph: '🍽',
+        splitMode: 'By Items',
+        selectedItem: 'dinner',
+        items: [
+          { id: 'dinner', name: 'Dinner', price: 136, people: { 'Ari (You)': true, Nic: true, Paul: true, Anna: true } },
+          { id: 'wine', name: 'Wine', price: 44, people: { 'Ari (You)': true, Nic: true } },
+          { id: 'dessert', name: 'Pastéis de nata', price: 18, people: { 'Ari (You)': true, Anna: true } },
+        ],
+      }),
+      categoryOpen: s.categoryOpen,
+      openCategory: () => this.setState({ categoryOpen: true }),
+      closeCategory: () => this.setState({ categoryOpen: false }),
+      itineraryPicks: [
+        { label: 'Azulejos Museum', glyph: '🏛', tint: '#EFE9FB' },
+        { label: 'Jardim dos Cerejos', glyph: '🌳', tint: '#E7F5ED' },
+        { label: 'Taberna do Castelo', glyph: '🍽', tint: '#FBEDE9' },
+      ].map((i) => ({ ...i, onPick: () => this.setState({ expenseTitle: i.label, expenseGlyph: i.glyph, categoryOpen: false }) })),
+      categoryTiles: [
+        { label: 'Flight', glyph: '✈' }, { label: 'Stay', glyph: '🏨' }, { label: 'Transport', glyph: '🚌' },
+        { label: 'Drinks', glyph: '🍸' }, { label: 'Food', glyph: '🍽' }, { label: 'Shopping', glyph: '🛍' },
+        { label: 'Tickets', glyph: '🎟' }, { label: 'Activities', glyph: '🎒' }, { label: 'Other', glyph: '✳' },
+      ].map((t) => ({ ...t, onPick: () => this.setState({ expenseGlyph: t.glyph, categoryOpen: false }) })),
+      saveExpense: () => this.setState((st) => ({
+        screen: 'trip', tab: 'expenses',
+        expenses: [{ title: st.expenseTitle, payer: 'Ari', amount: '€150.00', glyph: st.expenseGlyph, tint: '#FBEDE9' }, ...st.expenses],
+      })),
+
+      simplifyBg: s.simplify ? CORAL : '#DED3C8',
+      simplifyAlign: s.simplify ? 'flex-end' : 'flex-start',
+      owedByMe: [{ from: 'Ari (You)', to: 'Nic', amount: '€23.00', key: 'nic' }].map((d) => this.debtRow(d)),
+      owedToMe: [
+        { from: 'Ron', to: 'Ari (You)', amount: '€8.00', key: 'ron' },
+        { from: 'Jane', to: 'Ari (You)', amount: '€18.00', key: 'jane' },
+      ].map((d) => this.debtRow(d)),
+      settleAll: () => this.go('settled'),
+
+      jumpItems: jumps.map(([label, target]) => {
+        const active = target === 'expenses'
+          ? s.screen === 'trip' && s.tab === 'expenses'
+          : s.screen === target && !(target === 'trip' && s.tab === 'expenses');
+        return {
+          label,
+          bg: active ? '#fff' : 'rgba(255,255,255,.16)',
+          fg: active ? CORAL : '#fff',
+          onJump: () => (target === 'expenses'
+            ? this.setState({ screen: 'trip', tab: 'expenses' })
+            : this.setState({ screen: target, tab: target === 'trip' ? 'itinerary' : s.tab })),
+        };
+      }),
+    };
+  }
+
+  debtRow(d) {
+    const done = !!this.state.paid[d.key];
+    const other = d.from.startsWith('Ari') ? d.to : d.from;
+    return {
+      from: d.from, to: d.to, amount: d.amount,
+      tint: tintOf(other), initial: other[0],
+      pending: !done,
+      markLabel: done ? '✓ Paid' : 'Mark as Paid',
+      markBorder: done ? '#2E9E5B' : '#E4DAD0',
+      markColor: done ? '#2E9E5B' : '#6C635C',
+      onMark: () => this.setState((st) => ({ paid: { ...st.paid, [d.key]: !st.paid[d.key] } })),
+    };
+  }
+
+  addOption(name, meta) {
+    this.setState((s) => {
+      if (s.options.some((o) => o.name === name)) return {};
+      return { options: [...s.options, { id: name.toLowerCase().replace(/\W+/g, '-'), name, meta, votes: 0 }] };
+    });
+  }
+}
+
+</script>
+</body>
+</html>

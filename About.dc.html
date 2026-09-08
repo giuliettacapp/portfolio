@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;500;700&amp;family=Karla:ital,wght@0,300;0,400;0,500;1,400&amp;family=Shantell+Sans:ital,wght@0,400;0,600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{--bg:#F4F1EA;--fg:#171512;--fg-soft:#6E675C;--line:rgba(23,21,18,.14);--dots:rgba(23,21,18,.11);--surface:#FCFAF5;--tint:#E9E4D8;
+--a1:#74A7F4;--a2:oklch(0.72 0.15 265);}
+[data-theme="dark"]{--bg:#14120F;--fg:#F1EDE4;--fg-soft:#9C9488;--line:rgba(241,237,228,.16);--dots:rgba(241,237,228,.13);--surface:#1D1A16;--tint:#221E19;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1px,transparent 1px);background-size:24px 24px;background-position:0 0;background-attachment:fixed;color:var(--fg);font-family:'Karla',system-ui,sans-serif;transition:background .4s ease,color .4s ease;overflow-x:clip}
+a{color:var(--fg);text-underline-offset:4px}
+a:hover{color:var(--a1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes riseIn{from{opacity:0;translate:0 54px}to{opacity:1;translate:none}}
+@keyframes trailPop{from{opacity:.85}to{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+  <dc-import name="Nav" active="about" hint-size="100%,66px"></dc-import>
+
+  <section style="max-width:1240px;margin:0 auto;padding:64px 26px 0">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:52px;align-items:start">
+      <div style="animation:riseIn .85s cubic-bezier(.2,.7,.3,1) .05s both">
+        <p style="font-family:'Shantell Sans',cursive;font-size:22px;color:var(--a1);margin:0 0 8px">About</p>
+        <h1 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(36px,4.4vw,60px);line-height:1.02;margin:0 0 26px;text-wrap:balance">I design interfaces that keep people playing along.</h1>
+        <p style="font-size:19px;line-height:1.68;margin:0 0 18px;color:var(--fg-soft);text-wrap:pretty"><strong style="font-weight:700;color:inherit">I'm a UX/UI designer based in Milan.</strong> Three years spent between product interfaces, branding and immersive design, and a lot of time thinking about <strong style="font-weight:700;color:inherit">what makes people want to continue.</strong></p>
+        <p style="font-size:19px;line-height:1.68;margin:0 0 18px;color:var(--fg-soft);text-wrap:pretty"><strong style="font-weight:700;color:inherit">Most of that thinking came from games.</strong> I designed mechanics and interfaces for VR titles about cyberbullying and cybersecurity, and serious games on workplace safety and rehabilitation, projects where the only way to teach anything was to make it worth playing. <strong style="font-weight:700;color:inherit">Gamification isn't a layer of badges on top</strong>: it's structure, feedback and pace, and it works just as well in a dashboard as in a game.</p>
+        <p style="font-size:19px;line-height:1.68;margin:0;color:var(--fg-soft);text-wrap:pretty"><strong style="font-weight:700;color:inherit">I'm freelancing right now</strong>, UX/UI, branding, graphic design, and <strong style="font-weight:700;color:inherit">looking for a full-time team</strong> that takes design seriously without taking itself too seriously. Outside work I draw, which is where the <a href="./Playground.dc.html">playground</a> comes from.</p>
+        <a href="./Resume.dc.html" style="display:inline-block;margin-top:28px;padding:13px 26px;border-radius:999px;border:1px solid var(--fg);text-decoration:none;font-size:16px" style-hover="background:var(--fg);color:var(--bg)">Read the full resume →</a>
+      </div>
+
+      <div style="display:grid;gap:16px">
+        <div style="aspect-ratio:4/5;border-radius:26px 18px 24px 20px;overflow:hidden;transform:rotate(-1.6deg);transition:transform .55s cubic-bezier(.2,.7,.3,1);animation:riseIn .85s cubic-bezier(.2,.7,.3,1) .15s both" style-hover="transform:rotate(-1.6deg) scale(1.045)">
+          <image-slot id="ab-portrait" shape="rect" fit="cover" src="./images/about-portrait.webp" placeholder="Portrait: 4:5"></image-slot>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden;transform:rotate(1.8deg);transition:transform .55s cubic-bezier(.2,.7,.3,1);animation:riseIn .85s cubic-bezier(.2,.7,.3,1) .32s both" style-hover="transform:rotate(1.8deg) scale(1.06)">
+            <image-slot id="ab-snap-1" shape="rect" fit="cover" src="./images/about-snap-1.webp" placeholder="Desk"></image-slot>
+          </div>
+          <div style="aspect-ratio:1;border-radius:16px 22px 14px 20px;overflow:hidden;transform:rotate(-2.2deg);transition:transform .55s cubic-bezier(.2,.7,.3,1);animation:riseIn .85s cubic-bezier(.2,.7,.3,1) .46s both" style-hover="transform:rotate(-2.2deg) scale(1.06)">
+            <image-slot id="ab-snap-2" shape="rect" fit="cover" src="./images/about-snap-2.webp" placeholder="Sketchbook"></image-slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:80px 26px 0">
+    <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(28px,3.6vw,42px);margin:0 0 30px;line-height:1.1">Where I've been</h2>
+    <div ref="{{ staggerRef }}" style="border-left:1px solid var(--line);padding-left:26px">
+      <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="4">
+        <div style="position:relative;padding-bottom:32px">
+          <span style="position:absolute;left:-32px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--a1);border:2px solid var(--bg)"></span>
+          <p style="font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-soft);margin:0 0 4px">{{ j.years }}</p>
+          <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 2px">{{ j.role }}</h3>
+          <p style="margin:0 0 8px;font-size:16px;color:var(--fg-soft)">{{ j.company }}</p>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--fg-soft);max-width:560px;text-wrap:pretty">{{ j.note }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:80px 26px 0">
+    <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(28px,3.6vw,42px);margin:0 0 30px;line-height:1.1">What I studied</h2>
+    <div ref="{{ staggerRef }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:44px">
+      <div>
+        <p style="font-family:'Shantell Sans',cursive;font-size:20px;color:var(--a1);margin:0 0 18px">Degrees</p>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div>
+            <h3 style="font-family:'Solway',serif;font-weight:400;font-size:21px;margin:0 0 3px">Master's Degree in Communication Design</h3>
+            <p style="margin:0;font-size:16px;color:var(--fg-soft)">Politecnico di Milano · 2019 to 2022</p>
+          </div>
+          <div>
+            <h3 style="font-family:'Solway',serif;font-weight:400;font-size:21px;margin:0 0 3px">Bachelor's Degree in Communication Design</h3>
+            <p style="margin:0;font-size:16px;color:var(--fg-soft)">Politecnico di Milano · 2016 to 2019</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'Shantell Sans',cursive;font-size:20px;color:var(--a1);margin:0 0 18px">Courses</p>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div>
+            <h3 style="font-family:'Solway',serif;font-weight:400;font-size:21px;margin:0 0 3px">UX and UI Design for Video Games</h3>
+            <p style="margin:0;font-size:16px;color:var(--fg-soft)">Digital Bros Game Academy · 2025 · 3 months</p>
+          </div>
+          <div>
+            <h3 style="font-family:'Solway',serif;font-weight:400;font-size:21px;margin:0 0 3px">Multimedia product design with VR technologies</h3>
+            <p style="margin:0;font-size:16px;color:var(--fg-soft)">AgenFor / CarraroLAB · 2022 to 2023 · 6 months</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:70px 26px 0">
+    <div ref="{{ staggerRef }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;padding:36px;border-radius:30px 22px 32px 20px;background:var(--tint)">
+      <div>
+        <p style="font-family:'Shantell Sans',cursive;font-size:20px;margin:0 0 10px">Currently</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--fg-soft)">Working as a freelance UX/UI and graphic designer, based in Milan. Open to full-time roles and to single projects.</p>
+      </div>
+      <div>
+        <p style="font-family:'Shantell Sans',cursive;font-size:20px;margin:0 0 10px">Good at</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--fg-soft)">UX/UI, interaction and game design, gamification, AR/VR/MR, branding, visual design, prototyping.</p>
+      </div>
+      <div>
+        <p style="font-family:'Shantell Sans',cursive;font-size:20px;margin:0 0 10px">Working on</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--fg-soft)">Social and print materials for an events organiser, a website for a winery, and interfaces for a fantasy RPG game.</p>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280},&quot;scrollAnimations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;revealDistance&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:36,&quot;min&quot;:0,&quot;max&quot;:60,&quot;step&quot;:2,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;revealStagger&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:130,&quot;min&quot;:0,&quot;max&quot;:220,&quot;step&quot;:10,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener("scroll", this._onScroll);
+  }
+  renderVals() {
+    const on = this.props.scrollAnimations ?? true;
+    const dist = this.props.revealDistance ?? 26;
+    const step = this.props.revealStagger ?? 90;
+    const vals = {
+      staggerRef: (el) => {
+        if (!el || el.dataset.stag) return;
+        el.dataset.stag = "1";
+        const kids = [...el.children];
+        if (!on) return;
+        kids.forEach((k, i) => {
+          k.style.opacity = "0";
+          k.style.translate = "0 " + dist + "px";
+          k.style.transition = "opacity .7s cubic-bezier(.2,.7,.3,1) " + (i * step) + "ms,translate .7s cubic-bezier(.2,.7,.3,1) " + (i * step) + "ms";
+        });
+        const show = (target) => {
+          [...target.children].forEach((k) => { k.style.opacity = "1"; k.style.translate = "none"; });
+        };
+        const check = () => {
+          const r = el.getBoundingClientRect();
+          if (r.top < innerHeight * 0.92 && r.bottom > 0) { show(el); if (this._io) this._io.unobserve(el); }
+        };
+        requestAnimationFrame(check);
+        if (!this._checks) {
+          this._checks = [];
+          this._onScroll = () => requestAnimationFrame(() => this._checks.forEach((f) => f()));
+          window.addEventListener("scroll", this._onScroll, { passive: true, capture: true });
+          document.addEventListener("scroll", this._onScroll, { passive: true, capture: true });
+          window.addEventListener("resize", this._onScroll);
+          window.addEventListener("load", this._onScroll);
+        }
+        this._checks.push(check);
+        setTimeout(() => show(el), 2000);
+        if (!this._io) {
+          this._io = new IntersectionObserver((es) => {
+            es.forEach((e) => {
+              if (!e.isIntersecting) return;
+              show(e.target);
+              this._io.unobserve(e.target);
+            });
+          }, { threshold: 0.12, rootMargin: "0px 0px -10% 0px" });
+        }
+        this._io.observe(el);
+      }
+    };
+    return Object.assign(vals, {
+      jobs: [
+        { years: "Oct 2024 to now", role: "Freelance UX/UI Designer", company: "Stealth company & private clients", note: "User-centered flows and UI systems for apps, websites and videogames, working directly with small teams and founders." },
+        { years: "Nov 2023 to Sep 2024", role: "XR Interaction Designer", company: "Accenture Song", note: "Immersive experiences for AR, VR and MR, from concept to delivery, co-design workshops, prototypes and a lot of testing in headset." },
+        { years: "Feb 2023 to Mar 2023", role: "UX/UI Designer", company: "API srl", note: "Game mechanics, experience and interfaces for three VR games teaching cyberbullying, cybersecurity and phishing to students." },
+        { years: "Nov 2021 to Oct 2022", role: "UX/UI & Graphic Designer", company: "Imaginary srl", note: "Redesigned a mobile app for usability and accessibility. Mechanics and graphics for serious games on workplace safety, inclusivity, health and rehabilitation." }
+      ]
+    });
+  }
+}
+</script>
+</body>
+</html>

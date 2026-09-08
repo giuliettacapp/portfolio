@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;500;700&family=Karla:ital,wght@0,300;0,400;0,500;1,400&family=Shantell+Sans:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{--bg:#F4F1EA;--fg:#171512;--fg-soft:#6E675C;--line:rgba(23,21,18,.14);--dots:rgba(23,21,18,.11);--surface:#FCFAF5;--tint:#E9E4D8;
+--a1:#EE2A63;--a2:oklch(0.72 0.15 265);}
+[data-theme="dark"]{--bg:#14120F;--fg:#F1EDE4;--fg-soft:#9C9488;--line:rgba(241,237,228,.16);--dots:rgba(241,237,228,.13);--surface:#1D1A16;--tint:#221E19;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1px,transparent 1px);background-size:24px 24px;background-position:0 0;background-attachment:fixed;color:var(--fg);font-family:'Karla',system-ui,sans-serif;transition:background .4s ease,color .4s ease;overflow-x:clip}
+a{color:var(--fg);text-underline-offset:4px}
+a:hover{color:var(--a1)}
+@keyframes trailPop{from{opacity:.85}to{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+@keyframes frameSeq{0%{opacity:0}6.7%{opacity:1}40%{opacity:1}46.7%{opacity:0}100%{opacity:0}}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+  <dc-import name="Nav" active="projects" hint-size="100%,66px"></dc-import>
+
+  <!-- cover con bordo curvo in basso, come nei riferimenti -->
+  <div style="position:relative;height:clamp(260px,36vw,440px);background:oklch(0.66 0.22 350)">
+    <image-slot id="gb-hero" shape="rect" placeholder="Case study hero: wide"></image-slot>
+    <div style="position:absolute;left:-6%;right:-6%;bottom:-2px;height:90px;background:var(--bg);border-radius:100% 100% 0 0 / 90px 90px 0 0;pointer-events:none"></div>
+  </div>
+
+  <div style="max-width:1200px;margin:0 auto;padding:0 34px 40px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:72px;align-items:start">
+    <aside style="position:sticky;top:90px;padding-top:20px;max-width:230px">
+      <a href="./Projects.dc.html" style="display:inline-block;margin-bottom:24px;font-size:15px;text-decoration:none">← All projects</a>
+      <nav style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ toc }}" as="t" hint-placeholder-count="5">
+          <a href="{{ t.href }}" style="padding:7px 12px;border-radius:8px;font-size:15px;text-decoration:none;transition:transform .28s cubic-bezier(.4,0,.2,1),color .28s ease;color:{{ t.color }};transform:translateX({{ t.shift }})" style-hover="background:var(--tint)">{{ t.label }}</a>
+        </sc-for>
+      </nav>
+    </aside>
+
+    <main style="padding-top:20px;min-width:0;max-width:860px">
+      <p style="font-family:'Shantell Sans',cursive;font-size:34px;color:var(--a1);margin:0 0 6px">Gymboo</p>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-soft);margin:0 0 18px">UX research & UI/UX design</p>
+
+      <h1 id="overview" style="font-family:'Solway',serif;font-weight:400;font-size:clamp(36px,5vw,58px);line-height:1.05;margin:0 0 24px;text-wrap:balance">Training together, apart.</h1>
+
+      <p style="font-size:18px;line-height:1.7;color:var(--fg-soft);margin:0 0 36px;text-wrap:pretty">Gymboo was created in 2020 during a university project amid the COVID-19 pandemic. Tasked with designing an app to navigate lockdown restrictions, our team focused on fitness and social relationships. Gymboo allows athletes and instructors to train remotely while offering social features like adding friends, sending reactions, and sharing workout photos and videos.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:22px;padding:24px 0;border-block:1px solid var(--line);margin-bottom:52px">
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Role</p>
+          <p style="margin:0;font-size:16px">UX Researcher, UI/UX Designer</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Scope</p>
+          <p style="margin:0;font-size:16px">University project · 2020</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Read time</p>
+          <p style="margin:0;font-size:16px">5 minutes</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:60px">
+        <div style="grid-column:1 / -1;aspect-ratio:3000 / 1069;border-radius:24px 18px 26px 20px;overflow:hidden">
+          <image-slot id="gb-intro-wide" shape="rect" fit="cover" src="./images/gb-intro-wide.webp" placeholder="Gymboo across devices"></image-slot>
+        </div>
+        <div style="aspect-ratio:1065 / 1037;border-radius:26px 18px 24px 20px;overflow:hidden">
+          <image-slot id="gb-intro-login" shape="rect" fit="cover" src="./images/gb-intro-login.webp" placeholder="Login and sign up"></image-slot>
+        </div>
+        <div style="aspect-ratio:1542 / 1721;border-radius:18px 26px 20px 24px;overflow:hidden;background:#EE2A63">
+          <image-slot id="gb-intro-chat" shape="rect" fit="cover" src="./images/gb-intro-chat.webp" placeholder="Chat and invitations"></image-slot>
+        </div>
+      </div>
+
+      <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+        <section id="{{ s.id }}" style="margin-bottom:96px;scroll-margin-top:100px">
+          <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">{{ s.kicker }}</p>
+          <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">{{ s.title }}</h2>
+          <sc-if value="{{ s.goals }}" hint-placeholder-val="{{ false }}">
+            <p style="font-family:'Solway',serif;font-size:22px;margin:0 0 16px">Research goals</p>
+            <div ref="{{ staggerRef }}" style="display:flex;flex-direction:column;gap:16px;margin:0 0 36px">
+              <sc-for list="{{ s.goals }}" as="g" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:36px;padding:26px 38px;border-radius:26px 18px 28px 20px;background:var(--surface);flex-direction:{{ g.dir }}">
+                  <div style="flex:none;width:150px;height:160px;background:no-repeat center/contain url({{ g.icon }})"></div>
+                  <div style="display:flex;align-items:center;gap:18px;flex:1;min-width:0">
+                    <div style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--a1);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:500">{{ g.num }}</div>
+                    <p style="margin:0;font-size:19px;line-height:1.5;text-wrap:balance">{{ g.text }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.body }}" hint-placeholder-val="{{ true }}">
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">{{ s.body }}</p>
+          </sc-if>
+          <sc-if value="{{ s.parts }}" hint-placeholder-val="{{ false }}">
+            <p style="font-family:'Solway',serif;font-size:22px;margin:0 0 12px">Research methods</p>
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty"><sc-for list="{{ s.parts }}" as="p" hint-placeholder-count="1"><span style="font-weight:{{ p.w }};color:{{ p.c }}">{{ p.t }}</span></sc-for></p>
+          </sc-if>
+          <sc-if value="{{ s.body2 }}" hint-placeholder-val="{{ true }}">
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">{{ s.body2 }}</p>
+          </sc-if>
+          <sc-if value="{{ s.finals }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;justify-content:center;padding:54px 40px;border-radius:28px 20px 30px 22px;background:var(--a1);margin:4px 0 34px">
+              <img src="./images/gb-logo.svg" alt="Gymboo logo" style="display:block;width:380px;max-width:100%;filter:brightness(0) invert(1)" />
+            </div>
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:-18px 0 34px;text-wrap:pretty">The name comes from gym + boo, the affectionate nickname you give a close friend, to represent the fact that Gymboo is a social app where people train together. The final "o" doubles as a dumbbell icon.</p>
+            <div style="display:flex;flex-direction:column;gap:8px;margin:0 0 26px">
+              <p style="margin:0;font-family:'Solway',serif;font-size:22px">Colour palette</p>
+              <p style="margin:0 0 8px;font-size:17px;line-height:1.7;color:var(--fg-soft);text-wrap:pretty">Pink leads the interface, with blue and orange as secondary accents and a neutral grey for text and surfaces.</p>
+              <img src="./images/gb-final-colors.svg" alt="Colour palette" style="display:block;width:100%;aspect-ratio:1431 / 827;object-fit:contain" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin:0 0 34px">
+              <p style="margin:0;font-family:'Solway',serif;font-size:22px">Illustrated icon set</p>
+              <p style="margin:0 0 8px;font-size:17px;line-height:1.7;color:var(--fg-soft);text-wrap:pretty">A custom set of illustrated icons carries the tone of the app: reactions, achievements, and training states drawn in the same flat, two-colour style.</p>
+              <img src="./images/gb-final-icons.webp" alt="Illustrated icon set" style="display:block;width:100%;aspect-ratio:2201 / 1392;object-fit:contain" />
+            </div>
+            <div ref="{{ staggerRef }}" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:0 0 34px">
+              <sc-for list="{{ featureCards }}" as="fc" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;border-radius:24px 18px 26px 20px;overflow:hidden;background:#FFFFFF;border:1px solid var(--line)">
+                  <div style="position:relative;padding:16px 16px 0">
+                    <div role="img" aria-label="{{ fc.name }}" style="aspect-ratio:1 / 1;border-radius:16px 12px 16px 12px;background-repeat:no-repeat;background-size:contain;background-position:center;background-image:url({{ fc.src }})"></div>
+                    <div style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom,rgba(255,255,255,0),#FFFFFF);pointer-events:none"></div>
+                  </div>
+                  <div style="padding:20px 22px 26px;text-align:center;background:#FFFFFF">
+                    <p style="margin:0 0 4px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#EE2A63">{{ fc.role }}</p>
+                    <p style="margin:0 0 8px;font-family:'Solway',serif;font-size:20px;color:#171512">{{ fc.name }}</p>
+                    <p style="margin:0;font-size:15px;line-height:1.6;color:#6E675C;text-wrap:pretty">{{ fc.note }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div ref="{{ staggerRef }}" style="display:flex;flex-direction:column;gap:16px;margin:6px 0 30px">
+              <div style="border-radius:24px 18px 26px 20px;overflow:hidden;background:#FFFFFF;border:1px solid var(--line)">
+                <image-slot id="gb-final-screens" shape="rect" fit="cover" src="./images/gb-final-screens.webp" placeholder="Final screens" style="display:block;width:100%;aspect-ratio:854 / 480"></image-slot>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.wires }}" hint-placeholder-val="{{ false }}">
+            <div style="margin:6px 0 34px">
+              <div style="position:relative;border-radius:24px 18px 26px 20px;overflow:hidden;border:1px solid var(--line);background:#F2F1EF">
+                <div style="position:absolute;z-index:2;left:0;right:0;bottom:16px;display:flex;justify-content:center;gap:8px">
+                  <sc-for list="{{ slideDots }}" as="d" hint-placeholder-count="8">
+                    <button onClick="{{ d.go }}" style="width:9px;height:9px;padding:0;border-radius:50%;border:0;cursor:pointer;background:{{ d.bg }};transition:background .25s ease"></button>
+                  </sc-for>
+                </div>
+                <div style="display:flex;transform:translateX({{ slideShift }});transition:transform .55s cubic-bezier(.4,0,.2,1)">
+                  <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="8">
+                    <div role="img" aria-label="{{ sl.label }}" style="flex:none;width:100%;aspect-ratio:1098 / 605;background:no-repeat center/contain url({{ sl.src }})"></div>
+                  </sc-for>
+                </div>
+                <button onClick="{{ slidePrev }}" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--fg);font-size:17px;cursor:pointer;display:grid;place-items:center" style-hover="background:#EE2A63;color:#fff">←</button>
+                <button onClick="{{ slideNext }}" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--fg);font-size:17px;cursor:pointer;display:grid;place-items:center" style-hover="background:#EE2A63;color:#fff">→</button>
+              </div>
+              <p style="margin:14px 0 4px;font-family:'Solway',serif;font-size:19px">{{ slideLabel }}</p>
+              <p style="margin:0;max-width:560px;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">{{ slideNote }}</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.wiresLegacy }}" hint-placeholder-val="{{ false }}">
+            <div ref="{{ staggerRef }}" style="display:flex;flex-direction:column;gap:56px;margin:6px 0 30px">
+              <sc-for list="{{ wires }}" as="w" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="border-radius:24px 18px 26px 20px;overflow:hidden;border:1px solid var(--line)">
+                    <image-slot id="{{ w.slot }}" shape="rect" fit="cover" src="{{ w.src }}" placeholder="{{ w.label }}" style="display:block;width:100%;aspect-ratio:1098 / 605"></image-slot>
+                  </div>
+                  <div>
+                    <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">{{ w.label }}</p>
+                    <p style="margin:0;font-size:15px;line-height:1.5;color:var(--fg-soft);text-wrap:pretty">{{ w.note }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.results }}" hint-placeholder-val="{{ false }}">
+            <p style="font-family:'Solway',serif;font-size:22px;margin:26px 0 16px">Research results</p>
+            <div ref="{{ staggerRef }}" style="display:flex;flex-direction:column;gap:16px;margin:0 0 34px">
+              <sc-for list="{{ s.results }}" as="r" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:36px;padding:26px 38px;border-radius:26px 18px 28px 20px;background:var(--surface);flex-direction:{{ r.dir }}">
+                  <div role="img" aria-label="Insight illustration" style="flex:none;width:150px;height:150px;background-repeat:no-repeat;background-size:contain;background-position:center;background-image:url({{ r.img }})"></div>
+                  <div style="display:flex;align-items:center;gap:18px;flex:1;min-width:0">
+                    <div style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--a1);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:500">{{ r.n }}</div>
+                    <p style="margin:0;font-size:17px;line-height:1.55;text-wrap:pretty">{{ r.t }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.storyIntro }}" hint-placeholder-val="{{ false }}">
+            <p style="font-family:'Solway',serif;font-size:22px;margin:0 0 12px">Storyboard</p>
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 20px;text-wrap:pretty">{{ s.storyIntro }}</p>
+          </sc-if>
+          <sc-if value="{{ s.storyboard }}" hint-placeholder-val="{{ false }}">
+            <div style="margin:6px 0 30px;overflow:hidden;border-radius:26px 18px 28px 20px;background:#FFFFFF;padding:22px 0">
+              <div ref="{{ sbRef }}" style="display:flex;flex-wrap:nowrap;gap:22px;align-items:flex-start;will-change:transform">
+                <sc-for list="{{ storyLoop }}" as="fr" hint-placeholder-count="10">
+                  <div style="flex:none;width:288px;display:flex;flex-direction:column;gap:12px">
+                    <div role="img" aria-label="Storyboard frame" style="width:100%;aspect-ratio:658 / 485;background-repeat:no-repeat;background-position:center;background-size:contain;background-image:url({{ fr.src }})"></div>
+                    <div style="display:flex;gap:10px">
+                      <p style="margin:0;flex:none;font-family:'Solway',serif;font-size:20px;color:#0FA3A3">{{ fr.n }}</p>
+                      <p style="margin:0;font-size:14px;line-height:1.5;color:var(--fg-soft);text-wrap:pretty">{{ fr.t }}</p>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.methods }}" hint-placeholder-val="{{ false }}">
+          <div ref="{{ staggerRef }}" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:4px 0 30px">
+            <sc-for list="{{ s.methods }}" as="m" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+                <div style="width:100%;aspect-ratio:1;border-radius:22px 15px 24px 17px;background:var(--surface) no-repeat center/58% url({{ m.icon }})"></div>
+                <p style="margin:0;font-size:15px;line-height:1.4;color:var(--fg-soft);text-wrap:pretty">{{ m.name }}</p>
+              </div>
+            </sc-for>
+          </div>
+          </sc-if>
+          <sc-if value="{{ s.personas }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:6px 0 20px;text-wrap:pretty">We designed four personas to represent the key users of the platform: two athletes and two trainers. Each persona captures different motivations, behaviors, and challenges. The athlete personas focus on social engagement, personal motivation, and workout preferences, while the trainer personas highlight different coaching styles, class management approaches, and interaction with clients.</p>
+            <div ref="{{ staggerRef }}" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:0 0 34px">
+              <sc-for list="{{ personaCards }}" as="pe" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;border-radius:24px 18px 26px 20px;overflow:hidden;background:#FFFFFF;border:1px solid var(--line)">
+                  <div style="position:relative;padding:16px 16px 0">
+                    <div role="img" aria-label="{{ pe.name }}" style="aspect-ratio:1 / 1;border-radius:16px 12px 16px 12px;background-repeat:no-repeat;background-size:contain;background-position:{{ pe.pos }};background-image:url({{ pe.src }})"></div>
+                    <div style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom,rgba(255,255,255,0),#FFFFFF);pointer-events:none"></div>
+                  </div>
+                  <div style="padding:20px 22px 26px;text-align:center;background:#FFFFFF">
+                    <p style="margin:0 0 4px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#EE2A63">{{ pe.role }}</p>
+                    <p style="margin:0 0 8px;font-family:'Solway',serif;font-size:20px;color:#171512">{{ pe.name }}</p>
+                    <p style="margin:0;font-size:15px;line-height:1.6;color:#6E675C;text-wrap:pretty">{{ pe.note }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.maps }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:6px 0 20px;text-wrap:pretty">We then designed an emotional map to identify key pain points and emotional triggers throughout their journey. This allowed us to highlight critical moments, such as motivation dips for athletes or engagement challenges for trainers, ensuring that Gymboo’s features effectively address their needs.</p>
+            <div style="display:flex;flex-direction:column;gap:18px;margin:6px 0 30px">
+              <div style="border-radius:24px 18px 26px 20px;overflow:hidden;background:#FFFFFF;border:1px solid var(--line);aspect-ratio:16/9">
+                <image-slot id="gb-emap-1" shape="rect" fit="contain" src="./images/gb-emotional-trainers.webp" placeholder="Emotional map: trainers"></image-slot>
+              </div>
+              <div style="border-radius:24px 18px 26px 20px;overflow:hidden;background:#FFFFFF;border:1px solid var(--line);aspect-ratio:16/9">
+                <image-slot id="gb-emap-2" shape="rect" fit="contain" src="./images/gb-emotional-athletes.webp" placeholder="Emotional map: athletes"></image-slot>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.ia }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:34px 30px;border-radius:28px 20px 30px 22px;background:var(--surface);border:1px solid var(--line)">
+              <div ref="{{ staggerRef }}" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px">
+                <sc-for list="{{ iaTabs }}" as="t" hint-placeholder-count="4">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+                    <p style="margin:0;padding:9px 20px;border-radius:999px;background:#EE2A63;color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase">{{ t.name }}</p>
+                    <div style="width:1px;height:16px;background:var(--line)"></div>
+                    <div style="display:flex;flex-direction:column;gap:8px;width:100%">
+                      <sc-for list="{{ t.children }}" as="c" hint-placeholder-count="3">
+                        <p style="margin:0;padding:9px 12px;border-radius:14px 10px 15px 11px;border:1.5px solid #F2921D;color:var(--fg);font-size:14px;text-align:center;text-wrap:pretty">{{ c.name }}</p>
+                      </sc-for>
+                    </div>
+                    <sc-if value="{{ t.deep }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;width:100%">
+                        <div style="width:1px;height:14px;background:var(--line)"></div>
+                        <sc-for list="{{ t.deep }}" as="d" hint-placeholder-count="2">
+                          <p style="margin:0;padding:9px 12px;border-radius:14px 10px 15px 11px;border:1.5px solid #0FA3A3;color:var(--fg);font-size:14px;text-align:center;width:100%;text-wrap:pretty">{{ d.name }}</p>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:30px">
+                <div style="width:1px;height:18px;background:var(--line)"></div>
+                <p style="margin:0;padding:12px 26px;border-radius:999px;background:#3F3F42;color:#fff;font-family:'Solway',serif;font-size:16px">Virtual room</p>
+              </div>
+              <div ref="{{ staggerRef }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px;margin-top:22px">
+                <sc-for list="{{ iaPhases }}" as="p" hint-placeholder-count="3">
+                  <div style="padding:22px 24px;border-radius:22px 16px 24px 18px;background:{{ p.bg }}">
+                    <p style="margin:0 0 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:{{ p.fg }}">{{ p.phase }}</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                      <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="2">
+                        <p style="margin:0;padding:8px 14px;border-radius:999px;background:var(--surface);font-size:14px">{{ it.name }}</p>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.frames }}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative;aspect-ratio:1130/540;overflow:hidden">
+              <img src="./images/gb-empathize-1.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:frameSeq 6s ease-in-out infinite;animation-delay:0s">
+              <img src="./images/gb-empathize-2.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:frameSeq 6s ease-in-out infinite;animation-delay:2s">
+              <img src="./images/gb-empathize-3.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:frameSeq 6s ease-in-out infinite;animation-delay:4s">
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.slot }}" hint-placeholder-val="{{ true }}">
+          <div style="aspect-ratio:16/9;border-radius:24px 18px 26px 20px;overflow:hidden;background:#FFFFFF">
+              <image-slot id="{{ s.slot }}" shape="rect" fit="contain" src="{{ s.src }}" placeholder="{{ s.caption }}"></image-slot>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.hmw }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:26px;padding:clamp(48px,7vw,88px) clamp(32px,6vw,72px);border-radius:30px 22px 32px 24px;background:#EE2A63;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:clamp(240px,28vw,340px)">
+              <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin:0">How might we</p>
+              <p ref="{{ typeRef }}" style="margin:0;max-width:760px;text-align:center;font-family:'Solway',serif;font-weight:400;font-size:clamp(24px,2.9vw,34px);line-height:1.35;color:#FFF6F9;text-wrap:pretty">{{ s.hmw }}</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.features }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+              <sc-for list="{{ s.features }}" as="f" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden">
+                    <image-slot id="{{ f.slot }}" shape="rect" placeholder="{{ f.name }}"></image-slot>
+                  </div>
+                  <div>
+                    <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">{{ f.name }}</p>
+                    <p style="margin:0;font-size:15px;line-height:1.5;color:var(--fg-soft);text-wrap:pretty">{{ f.note }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+      </sc-for>
+
+      <section id="takeaways" style="margin-bottom:44px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Takeaways</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">What I took away from it.</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 12px;text-wrap:pretty">Gymboo was the first project where I ran the whole process end to end, on a problem that had just become real for everyone: how to keep training together when the gym is closed. Designing for two groups at once, athletes and instructors, meant every feature had to work from both sides, and the emotional map was what kept the social side from becoming decoration.</p>
+        <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:17px;line-height:1.7;color:var(--fg-soft)">
+          <li>Applied end-to-end UX/UI methods, from research to prototyping</li>
+          <li>Designed for two distinct user groups: athletes and trainers</li>
+          <li>Used emotional mapping to identify critical pain points</li>
+          <li>Balanced usability with social interaction features</li>
+        </ul>
+      </section>
+
+      <div style="padding:32px;border-radius:28px 20px 30px 18px;background:var(--surface);display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap">
+        <div style="text-align:center">
+          <p style="font-family:'Shantell Sans',cursive;font-size:24px;margin:0 0 6px">Thanks for reading :-)</p>
+          <p style="margin:0 0 18px;color:var(--fg-soft);font-size:16px">Happy to walk you through the messy middle bits.</p>
+          <a href="./Portfolio.dc.html#contact" style="display:inline-block;padding:12px 26px;border-radius:999px;background:var(--fg);color:var(--bg);text-decoration:none;font-size:16px" style-hover="background:var(--a1);color:#1a1512">Get in touch</a>
+        </div>
+        <img src="./images/ashi.svg" alt="Ashi the cat" style="display:block;height:150px;width:auto" />
+      </div>
+
+      <div style="margin-top:36px;padding-top:20px;border-top:1px solid var(--line)">
+        <p style="margin:0 0 18px;font-size:16px;color:var(--fg-soft)">Next up</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px">
+          <a href="./Case Study Tagalong.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="gb-next-1" shape="rect" fit="cover" src="./images/tagalong-cover.webp" placeholder="Tagalong cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Tagalong</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">Group travel app · UX/UI</p>
+            </div>
+          </a>
+          <a href="./Case Study.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="gb-next-2" shape="rect" fit="cover" src="./images/furbrawl-cover.webp" placeholder="Furbrawl cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Furbrawl</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">Game design &amp; UI</p>
+            </div>
+          </a>
+        </div>
+        <a href="./Projects.dc.html" style="display:inline-block;margin-top:24px;font-size:17px">See all work →</a>
+      </div>
+    </main>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">
+class Component extends DCLogic {
+  state = { active: "overview", slide: 0, persona: 0 };
+  componentDidMount() {
+    const ids = this.vals().toc.map(t => t.href.slice(1));
+    this.io = new IntersectionObserver((entries) => {
+      const vis = entries.filter(e => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (vis && vis.target.id !== this.state.active) this.setState({ active: vis.target.id });
+    }, { rootMargin: "-20% 0px -65% 0px", threshold: 0 });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) this.io.observe(el); });
+    this.restartSlideTimer();
+    this.restartPersonaTimer();
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    if (this.slideTimer) clearInterval(this.slideTimer);
+    if (this.personaTimer) clearInterval(this.personaTimer);
+  }
+  renderVals() {
+    const vals = this.vals();
+    vals.typeRef = this.typeRef;
+    vals.staggerRef = this.staggerRef;
+    vals.mqRef = this.mqRef;
+    vals.illus = [
+      { slot: "gb-illu-1", src: "./images/gb-illu-1.webp", label: "Live workout with reactions" },
+      { slot: "gb-illu-2", src: "./images/gb-illu-2.webp", label: "Best moments after the session" },
+      { slot: "gb-illu-3", src: "./images/gb-illu-3.webp", label: "Searching for a class" },
+      { slot: "gb-illu-4", src: "./images/gb-illu-4.webp", label: "Inviting friends to train" }
+    ];
+    const slides = [
+      { src: "./images/gb-mw-1.webp", label: "Home", note: "Next lessons, the class calendar and a feed where the group posts what it is training on." },
+      { src: "./images/gb-mw-2.webp", label: "Chat and profile", note: "One-to-one and group chats, plus a profile with bio, courses and gym details." },
+      { src: "./images/gb-mw-3.webp", label: "Create a lesson", note: "Instructors build a course, set price, difficulty and equipment, then assemble the exercise table." },
+      { src: "./images/gb-mw-4.webp", label: "Gym", note: "Browse courses, read reviews, join a class and invite friends to train together." },
+      { src: "./images/gb-mw-5.webp", label: "Onboarding wizard", note: "A first-run walkthrough of the live room: timer, participants, reactions and pinning." },
+      { src: "./images/gb-mw-6.webp", label: "Pre workout", note: "The waiting room, where the group picks the shared playlist and connects its devices." },
+      { src: "./images/gb-mw-7.webp", label: "During the workout", note: "Live session with countdown, participant grid and quick reactions to keep the group present." },
+      { src: "./images/gb-mw-8.webp", label: "Post workout", note: "Best moments to review and share, plus feedback on effort and satisfaction." }
+    ];
+    const i = (this.state.slide || 0) % slides.length;
+    vals.slides = slides;
+    vals.slideShift = (-i * 100) + "%";
+    vals.slideLabel = slides[i].label;
+    vals.slideNote = slides[i].note;
+    vals.slidePrev = () => this.goSlide(i - 1 < 0 ? slides.length - 1 : i - 1);
+    vals.slideNext = () => this.goSlide((i + 1) % slides.length);
+    vals.slideDots = slides.map((sl, n) => ({
+      bg: n === i ? "#EE2A63" : "rgba(23,21,18,.22)",
+      go: () => this.goSlide(n)
+    }));
+    vals.wires = [
+      { slot: "gb-wire-2", src: "./images/gb-wire-2.webp", label: "Smartwatch", note: "Companion device, connected to the app during training, it allows the instructor to quickly manage certain commands such as changing exercise, managing the timer, and taking live photos, while the athlete can use quick interactions with others in the group." },
+      { slot: "gb-wire-4", src: "./images/gb-wire-4.webp", label: "Website", note: "The landing page provides a comprehensive overview of the service and its main functions, which are explained more specifically in the special sections dedicated to sportsmen and women and instructors." }
+    ];
+    vals.storyFrames = [
+      { n: "1.", t: "The instructor creates a lesson within his course and adds it to the calendar" },
+      { n: "2.", t: "The user is notified of the creation of the lesson because it is in her interest" },
+      { n: "3.", t: "The user registers for the class and her friends are notified" },
+      { n: "4.", t: "The calendar is updated with the next scheduled lessons" },
+      { n: "5.", t: "The trainer prepares the setting, activates the camera, starts the live and waits for the users" },
+      { n: "6.", t: "Users join the live from the home screen" },
+      { n: "7.", t: "User synchronize smartphone and website, while the trainer uses smartphone and smartwatch" },
+      { n: "8.", t: "Each participant activates the camera and microphone" },
+      { n: "9.", t: "Before the training a collective playlist is created and the exercises schedule is shown" },
+      { n: "10.", t: "The creation of the playlist stimulates socialising and conversation" }
+    ].map(function (f, i) { return { n: f.n, t: f.t, src: "./images/gb-sb-" + (i + 1) + ".png" }; });
+    vals.storyLoop = vals.storyFrames.concat(vals.storyFrames.map(function (f) { return { n: f.n, t: f.t, src: f.src }; }));
+    vals.sbRef = (el) => {
+      if (!el || el.dataset.mq) return;
+      el.dataset.mq = "1";
+      const wrap = el.parentElement;
+      let pos = 0, last = 0, paused = false;
+      wrap.addEventListener("pointerenter", () => { paused = true; });
+      wrap.addEventListener("pointerleave", () => { paused = false; });
+      const tick = (t) => {
+        const dt = last ? Math.min(64, t - last) : 16;
+        last = t;
+        if (!paused) {
+          const half = el.scrollWidth / 2;
+          if (half > 1) {
+            pos += (dt / 1000) * 26;
+            if (pos >= half) pos -= half;
+            el.style.transform = "translateX(" + -pos + "px)";
+          }
+        }
+        this.sbRaf = requestAnimationFrame(tick);
+      };
+      this.sbRaf = requestAnimationFrame(tick);
+    };
+    vals.featureCards = [
+      { src: "./images/gb-feat-1.webp", role: "Feature", name: "Chat", note: "Athletes and trainers keep talking between sessions, one to one or in the class group." },
+      { src: "./images/gb-feat-4.webp", role: "Feature", name: "Emoji reactions", note: "During a live class everyone can react with emoji, so the group energy stays visible while training." },
+      { src: "./images/gb-feat-3.webp", role: "Feature", name: "Photos and videos", note: "Snapshots and clips taken during the lesson are collected as a shared memory of the class." },
+      { src: "./images/gb-feat-2.webp", role: "Feature", name: "Ratings", note: "Athletes rate trainers and single lessons, giving feedback that shapes the next classes." }
+    ];
+    vals.personaCards = [
+      { src: "./images/gb-pers-a.webp", role: "Instructor", name: "The Cheerleader", note: "Leads on energy and improvisation, and needs new stimuli to keep every class feeling different." },
+      { src: "./images/gb-pers-b.webp", role: "Instructor", name: "The Meticulous", note: "Prepares everything in advance, and needs the setup simplified so nothing derails the session." },
+      { src: "./images/gb-pers-c.webp", role: "Athlete", name: "The Chatterbox", note: "Trains for the company, and needs to feel the group around him even through a screen." },
+      { src: "./images/gb-pers-d.webp", pos: "left center", role: "Athlete", name: "The Rookie", note: "Trains alone and well, and needs a group to balance skill-building with company." }
+    ].map(function (p) { return Object.assign({ pos: "center" }, p); });
+    vals.wires = [
+      { slot: "gb-wire-2", src: "./images/gb-wire-2.webp", label: "Smartwatch", note: "Companion device, connected to the app during training, it allows the instructor to quickly manage certain commands such as changing exercise, managing the timer, and taking live photos, while the athlete can use quick interactions with others in the group." },
+      { slot: "gb-wire-4", src: "./images/gb-wire-4.webp", label: "Website", note: "The landing page provides a comprehensive overview of the service and its main functions, which are explained more specifically in the special sections dedicated to sportsmen and women and instructors." }
+    ];
+    const personaSlides = [
+      { src: "./images/gb-persona-1.webp", name: "The Cheerleader · instructor", note: "Leads on energy and improvisation, and needs new stimuli to keep every class feeling different." },
+      { src: "./images/gb-persona-2.webp", name: "The Meticulous · instructor", note: "Prepares everything in advance and needs the setup simplified so nothing derails the session." },
+      { src: "./images/gb-persona-3.webp", name: "The Chatterbox · athlete", note: "Trains for the company, and needs to feel the group around him even through a screen." },
+      { src: "./images/gb-persona-4.webp", name: "The Rookie · athlete", note: "Trains alone and well, and needs a group to balance skill-building with company." }
+    ];
+    const pi = (this.state.persona || 0) % personaSlides.length;
+    vals.personaSlides = personaSlides;
+    vals.pShift = (-pi * 100) + "%";
+    vals.pName = personaSlides[pi].name;
+    vals.pNote = personaSlides[pi].note;
+    vals.pPrev = () => this.goPersona(pi - 1 < 0 ? personaSlides.length - 1 : pi - 1);
+    vals.pNext = () => this.goPersona((pi + 1) % personaSlides.length);
+    vals.pDots = personaSlides.map((p, n) => ({ bg: n === pi ? "#EE2A63" : "rgba(23,21,18,.22)", go: () => this.goPersona(n) }));
+    vals.iaTabs = [
+      { name: "Home", children: [{ name: "Calendar" }, { name: "Notifications" }, { name: "New posts" }], deep: [{ name: "Friends search" }] },
+      { name: "Gym", children: [{ name: "Create a lesson" }, { name: "My lessons" }, { name: "Search" }], deep: [{ name: "Class creation" }, { name: "Course creation" }, { name: "Course schedule" }, { name: "Invite boo" }] },
+      { name: "Messages", children: [{ name: "Group chat" }, { name: "Chat" }], deep: false },
+      { name: "Profile", children: [{ name: "Recent activities" }, { name: "My courses" }, { name: "Boo" }], deep: [{ name: "Boo profile" }] }
+    ];
+    vals.iaPhases = [
+      { phase: "Pre training", bg: "#DFF3F2", fg: "#0FA3A3", items: [{ name: "Training schedule" }, { name: "Playlist" }] },
+      { phase: "During training", bg: "#FCE3EB", fg: "#EE2A63", items: [{ name: "Training" }] },
+      { phase: "Post training", bg: "#FCEBD8", fg: "#C8760F", items: [{ name: "Share pictures" }, { name: "Feedback results" }] }
+    ];
+    vals.toc = vals.toc.map(t => {
+      const on = t.href.slice(1) === this.state.active;
+      return { ...t, color: on ? "var(--a1)" : "var(--fg-soft)", shift: on ? "10px" : "0px" };
+    });
+    return vals;
+  }
+  vals() {
+    return {
+      toc: [
+        { label: "Intro", href: "#overview" },
+        { label: "Empathize", href: "#empathize" },
+        { label: "Research", href: "#research" },
+        { label: "Define", href: "#define" },
+        { label: "Ideate", href: "#ideate" },
+        { label: "Prototype", href: "#prototype" },
+        { label: "Final design", href: "#final" },
+        { label: "Takeaways", href: "#takeaways" }
+      ],
+      sections: this.withSrc([
+        {
+          id: "empathize",
+          kicker: "Empathize",
+          title: "When the gym closes, where do instructors and athletes meet?",
+          slot: "",
+          frames: true,
+          body: "Before quarantine, the meeting between instructors and athletes was facilitated by the gym. However, the health emergency imposed social distancing measures and led to the closure of gyms and sports centers.",
+          body2: "This raised a crucial question: how can the two parties continue to connect and train together remotely?",
+          caption: "Problem framing"
+        },
+        {
+          id: "research",
+          kicker: "Research",
+          title: "We wanted the story from both sides.",
+          slot: "",
+          goals: [
+            { icon: "./images/gb-goal-14.svg", dir: "row", num: "01", text: "Identify the needs of instructors in continuing carrying out their work during quarantine" },
+            { icon: "./images/gb-goal-15.svg", dir: "row-reverse", num: "02", text: "Understand how the habits of sports people and their perception of physical activity have changed" },
+            { icon: "./images/gb-goal-16.svg", dir: "row", num: "03", text: "Analyse the different solutions currently used by both parties to continue their activities" },
+            { icon: "./images/gb-goal-17.svg", dir: "row-reverse", num: "04", text: "Understand how much and in what ways the two parties are open to meeting through technology" }
+          ],
+          body: "",
+          body2: "",
+          parts: [
+            { t: "While researching we used a mix of qualitative and quantitative methods. We conducted ", w: 400, c: "var(--fg-soft)" },
+            { t: "online surveys", w: 700, c: "var(--fg)" },
+            { t: " to gather broad insights on habits and preferences, and ", w: 400, c: "var(--fg-soft)" },
+            { t: "observed users", w: 700, c: "var(--fg)" },
+            { t: " during online workout sessions to understand real behaviors and challenges. We also performed ", w: 400, c: "var(--fg-soft)" },
+            { t: "benchmarking", w: 700, c: "var(--fg)" },
+            { t: " of popular fitness platforms to identify common patterns and gaps. To deepen our understanding, we ran ", w: 400, c: "var(--fg-soft)" },
+            { t: "online interviews", w: 700, c: "var(--fg)" },
+            { t: " and created ", w: 400, c: "var(--fg-soft)" },
+            { t: "emotional maps", w: 700, c: "var(--fg)" },
+            { t: " to capture key pain points and emotional responses throughout the training experience.", w: 400, c: "var(--fg-soft)" }
+          ],
+          methods: [
+            { icon: "./images/gb-method-18.svg", name: "Online surveys" },
+            { icon: "./images/gb-method-19.svg", name: "User Observation" },
+            { icon: "./images/gb-method-20.svg", name: "Benchmarking" },
+            { icon: "./images/gb-method-21.svg", name: "Online interviews and emotional maps" }
+          ],
+          personas: true,
+          maps: true,
+          caption: "Research methods and personas"
+        },
+        {
+          id: "define",
+          kicker: "Define",
+          title: "The missing piece wasn't the workout. It was the group.",
+          slot: "",
+          body: "In this phase, we refined our research insights to establish a clear direction for Gymboo, while also defining Gymboo’s unique value proposition, emphasizing its role in connecting athletes and trainers within an engaging virtual training environment that promotes social interaction. This foundation ensured that all design decisions were aligned with user needs and expectations.",
+          body2: "",
+          results: [
+            { n: "01", dir: "row", slot: "gb-result-1", img: "./images/gb-result-1.webp", t: "There is a perceived lack of interaction between the group of athletes, the primary motivation for people to enroll in a group exercise class" },
+            { n: "02", dir: "row-reverse", slot: "gb-result-2", img: "./images/gb-result-2.webp", t: "Almost all instructors continue to exercise online independently and out of passion, so the meeting between the two parties takes place outside the gym" },
+            { n: "03", dir: "row", slot: "gb-result-3", img: "./images/gb-result-3.webp", t: "The need for confrontation and feedback during training has increased in order to reconfirm and strengthen the relationship between instructor and athletes" },
+            { n: "04", dir: "row-reverse", slot: "gb-result-4", img: "./images/gb-result-4.webp", t: "Multiple platforms are needed to manage the planning and execution phases of training and feedback collection" }
+          ],
+          storyIntro: "Storyboards are essential for visualizing the user journey, mapping out key steps and interactions. In this case, we’ve illustrated a scenario where an instructor creates a class, participants receive notifications, and while waiting, they collaborate on a shared playlist.",
+          storyboard: true,
+          caption: "Emotional map and storyboard",
+          hmw: "Help athletes and instructors keep the group alive when the room is gone?"
+        },
+        {
+          id: "ideate",
+          kicker: "Ideate",
+          title: "One structure for planning, training and everything after.",
+          slot: "",
+          ia: true,
+          body: "The Gymboo architecture map outlines a structured, interactive experience connecting athletes and instructors. The Home hub provides access to key features, while the Gym section focuses on lesson creation and scheduling. Messages enable communication, and Profile tracks activities and courses.",
+          body2: "Training is divided into Pre-training for planning, During training for live sessions, and Post-training for feedback and social sharing.",
+          caption: "Architecture map"
+        },
+        {
+          id: "prototype",
+          kicker: "Prototype",
+          title: "Three devices, one session.",
+          slot: "",
+          wires: true,
+          wiresLegacy: true,
+          body: "In the wireframing phase of Gymboo, we sketched out the core experience across mobile, PC, and smartwatch to make sure everything felt smooth and intuitive.",
+          body2: "This helped us shape the layout, refine navigation, and test key features early on.",
+          caption: "Wireframes: mobile, web and smartwatch",
+          features: false
+        },
+        {
+          id: "final",
+          kicker: "Final design",
+          title: "Vibrant, illustrated, and easy to read mid-burpee.",
+          slot: "",
+          finals: true,
+          body: "Gymboo's final design combines a vibrant color palette, illustrated icons, and a clean, cohesive style. The primary pink is paired with blue and orange for energy.",
+          body2: "",
+          caption: "Final screens"
+        }
+      ])
+    };
+  }
+  withSrc(list) { return list.map(s => ({ src: "", ...s })); }
+  goPersona(n) {
+    this.setState({ persona: n });
+    this.restartPersonaTimer();
+  }
+  restartPersonaTimer() {
+    if (this.personaTimer) clearInterval(this.personaTimer);
+    this.personaTimer = setInterval(() => {
+      this.setState(st => ({ persona: ((st.persona || 0) + 1) % 4 }));
+    }, 5000);
+  }
+  goSlide(n) {
+    this.setState({ slide: n });
+    this.restartSlideTimer();
+  }
+  restartSlideTimer() {
+    if (this.slideTimer) clearInterval(this.slideTimer);
+    this.slideTimer = setInterval(() => {
+      this.setState(st => ({ slide: ((st.slide || 0) + 1) % 8 }));
+    }, 5000);
+  }
+  mqRef = (el) => {
+    if (!el || el.dataset.mq) return;
+    el.dataset.mq = "1";
+    const wrap = el.parentElement;
+    let pos = 0, last = 0, paused = false;
+    wrap.addEventListener("pointerenter", () => { paused = true; });
+    wrap.addEventListener("pointerleave", () => { paused = false; });
+    const tick = (t) => {
+      const dt = last ? Math.min(64, t - last) : 16;
+      last = t;
+      if (!paused) {
+        const half = el.scrollWidth / 2;
+        if (half > 1) {
+          pos += (dt / 1000) * 34;
+          if (pos >= half) pos -= half;
+          el.style.transform = "translateX(" + -pos + "px)";
+        }
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  staggerRef = (el) => {
+    if (!el || el.dataset.stagger) return;
+    el.dataset.stagger = "1";
+    const kids = Array.from(el.children);
+    kids.forEach((k) => {
+      k.style.opacity = "0";
+      k.style.transform = "translateY(14px)";
+      k.style.transition = "opacity .5s ease,transform .5s cubic-bezier(.4,0,.2,1)";
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        kids.forEach((k, i) => setTimeout(() => {
+          k.style.opacity = "1";
+          k.style.transform = "translateY(0)";
+        }, i * 160));
+      });
+    }, { threshold: 0.25 });
+    io.observe(el);
+  };
+  typeRef = (el) => {
+    if (!el || el.dataset.typed) return;
+    el.dataset.typed = "1";
+    const words = el.textContent.split(" ");
+    const run = () => {
+      el.textContent = "";
+      const spans = words.map((w, i) => {
+        const s = document.createElement("span");
+        s.textContent = i < words.length - 1 ? w + " " : w;
+        s.style.opacity = "0";
+        s.style.transition = "opacity .32s ease";
+        el.appendChild(s);
+        return s;
+      });
+      spans.forEach((s, i) => setTimeout(() => { s.style.opacity = "1"; }, i * 90));
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { io.disconnect(); run(); } });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  };
+}
+</script>
+</body>
+</html>

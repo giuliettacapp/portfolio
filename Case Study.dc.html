@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;500;700&family=Karla:ital,wght@0,300;0,400;0,500;1,400&family=Shantell+Sans:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{--bg:#F4F1EA;--fg:#171512;--fg-soft:#6E675C;--line:rgba(23,21,18,.14);--dots:rgba(23,21,18,.11);--surface:#FCFAF5;--tint:#E9E4D8;
+--a1:#56C4E8;--a2:oklch(0.72 0.15 265);}
+[data-theme="dark"]{--bg:#14120F;--fg:#F1EDE4;--fg-soft:#9C9488;--line:rgba(241,237,228,.16);--dots:rgba(241,237,228,.13);--surface:#1D1A16;--tint:#221E19;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1px,transparent 1px);background-size:24px 24px;background-position:0 0;background-attachment:fixed;color:var(--fg);font-family:'Karla',system-ui,sans-serif;transition:background .4s ease,color .4s ease;overflow-x:clip}
+a{color:var(--fg);text-underline-offset:4px}
+a:hover{color:var(--a1)}
+@keyframes trailPop{from{opacity:.85}to{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+  <dc-import name="Nav" active="projects" hint-size="100%,66px"></dc-import>
+
+  <!-- cover con bordo curvo in basso, come nei riferimenti -->
+  <div style="position:relative;height:clamp(260px,36vw,440px)">
+    <image-slot id="cs-hero" shape="rect" placeholder="Case study hero: wide"></image-slot>
+    <div style="position:absolute;left:-6%;right:-6%;bottom:-2px;height:90px;background:var(--bg);border-radius:100% 100% 0 0 / 90px 90px 0 0;pointer-events:none"></div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:0 26px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:56px;align-items:start">
+    <aside style="position:sticky;top:90px;padding-top:20px;max-width:230px">
+      <a href="./Projects.dc.html" style="display:inline-block;margin-bottom:24px;font-size:15px;text-decoration:none">← All projects</a>
+      <nav style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ toc }}" as="t" hint-placeholder-count="5">
+          <a href="{{ t.href }}" style="padding:7px 12px;border-radius:8px;font-size:15px;text-decoration:none;transition:transform .28s cubic-bezier(.4,0,.2,1),color .28s ease;color:{{ t.color }};transform:translateX({{ t.shift }})" style-hover="background:var(--tint)">{{ t.label }}</a>
+        </sc-for>
+      </nav>
+    </aside>
+
+    <main style="padding-top:20px;max-width:660px;grid-column:span 2">
+      <p style="font-family:'Shantell Sans',cursive;font-size:34px;color:var(--a1);margin:0 0 6px">Furbrawl</p>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-soft);margin:0 0 18px">Game design, art direction & UX/UI</p>
+
+      <h1 id="overview" style="font-family:'Solway',serif;font-weight:400;font-size:clamp(36px,5vw,58px);line-height:1.05;margin:0 0 24px;text-wrap:balance">A chaotic multiplayer brawler, starring cats.</h1>
+
+      <p style="font-size:18px;line-height:1.7;color:var(--fg-soft);margin:0 0 36px;text-wrap:pretty">Furbrawl is a fast-paced multiplayer fighting game developed in university during the Videogame Design and Programming course. Our team consisted of three programmers and myself as team leader, overseeing game design, art, and UX/UI. It was my first experience working on a game from start to finish, and we completed the entire project in three months.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:22px;padding:24px 0;border-block:1px solid var(--line);margin-bottom:52px">
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Role</p>
+          <p style="margin:0;font-size:16px">Team Leader, Game Artist, UI/UX Designer</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Scope</p>
+          <p style="margin:0;font-size:16px">University project · 2021 original, 2024 redesign</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);margin:0 0 6px">Read time</p>
+          <p style="margin:0;font-size:16px">3 minutes</p>
+        </div>
+      </div>
+
+      <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+        <section id="{{ s.id }}" style="margin-bottom:76px;scroll-margin-top:100px">
+          <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">{{ s.kicker }}</p>
+          <h2 ref="{{ typeRef }}" style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">{{ s.title }}</h2>
+          <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">{{ s.body }}</p>
+          <sc-if value="{{ s.body2 }}" hint-placeholder-val="{{ true }}">
+            <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">{{ s.body2 }}</p>
+          </sc-if>
+          <sc-if value="{{ s.videoReady }}" hint-placeholder-val="{{ false }}">
+            <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line);background:var(--tint)">
+              <video ref="{{ vidRef }}" data-src="{{ s.video }}" playsinline loop muted autoplay preload="auto" disableRemotePlayback style="width:100%;height:100%;object-fit:cover;display:block"></video>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.videoPending }}" hint-placeholder-val="{{ false }}">
+            <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;border:1px dashed var(--line);background:var(--tint);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:20px">
+              <p style="margin:0;font-family:'Solway',serif;font-size:19px">Playtest clip</p>
+              <p style="margin:0;font-size:14px;color:var(--fg-soft);max-width:34ch;text-wrap:pretty">Allega il file video in chat e lo inserisco qui io.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.compare }}" hint-placeholder-val="{{ false }}">
+            <div ref="{{ cmpRef }}" style="position:relative;aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line);user-select:none">
+              <div style="position:absolute;inset:0">
+                <image-slot id="cs-4-before" shape="rect" placeholder="Before: 2021 UI"></image-slot>
+              </div>
+              <div style="position:absolute;inset:0;clip-path:inset(0 0 0 {{ cmpPct }}%)">
+                <image-slot id="cs-4-after" shape="rect" placeholder="After: 2024 redesign"></image-slot>
+              </div>
+              <div onPointerDown="{{ cmpDown }}" style="position:absolute;top:0;bottom:0;left:{{ cmpPct }}%;width:2px;background:var(--surface);box-shadow:0 0 0 1px rgba(23,21,18,.18);touch-action:none;cursor:ew-resize">
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:5px;box-shadow:0 6px 18px rgba(23,21,18,.14)">
+                  <span style="font-size:13px;color:var(--fg-soft)">◀</span>
+                  <span style="font-size:13px;color:var(--fg-soft)">▶</span>
+                </div>
+              </div>
+              <span style="position:absolute;left:14px;bottom:12px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 11px;pointer-events:none">2021</span>
+              <span style="position:absolute;right:14px;bottom:12px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 11px;pointer-events:none">2024</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.plainMedia }}" hint-placeholder-val="{{ true }}">
+            <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="{{ s.slot }}" shape="rect" src="{{ s.src }}" placeholder="{{ s.caption }}"></image-slot>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.hmw }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:26px;padding:clamp(48px,7vw,88px) clamp(32px,6vw,72px);border-radius:30px 22px 32px 24px;background:#5B4BE0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:clamp(240px,28vw,340px)">
+              <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,244,255,.75);margin:0">How might we</p>
+              <p ref="{{ typeRef }}" style="margin:0;max-width:760px;text-align:center;font-family:'Solway',serif;font-weight:400;font-size:clamp(24px,2.9vw,34px);line-height:1.35;color:#F6F4FF;text-wrap:pretty">{{ s.hmw }}</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.features }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:26px;display:flex;flex-direction:column;gap:34px">
+              <sc-for list="{{ s.features }}" as="f" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="aspect-ratio:16/9;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+                    <image-slot id="{{ f.slot }}" shape="rect" placeholder="{{ f.name }}"></image-slot>
+                  </div>
+                  <div>
+                    <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">{{ f.name }}</p>
+                    <p style="margin:0;font-size:15px;line-height:1.5;color:var(--fg-soft);text-wrap:pretty">{{ f.note }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+      </sc-for>
+
+      <section id="gallery" style="margin-bottom:76px;scroll-margin-top:100px">
+        <div onPointerEnter="{{ galPause }}" onPointerLeave="{{ galResume }}" style="overflow:hidden;padding-bottom:4px">
+        <div ref="{{ galRef }}" style="display:flex;gap:16px;will-change:transform">
+          <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+            <div style="flex:0 0 clamp(360px,86%,760px);aspect-ratio:16/9;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="{{ g.slot }}" shape="rect" placeholder="{{ g.caption }}"></image-slot>
+            </div>
+          </sc-for>
+        </div>
+        </div>
+      </section>
+
+      <section id="takeaways" style="margin-bottom:44px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin:0 0 12px">Takeaways</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">What I took away from it.</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 12px">Furbrawl taught me:</p>
+        <ul style="margin:0 0 16px;padding-left:22px;display:flex;flex-direction:column;gap:8px">
+          <li style="font-size:17px;line-height:1.6;color:var(--fg-soft)">How to lead and collaborate remotely</li>
+          <li style="font-size:17px;line-height:1.6;color:var(--fg-soft)">How to communicate design ideas with developers clearly and effectively</li>
+          <li style="font-size:17px;line-height:1.6;color:var(--fg-soft)">The value of being flexible and letting go of ideas that don't serve the bigger picture</li>
+          <li style="font-size:17px;line-height:1.6;color:var(--fg-soft)">How crucial UI truly is, a lesson that became even more clear during the redesign</li>
+        </ul>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 24px;text-wrap:pretty">Looking back, I realize how much I grew through this project, both creatively and professionally.</p>
+        <a href="https://polimi-game-collective.itch.io/furbrawl" target="_blank" rel="noopener" style="display:inline-block;padding:12px 26px;border-radius:999px;border:1px solid var(--fg);text-decoration:none;font-size:16px" style-hover="background:var(--fg);color:var(--bg)">Play it on itch.io →</a>
+      </section>
+
+      <div style="padding:32px;border-radius:28px 20px 30px 18px;background:var(--surface);display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap">
+        <div style="text-align:center">
+          <p style="font-family:'Shantell Sans',cursive;font-size:24px;margin:0 0 6px">Thanks for reading :-)</p>
+          <p style="margin:0 0 18px;color:var(--fg-soft);font-size:16px">Happy to walk you through the messy middle bits.</p>
+          <a href="./Portfolio.dc.html#contact" style="display:inline-block;padding:12px 26px;border-radius:999px;background:var(--fg);color:var(--bg);text-decoration:none;font-size:16px" style-hover="background:var(--a1);color:#1a1512">Get in touch</a>
+        </div>
+        <img src="./images/ashi.svg" alt="Ashi the cat" style="display:block;height:150px;width:auto" />
+      </div>
+
+      <div style="margin-top:36px;padding-top:20px;border-top:1px solid var(--line)">
+        <p style="margin:0 0 18px;font-size:16px;color:var(--fg-soft)">Next up</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px">
+          <a href="./Case Study Tagalong.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="fb-next-1" shape="rect" fit="cover" src="./images/tagalong-cover.webp" placeholder="Tagalong cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Tagalong</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">Group travel app · UX/UI</p>
+            </div>
+          </a>
+          <a href="./Case Study Gymboo.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="fb-next-2" shape="rect" fit="cover" src="./images/gymboo-cover.webp" placeholder="Gymboo cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Gymboo</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">App design &amp; user research</p>
+            </div>
+          </a>
+        </div>
+        <a href="./Projects.dc.html" style="display:inline-block;margin-top:24px;font-size:17px">See all work →</a>
+      </div>
+    </main>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">
+class Component extends DCLogic {
+  state = { cmpPct: 50, active: "overview" };
+  cmpRef = React.createRef();
+  galRef = React.createRef();
+  galDir = 1;
+  galPaused = false;
+  galPos = 0;
+  galTick = (t) => {
+    const el = this.galRef.current;
+    const dt = this.galLast ? Math.min(64, t - this.galLast) : 16;
+    this.galLast = t;
+    if (el && !this.galPaused) {
+      const max = el.scrollWidth - (el.parentElement ? el.parentElement.clientWidth : 0);
+      if (max > 1) {
+        this.galPos += (dt / 1000) * 22;
+        if (this.galPos >= max) this.galPos = 0;
+        el.style.transform = "translateX(" + -this.galPos + "px)";
+      }
+    }
+    this.galRaf = requestAnimationFrame(this.galTick);
+  };
+  setCmp = (e) => {
+    const el = this.cmpRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const pct = Math.min(100, Math.max(0, ((e.clientX - r.left) / r.width) * 100));
+    this.setState({ cmpPct: Math.round(pct * 10) / 10 });
+  };
+  componentDidMount() {
+    const src = "./images/furbrawl-testing.mp4";
+    fetch(src, { method: "HEAD" })
+      .then(r => { if (r.ok) this.setState({ videoOk: true }); })
+      .catch(() => {});
+    this.observeSections();
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    this.galRunning = false;
+    if (this.galRaf) cancelAnimationFrame(this.galRaf);
+  }
+  observeSections() {
+    const ids = this.vals().toc.map(t => t.href.slice(1));
+    const io = new IntersectionObserver((entries) => {
+      const vis = entries.filter(e => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (vis && vis.target.id !== this.state.active) this.setState({ active: vis.target.id });
+    }, { rootMargin: "-20% 0px -65% 0px", threshold: 0 });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+    this.io = io;
+  }
+  typeRef = (el) => {
+    if (!el || el.dataset.typed) return;
+    el.dataset.typed = "1";
+    const words = el.textContent.split(" ");
+    const run = () => {
+      el.textContent = "";
+      const spans = words.map((w, i) => {
+        const s = document.createElement("span");
+        s.textContent = i < words.length - 1 ? w + " " : w;
+        s.style.opacity = "0";
+        s.style.transition = "opacity .32s ease";
+        el.appendChild(s);
+        return s;
+      });
+      spans.forEach((s, i) => setTimeout(() => { s.style.opacity = "1"; }, i * 90));
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { io.disconnect(); run(); } });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  };
+  renderVals() {
+    const vals = this.vals();
+    vals.typeRef = this.typeRef;
+    vals.toc = vals.toc.map(t => {
+      const on = t.href.slice(1) === this.state.active;
+      return { ...t, color: on ? "var(--a1)" : "var(--fg-soft)", shift: on ? "10px" : "0px" };
+    });
+    const ok = !!this.state.videoOk;
+    vals.sections = vals.sections.map(s => ({
+      ...s,
+      plainMedia: !s.video && !s.compare,
+      videoReady: !!s.video && ok,
+      videoPending: !!s.video && !ok
+    }));
+    vals.vidRef = (el) => {
+      if (!el) return;
+      if (el.dataset.src && !el.src) el.src = el.dataset.src;
+      el.muted = true;
+      el.defaultMuted = true;
+      el.loop = true;
+      el.volume = 0;
+      el.play?.().catch(() => {});
+    };
+    vals.gallery = [
+      { slot: "cs-g1", caption: "Gallery image 1" },
+      { slot: "cs-g2", caption: "Gallery image 2" },
+      { slot: "cs-g3", caption: "Gallery image 3" },
+      { slot: "cs-g4", caption: "Gallery image 4" },
+      { slot: "cs-g5", caption: "Gallery image 5" }
+    ];
+    vals.galRef = (el) => {
+      this.galRef.current = el;
+      if (el && !this.galRunning) {
+        this.galRunning = true;
+        this.galRaf = requestAnimationFrame(this.galTick);
+      }
+    };
+    vals.galPause = () => { this.galPaused = true; };
+    vals.galResume = () => { this.galPaused = false; };
+    vals.cmpPct = this.state.cmpPct;
+    vals.cmpRef = this.cmpRef;
+    vals.cmpDown = (e) => {
+      e.preventDefault();
+      const move = (ev) => this.setCmp(ev);
+      const up = () => {
+        document.removeEventListener("pointermove", move);
+        document.removeEventListener("pointerup", up);
+      };
+      document.addEventListener("pointermove", move);
+      document.addEventListener("pointerup", up);
+    };
+    return vals;
+  }
+  vals() {
+    return {
+      toc: [
+        { label: "Intro", href: "#overview" },
+        { label: "Concept", href: "#concept" },
+        { label: "Prototyping", href: "#prototyping" },
+        { label: "Testing", href: "#testing" },
+        { label: "Deployment", href: "#deployment" },
+        { label: "Final design", href: "#final" },
+        { label: "Takeaways", href: "#takeaways" }
+      ],
+      sections: [
+        {
+          id: "concept",
+          kicker: "Concept",
+          title: "A brawler built around one very simple idea.",
+          slot: "cs-1",
+          body: "The core idea behind Furbrawl was to create a chaotic multiplayer brawler featuring cats, my favorite animal. The main mechanic was simple but engaging: knock opponents off the platform and be the last one standing.",
+          body2: "The tone and aesthetics aimed to be light-hearted and fun, supporting short, competitive sessions.",
+          caption: "Concept art and mood"
+        },
+        {
+          id: "prototyping",
+          kicker: "Prototyping",
+          title: "Cubes first, cats later.",
+          slot: "cs-2",
+          body: "We developed our prototype in Unity, starting with player movement, core physics, jumping, collisions, knockback, and multiplayer networking.",
+          body2: "Early versions used basic geometric shapes as placeholders while we focused on refining the game mechanics.",
+          caption: "Greybox prototype in Unity"
+        },
+        {
+          id: "testing",
+          kicker: "Testing",
+          title: "Every team in the course played every other game.",
+          slot: "cs-3",
+          video: "./images/furbrawl-testing.mp4",
+          body: "Each team playtested the other students' games, which gave us essential feedback from people who had no reason to be kind about it.",
+          body2: "Thanks to this process we balanced key mechanics, fine-tuned the physics for better responsiveness, and iterated quickly based on real player behavior rather than our own assumptions.",
+          caption: "Playtest session"
+        },
+        {
+          id: "deployment",
+          kicker: "Deployment",
+          title: "A playable build, then a second look years later.",
+          slot: "cs-4",
+          compare: true,
+          body: "We delivered a playable, downloadable final build by the end of the course.",
+          body2: "Although the original version included a basic UI, I redesigned the interface years later to elevate the user experience, focusing on clarity, flow, and visual cohesion.",
+          caption: "Final build"
+        },
+        {
+          id: "final",
+          kicker: "Final design",
+          title: "Playful and energetic, matching the game's tempo.",
+          slot: "cs-5",
+          src: "./images/furbrawl-final.webp",
+          body: "I handled all visual design work: Photoshop for character animations and assets, Illustrator for UI elements, buttons, HUD, menus.",
+          body2: "In 2024 I revisited the project and redesigned the interface with soft pastel tones, rounded shapes, and smooth gradients, making it more inviting and accessible while preserving its chaotic spirit.",
+          caption: "UI screens: 2021 original and 2024 redesign",
+          features: [
+            { slot: "cs-f1", name: "Main menu", note: "Rebuilt hierarchy so the primary action reads first" },
+            { slot: "cs-f2", name: "Character select", note: "Roster laid out for quick reading in a live lobby" },
+            { slot: "cs-f3", name: "In-game HUD", note: "Damage and lives legible in the middle of the chaos" }
+          ]
+        }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;500;700&family=Karla:ital,wght@0,300;0,400;0,500;1,400&family=Shantell+Sans:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{--bg:#F4F1EA;--fg:#171512;--fg-soft:#6E675C;--line:rgba(23,21,18,.14);--dots:rgba(23,21,18,.11);--surface:#FCFAF5;--tint:#E9E4D8;
+--a1:#74A7F4;--a2:oklch(0.72 0.15 265);}
+[data-theme="dark"]{--bg:#14120F;--fg:#F1EDE4;--fg-soft:#9C9488;--line:rgba(241,237,228,.16);--dots:rgba(241,237,228,.13);--surface:#1D1A16;--tint:#221E19;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1px,transparent 1px);background-size:24px 24px;background-position:0 0;background-attachment:fixed;color:var(--fg);font-family:'Karla',system-ui,sans-serif;transition:background .4s ease,color .4s ease;overflow-x:clip}
+a{color:var(--fg);text-underline-offset:4px}
+a:hover{color:var(--a1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes trailPop{from{opacity:.85}to{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+  <dc-import name="Nav" active="playground" hint-size="100%,66px"></dc-import>
+
+  <header style="max-width:1240px;margin:0 auto;padding:64px 26px 44px;animation:fadeUp .6s ease both">
+    <p style="font-family:'Shantell Sans',cursive;font-size:22px;color:var(--a1);margin:0 0 8px">Playground</p>
+    <h1 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(40px,6.2vw,80px);line-height:1;margin:0;max-width:900px;text-wrap:balance">Things with no client, no brief and no deadline.</h1>
+    <p style="max-width:520px;margin:24px 0 0;font-size:18px;line-height:1.6;color:var(--fg-soft);text-wrap:pretty">UI concepts, game interfaces, print and a bit of illustration. Some of it was practice, some of it was just an idea I wanted to see finished.</p>
+  </header>
+
+  <section style="max-width:1240px;margin:0 auto;padding:0 26px">
+    <!-- bento: tessere di taglie diverse, incastro serrato, didascalia dentro la tessera -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:152px;grid-auto-flow:dense;gap:16px">
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="8">
+        <figure style="margin:0;grid-column:{{ it.col }};grid-row:{{ it.row }};display:flex;flex-direction:column;gap:10px;transition:transform .3s ease" style-hover="transform:translateY(-6px)">
+          <div onClick="{{ it.onOpen }}" style="flex:1;min-height:0;border:1px solid var(--line);border-radius:{{ it.radius }};overflow:hidden;background:var(--surface);cursor:zoom-in">
+            <image-slot id="{{ it.slot }}" shape="rect" fit="{{ it.fit }}" src="{{ it.src }}" placeholder="{{ it.ph }}"></image-slot>
+          </div>
+          <figcaption style="flex:none">
+            <p style="font-family:'Solway',serif;font-size:19px;line-height:1.25;margin:0">{{ it.title }}</p>
+            <p style="margin:2px 0 0;font-size:13px;color:var(--fg-soft)">{{ it.kind }}</p>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:70px 26px 0">
+    <div style="padding:38px;border-radius:32px 22px 34px 20px;background:var(--tint);text-align:center">
+      <p style="font-family:'Solway',serif;font-size:clamp(26px,3.4vw,38px);margin:0 0 10px;line-height:1.15">Want to see how one of these was made?</p>
+      <p style="margin:0 0 20px;font-size:17px;color:var(--fg-soft)">Sketches, dead ends and all.</p>
+      <a href="mailto:giuliettacapp@gmail.com" style="display:inline-block;padding:13px 28px;border-radius:999px;background:var(--fg);color:var(--bg);text-decoration:none;font-size:16px" style-hover="background:var(--a1);color:#1a1512">Ask away</a>
+    </div>
+  </section>
+
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:90;background:rgba(10,9,7,.82);display:flex;align-items:center;justify-content:center;padding:44px 26px;animation:fadeUp .25s ease both;cursor:zoom-out;overflow-y:auto">
+      <div style="max-width:1020px;width:100%;display:flex;flex-direction:column;gap:20px;cursor:default">
+        <div style="border-radius:26px 18px 28px 20px;overflow:hidden;height:74vh">
+          <img ref="{{ lightboxRef }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover">
+        </div>
+        <div>
+          <p style="font-family:'Solway',serif;font-size:26px;line-height:1.2;margin:0;color:#F4F1EA">{{ openTitle }}</p>
+          <p style="margin:6px 0 0;font-size:15px;color:rgba(244,241,234,.68)">{{ openKind }}</p>
+        </div>
+      </div>
+      <button onClick="{{ close }}" style="position:fixed;top:22px;right:24px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(244,241,234,.14);color:#F4F1EA;font-size:20px;cursor:pointer" style-hover="background:var(--a1);color:#1a1512">×</button>
+      <button onClick="{{ prev }}" aria-label="Previous" style="position:fixed;top:50%;left:18px;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:0;background:rgba(244,241,234,.14);color:#F4F1EA;font-size:22px;cursor:pointer;display:grid;place-items:center" style-hover="background:var(--a1);color:#1a1512">‹</button>
+      <button onClick="{{ next }}" aria-label="Next" style="position:fixed;top:50%;right:18px;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:0;background:rgba(244,241,234,.14);color:#F4F1EA;font-size:22px;cursor:pointer;display:grid;place-items:center" style-hover="background:var(--a1);color:#1a1512">›</button>
+    </div>
+  </sc-if>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">
+class Component extends DCLogic {
+  state = { open: null };
+
+  componentDidMount() {
+    this._esc = (e) => {
+      if (!this.state.open) return;
+      if (e.key === "Escape") this.setState({ open: null });
+      if (e.key === "ArrowRight") this._step(1);
+      if (e.key === "ArrowLeft") this._step(-1);
+    };
+    document.addEventListener("keydown", this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener("keydown", this._esc); }
+
+  _srcFor(id) {
+    const el = document.getElementById(id);
+    const img = el && el.shadowRoot && el.shadowRoot.querySelector(".frame img");
+    return (img && (img.currentSrc || img.src)) || "";
+  }
+
+  componentDidUpdate() {
+    const open = this.state.open;
+    if (this._lb && open && this._lb.src !== open.src) this._lb.src = open.src;
+  }
+
+  _open(i) {
+    const r = this._raw[i];
+    const src = this._srcFor("pg-" + (i + 1));
+    if (src) this.setState({ open: { i, src, title: r.title, kind: r.kind } });
+    return !!src;
+  }
+
+  // salta le tessere ancora vuote
+  _step(dir) {
+    const open = this.state.open;
+    if (!open) return;
+    const n = this._raw.length;
+    for (let k = 1; k <= n; k++) {
+      if (this._open((open.i + dir * k + n * n) % n)) return;
+    }
+  }
+
+  renderVals() {
+    const raw = [
+      { title: "My brother's wedding invitation", kind: "Illustration & print, 2025", ratio: "3/4", ph: "Invitation" },
+      { title: "A login screen for a crochet app", kind: "UI concept, 2024", ratio: "4/5", ph: "Screen recording still" },
+      { title: "A skeuomorphic shop checkout", kind: "UI experiment, 2024", ratio: "4/5", ph: "Letterform sheet" },
+      { title: "A chess lessons website", kind: "Web design concept, 2024", ratio: "3/4", ph: "Sketchbook page" },
+      { title: "A cyberpunk main menu concept", kind: "Game UI, 2025", ratio: "4/5", ph: "Plot output" },
+      { title: "A boardgame about Chinese myth", kind: "University project, 2021", ratio: "3/4", ph: "Menu spread" },
+      { title: "A VR car configurator", kind: "Concept UI, 2024", ratio: "1/1", ph: "Sticker sheet" },
+      { title: "A VR app for plant care", kind: "Concept UI, 2024", ratio: "1/1", ph: "Animation frame" },
+      { title: "A game streaming app", kind: "UI concept, 2025", ratio: "1/1", ph: "Cat Quest III screens", src: "./images/pg-catquest.webp", fit: "cover" }
+    ];
+    const radii = ["22px 16px 24px 14px", "18px 26px 16px 22px", "26px 18px 22px 18px"];
+    // taglie del bento: colonne x righe per tessera, in modo che l'incastro non lasci vuoti
+    // niente tessere basse e larghe: solo quadrate, verticali e grandi 2x2
+    const spans = [
+      ["span 1", "span 3"], ["span 1", "span 3"], ["span 1", "span 3"], ["span 2", "span 3"],
+      ["span 1", "span 3"], ["span 1", "span 3"], ["span 1", "span 2"], ["span 1", "span 2"],
+      ["span 2", "span 3"]
+    ];
+    this._raw = raw;
+    const open = this.state.open;
+    return {
+      open: !!open,
+      prev: (e) => { e.stopPropagation(); this._step(-1); },
+      next: (e) => { e.stopPropagation(); this._step(1); },
+      lightboxRef: (node) => { this._lb = node; if (node && open) node.src = open.src; },
+      openTitle: open ? open.title : "",
+      openKind: open ? open.kind : "",
+      close: () => this.setState({ open: null }),
+      items: raw.map((r, i) => ({
+        ...r,
+        slot: "pg-" + (i + 1),
+        src: r.src || "",
+        fit: r.fit || "cover",
+        onOpen: () => this._open(i),
+        col: spans[i % spans.length][0],
+        row: spans[i % spans.length][1],
+        radius: radii[i % radii.length]
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
