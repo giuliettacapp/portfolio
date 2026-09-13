@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>So Fur So Good — Case study | Giulietta Cappelletti</title>
+<meta name="description" content="So Fur So Good: a board game about street harassment, from research to playtesting and effectiveness validation.">
+<link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Giulietta Cappelletti">
+<meta property="og:title" content="So Fur So Good — Case study | Giulietta Cappelletti">
+<meta property="og:description" content="So Fur So Good: a board game about street harassment, from research to playtesting and effectiveness validation.">
+<meta property="og:image" content="/images/og/sfsg-stat-reactions.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="So Fur So Good — Case study | Giulietta Cappelletti">
+<meta name="twitter:description" content="So Fur So Good: a board game about street harassment, from research to playtesting and effectiveness validation.">
+<meta name="twitter:image" content="/images/og/sfsg-stat-reactions.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F4F1EA">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;500;700&family=Karla:ital,wght@0,300;0,400;0,500;1,400&family=Shantell+Sans:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{--bg:#F4F1EA;--fg:#171512;--fg-soft:#6E675C;--line:rgba(23,21,18,.14);--dots:rgba(23,21,18,.11);--surface:#FCFAF5;--tint:#E9E4D8;
+--a1:#74A7F4;--a1-ink:#2C63B8;--a2:oklch(0.72 0.15 265);}
+[data-theme="dark"]{--a1-ink:var(--a1);--bg:#14120F;--fg:#F1EDE4;--fg-soft:#9C9488;--line:rgba(241,237,228,.16);--dots:rgba(241,237,228,.13);--surface:#1D1A16;--tint:#221E19;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1px,transparent 1px);background-size:24px 24px;background-position:0 0;background-attachment:fixed;color:var(--fg);font-family:'Karla',system-ui,sans-serif;transition:background .4s ease,color .4s ease;overflow-x:clip}
+a{color:var(--fg);text-underline-offset:4px}
+a:hover{color:var(--a1-ink)}
+@keyframes trailPop{from{opacity:.85}to{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+
+@media (max-width:900px){
+[data-cs="shell"]{grid-template-columns:minmax(0,1fr)!important;gap:18px!important;padding-left:18px!important;padding-right:18px!important}
+[data-cs="aside"]{position:static!important;max-width:none!important;padding-top:14px!important}
+[data-cs="aside"] nav{flex-direction:row!important;flex-wrap:wrap!important;gap:6px!important}
+[data-cs="aside"] nav a{transform:none!important;background:var(--tint);font-size:13px!important;padding:6px 10px!important}
+[data-cs="shell"] main [style*="grid-template-columns:repeat(4"],[data-cs="shell"] main [style*="grid-template-columns:repeat(3"],[data-cs="shell"] main [style*="grid-template-columns: repeat(4"],[data-cs="shell"] main [style*="grid-template-columns: repeat(3"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (max-width:600px){
+[data-cs="shell"] main [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+[data-cs="shell"] main{max-width:100%!important}
+}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+  <dc-import name="Nav" active="projects" hint-size="100%,66px"></dc-import>
+
+  <div style="position:relative;height:clamp(260px,36vw,440px);background:oklch(0.72 0.14 60)">
+    <image-slot id="sf-hero" alt="So Fur So Good board game, box and components" shape="rect" placeholder="Case study hero: wide" role="img" aria-label="Case study hero: wide"></image-slot>
+    <div style="position:absolute;left:-6%;right:-6%;bottom:-2px;height:90px;background:var(--bg);border-radius:100% 100% 0 0 / 90px 90px 0 0;pointer-events:none"></div>
+  </div>
+
+  <div data-cs="shell" style="max-width:1200px;margin:0 auto;padding:0 34px 40px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:72px;align-items:start">
+    <aside data-cs="aside" style="position:sticky;top:90px;padding-top:20px;max-width:230px">
+      <a href="./Projects.dc.html" style="display:inline-block;margin-bottom:24px;font-size:15px;text-decoration:none">← All projects</a>
+      <nav style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ toc }}" as="t" hint-placeholder-count="6">
+          <a href="{{ t.href }}" style="padding:7px 12px;border-radius:8px;font-size:15px;text-decoration:none;transition:transform .28s cubic-bezier(.4,0,.2,1),color .28s ease;color:{{ t.color }};transform:translateX({{ t.shift }})" style-hover="background:var(--tint)">{{ t.label }}</a>
+        </sc-for>
+      </nav>
+    </aside>
+
+    <main style="padding-top:20px;min-width:0;max-width:860px">
+      <p style="font-family:'Shantell Sans',cursive;font-size:34px;color:var(--a1-ink);margin:0 0 6px">So Fur So Good</p>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-soft);margin:0 0 18px">2022</p>
+
+      <h1 id="overview" style="font-family:'Solway',serif;font-weight:400;font-size:clamp(36px,5vw,58px);line-height:1.05;margin:0 0 24px;text-wrap:balance">A board game about catcalling, disguised as a cat world tour.</h1>
+
+      <p style="font-size:18px;line-height:1.7;color:var(--fg-soft);margin:0 0 36px;text-wrap:pretty">So Fur So Good is a 4-player board game developed as a master's thesis to raise awareness about catcalling. By experiencing firsthand episodes in a playful way, players reflect on the issue without negative emotions. A game that turns design into a tool for social change.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:22px;padding:24px 0;border-block:1px solid var(--line);margin-bottom:52px">
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 6px">Role</p>
+          <p style="margin:0;font-size:16px">Researcher, Game Designer, Graphic Designer, UI/UX Designer</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 6px">Scope</p>
+          <p style="margin:0;font-size:16px">Master's degree thesis project</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 6px">Read time</p>
+          <p style="margin:0;font-size:16px">5 minutes</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom:56px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 16px">Process</p>
+        <img src="./images/sfsg-process.svg" alt="Process: research, prototype, playtest, data collection" style="display:block;width:100%;height:auto" />
+      </div>
+
+      <section id="research" style="margin-bottom:76px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 12px">01</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Research</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">For this project I decided to explore the topic of street harassment and catcalling, issues often underestimated despite their serious impact. Studies reveal alarming data: according to a 2018 Istat report, over a third of women in Italy avoid going out at night due to fear, while an international study by Hollaback! and Cornell University found that 84% of women experience catcalling before the age of 17.</p>
+
+        <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line);margin-bottom:26px">
+          <image-slot id="sf-1" shape="rect" placeholder="Research findings and desk research" role="img" aria-label="Research findings and desk research"></image-slot>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:26px">
+          <div style="background:#fff;border:1px solid var(--line);border-radius:22px 16px 24px 18px;padding:18px">
+            <img src="./images/sfsg-stat-italy.webp" alt="In Italy: more than 1 in 2 women have been groped, 2 out of 3 women were followed on the street" style="display:block;width:100%;height:auto" />
+          </div>
+          <div style="background:#fff;border:1px solid var(--line);border-radius:22px 16px 24px 18px;padding:18px">
+            <img src="./images/sfsg-stat-age.webp" alt="Global average age at first experienced street harassment" style="display:block;width:100%;height:auto" />
+          </div>
+        </div>
+
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">These experiences can lead to anxiety, low self-esteem, and major lifestyle changes, such as avoiding certain places or even turning down job opportunities.</p>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">Despite its consequences, catcalling is frequently dismissed as harmless or even flattering. This lack of awareness motivated me to design a game to change this.</p>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="background:#fff;border:1px solid var(--line);border-radius:22px 16px 24px 18px;padding:18px">
+            <img src="./images/sfsg-stat-reactions.webp" alt="Reactions to street harassment: anger, anxiety and fear by type of harassment" style="display:block;width:100%;height:auto" />
+          </div>
+          <div style="background:#fff;border:1px solid var(--line);border-radius:22px 16px 24px 18px;padding:18px">
+            <img src="./images/sfsg-stat-longterm.webp" alt="Long-term impacts: depression and low self-esteem by type of harassment" style="display:block;width:100%;height:auto" />
+          </div>
+        </div>
+      </section>
+
+      <section id="prototype" style="margin-bottom:76px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 12px">02</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 26px;line-height:1.15;text-wrap:balance">Prototype</h2>
+
+        <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 12px">About the game</h3>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">In So Fur So Good players embark on a whimsical Cat World Tour, traveling through famous cat-related locations worldwide. While the theme is lighthearted, the game subtly raises awareness about street harassment, encouraging discussion in an accessible and playful way.</p>
+        <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line);margin-bottom:34px">
+          <image-slot id="sf-2" shape="rect" placeholder="Board, cards and pieces" role="img" aria-label="Board, cards and pieces"></image-slot>
+        </div>
+
+        <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 12px">Game goal</h3>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 34px;text-wrap:pretty">The aim of the game is not to reach the end first but to collect as many positive experiences as possible. Players step into the shoes of travelers exploring new places, tasting local delicacies, and gathering souvenirs, while also encountering moments that reflect real-life experiences of catcalling. By facing these challenges together, players learn how verbal harassment affects individuals and how to respond with awareness and support.</p>
+
+        <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 12px">Characters</h3>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 22px;text-wrap:pretty">The game features seven unique travelers, and unlike stereotypical portrayals often seen in media, these characters are diverse in age, ethnicity, and style, emphasizing that harassment is not dictated by appearance or clothing. Each traveler has a different profession, granting them unique abilities that shape their journey.</p>
+        <div style="aspect-ratio:16/7;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line);margin-bottom:34px">
+          <image-slot id="sf-3" shape="rect" fit="contain" placeholder="The seven travelers" role="img" aria-label="The seven travelers"></image-slot>
+        </div>
+
+        <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 12px">Tiles</h3>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 22px;text-wrap:pretty">The board features seven different types of tiles, each marked by a distinct color. Only one player can stop on a tile at a time, except when two or more of the same type are placed vertically adjacent, allowing multiple players to land there simultaneously.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px;margin-bottom:34px">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-f3" shape="rect" placeholder="Airport" role="img" aria-label="Airport"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Airport</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">The airport marks the start and end of each region. All players begin their journey here and regroup at the airport before moving to the next destination.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-f5" shape="rect" placeholder="Food stall" role="img" aria-label="Food stall"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Food stall</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">At market stalls, players can buy local foods. Upon landing, they draw three Market cards, choose one to buy, and return the rest. Foods belong to Local Foods or Desserts sets, earning points, with bonuses for completing regional or full-game collections.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-f6" shape="rect" placeholder="Landmark" role="img" aria-label="Landmark"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Landmark</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">Landmarks are famous cultural or historical sites where players can buy souvenirs (Postcards, Keychains, or Accessories). Like market stalls, players draw three Souvenir cards, choose one to buy, and return the rest. Souvenirs earn points, with bonuses for completing regional or full-game sets.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-f7" shape="rect" placeholder="Bank" role="img" aria-label="Bank"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Bank</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">The bank is where players can withdraw coins. Landing here grants 3 coins. There's no coin limit, but banks are rare, so spending wisely is key.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-f8" shape="rect" placeholder="Cat shelter" role="img" aria-label="Cat shelter"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Cat shelter</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">Shelters are safe places to bring stray cats that couldn't be fed. Here, they receive care and reward the player. Visiting a shelter also grants 3 kibble, which can be used to feed other cats along the journey.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:1;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-f2" shape="rect" placeholder="Cat sanctuary" role="img" aria-label="Cat sanctuary"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Cat sanctuary</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">The sanctuary is a special tile where players meet a Wise Cat and receive the Wise Cat's Protection card, which adds +1 to defense rolls against catcallers. Only the first player to land here receives the card, and each Wise Cat offers empowering advice to help players deal with catcalling.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:26px;border-radius:26px 18px 28px 20px;background:var(--surface);border:1px solid var(--line);margin-bottom:34px">
+          <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 10px">Encounter</p>
+          <p style="margin:0 0 14px;font-size:16px;line-height:1.6;color:var(--fg-soft);text-wrap:pretty">Encounters are the most common and unpredictable tiles. Landing here means drawing an Encounter card, which can be:</p>
+          <ul style="margin:0 0 18px;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.6;color:var(--fg-soft)">
+            <li>A stray cat: players can feed it using kibble to earn rewards like Souvenir or Local Food cards, coins, or the chance to steal a card from another player. If lacking kibble, they can carry one cat to a shelter.</li>
+            <li>A catcaller: the card shows the attack's strength, a harassment phrase, and its potential emotional impact. Players roll a defense die, winning earns points, while losing increases their reaction level. Nearby players can assist by rolling their own defense die.</li>
+          </ul>
+          <div style="aspect-ratio:16/9;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+            <image-slot id="sf-f1" shape="rect" placeholder="Encounter cards" role="img" aria-label="Encounter cards"></image-slot>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 12px">Board region</h3>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 22px;text-wrap:pretty">The game features five regions, Italy, the Netherlands, Egypt, Russia, and Japan, chosen for their historical or narrative relevance to the theme. Future expansions can add more regions, as the board is modular. Players can also choose to play fewer regions depending on the time available, while maintaining the same gameplay mechanics.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:4/3;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-r1" shape="rect" placeholder="Rome, Italy" role="img" aria-label="Rome, Italy"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Rome, Italy</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">Rome is home to many stray cats, particularly around the Sacred Area of Torre Argentina, where they began to gather in 1929 after the excavation of ancient ruins. Today, volunteers care for over 250 cats, many of which are sick or disabled.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:4/3;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-r2" shape="rect" placeholder="Il Cairo, Egypt" role="img" aria-label="Il Cairo, Egypt"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Il Cairo, Egypt</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">Cats were revered in ancient Egypt, transitioning from domestic animals to sacred beings, and eventually deities. Their influence is seen in numerous statues, monuments, and everyday items, reflecting their importance in Egyptian culture.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:4/3;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-r3" shape="rect" placeholder="Amsterdam, Netherlands" role="img" aria-label="Amsterdam, Netherlands"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Amsterdam, Netherlands</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">Amsterdam is a cat lover's paradise, featuring the first cat cafe, Kattencafe Kopjes, and the Kattenkabinet museum, which celebrates cats in art and literature. The city's Cat Boat provides a floating refuge for stray cats.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:4/3;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-r4" shape="rect" placeholder="Tokyo, Japan" role="img" aria-label="Tokyo, Japan"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">Tokyo, Japan</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">Japan, where cats have been a part of the culture since the Edo period, is a top destination for cat enthusiasts. Aoshima, known as "Cat Island", is famous for its high feline population, with 6 cats for every human.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:4/3;border-radius:20px 14px 22px 16px;overflow:hidden;border:1px solid var(--line)">
+              <image-slot id="sf-r5" shape="rect" placeholder="St. Petersburg, Russia" role="img" aria-label="St. Petersburg, Russia"></image-slot>
+            </div>
+            <div>
+              <p style="font-family:'Solway',serif;font-size:19px;margin:0 0 4px">St. Petersburg, Russia</p>
+              <p style="margin:0;font-size:15px;line-height:1.55;color:var(--fg-soft);text-wrap:pretty">The Hermitage Museum in St. Petersburg has a long history with cats, dating back to 1745 when Empress Elizabeth brought in cats to control the rodent population. Today, around 74 cats roam the museum, cared for by their own attendants.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="playtest" style="margin-bottom:76px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 12px">03</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Playtest</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">After creating the rules and provisional graphics, playtests were conducted with friends and family who were aware of the game's theme and were not suitable for the later validation phase. Feedback led to adjustments in mechanics, such as tile placement, character ability balancing, and clearer card icons.</p>
+        <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line);margin-bottom:26px">
+          <image-slot id="sf-4" shape="rect" placeholder="Playtest session" role="img" aria-label="Playtest session"></image-slot>
+        </div>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">To shorten gameplay, the board was reduced from five to three regions. The sessions confirmed a fun, interactive atmosphere, with players balancing competition and collaboration, especially during catcaller attacks. The game was fine-tuned to keep outcomes unpredictable and engagement high.</p>
+        <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line)">
+          <image-slot id="sf-playtest2" shape="rect" placeholder="Revised board and components" role="img" aria-label="Revised board and components"></image-slot>
+        </div>
+      </section>
+
+      <section id="data-collection" style="margin-bottom:76px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 12px">04</p>
+        <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(27px,3.3vw,38px);margin:0 0 18px;line-height:1.15;text-wrap:balance">Data collection &amp; effectiveness validation</h2>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">The selection of players for the test phase was based on several factors. Participants were unaware of the game's theme and objectives to avoid bias. A balanced mix of genders was chosen to observe potential differences in responses and interactions.</p>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">Players varied in gaming experience: hardcore gamers (competitive, experienced players), casual players (who played occasionally), and complete beginners. Groups consisted of four players, with at least two knowing each other to encourage interaction.</p>
+        <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line);margin-bottom:34px">
+          <image-slot id="sf-5" shape="rect" placeholder="Test sessions" role="img" aria-label="Test sessions"></image-slot>
+        </div>
+
+        <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 12px">Methodology</h3>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">Seven playtest sessions were conducted with 28 different players to validate the game's effectiveness.</p>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 34px;text-wrap:pretty">My role was to observe player choices and interactions without intervening, noting key dialogues. The goal was to raise awareness and encourage discussion on catcalling while ensuring players felt comfortable. Effectiveness was assessed by comparing pre- and post-game questionnaire responses.</p>
+
+        <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 12px">Players' reactions</h3>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">It was essential to analyze players' reactions during the game. Players selected from 14 emotions, 7 positive and 7 negative, to describe their experience.</p>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">Comparing the results, it's clear that the game was overall enjoyable, with "relaxation" and "fun" being the most common feelings, aligning with the intended goal.</p>
+        <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line);margin-bottom:26px">
+          <image-slot id="sf-reactions" shape="rect" placeholder="Emotion mapping, before and after" role="img" aria-label="Emotion mapping, before and after"></image-slot>
+        </div>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 34px;text-wrap:pretty">After the game, players rated street harassment and verbal abuse as more important issues. Comparing results, higher ratings (5) increased, while lower ones (0, 1, 2) dropped, indicating a shift in perception. Though a lasting change in mindset takes time, the game may influence future behavior, encouraging bystanders to help or victims to feel less guilt. Those who saw catcalling as harmless might now understand its impact.</p>
+
+        <h3 style="font-family:'Solway',serif;font-weight:400;font-size:22px;margin:0 0 12px">Conclusion</h3>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">The results were highly positive. Concerns about discomfort or the topic overshadowing fun were unfounded, thanks to Embedded Design. The game remained engaging while conveying its message.</p>
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 26px;text-wrap:pretty">Both competitive and casual players enjoyed it, with many eager to replay. Some initially overlooked the theme, but discussions, like a female player explaining real-life catcalling, shifted perspectives.</p>
+        <div style="aspect-ratio:16/10;border-radius:22px 16px 24px 18px;overflow:hidden;border:1px solid var(--line)">
+          <image-slot id="sf-6" shape="rect" placeholder="Final game and printed components" role="img" aria-label="Final game and printed components"></image-slot>
+        </div>
+      </section>
+
+      <section id="takeaways" style="margin-bottom:44px;scroll-margin-top:100px">
+        <p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--a1-ink);margin:0 0 12px">Takeaways</p>
+                <p style="font-size:17px;line-height:1.7;color:var(--fg-soft);margin:0 0 14px;text-wrap:pretty">This project was a valuable learning experience that deepened my understanding of game design as a medium for impact. Through research, testing, and iteration, I explored how to handle serious topics with care while still creating an engaging experience. Key takeaways include:</p>
+        <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:17px;line-height:1.7;color:var(--fg-soft)">
+          <li>Discovered the power of games as tools for social change</li>
+          <li>Learned to balance a sensitive topic (street harassment) with enjoyable gameplay</li>
+          <li>Understood how games can foster empathy through firsthand experiences</li>
+          <li>Gained insight into accessibility challenges when using digital platforms like Tabletopia</li>
+          <li>Recognized the importance of user-friendly design in game development</li>
+        </ul>
+      </section>
+
+      <div style="padding:32px;border-radius:28px 20px 30px 18px;background:var(--surface);display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap">
+        <div style="text-align:center">
+          <p style="font-family:'Shantell Sans',cursive;font-size:24px;margin:0 0 6px">Thanks for reading :-)</p>
+          <p style="margin:0 0 18px;color:var(--fg-soft);font-size:16px">Happy to walk you through the messy middle bits.</p>
+          <a href="./Portfolio.dc.html#contact" style="display:inline-block;padding:12px 26px;border-radius:999px;background:var(--fg);color:var(--bg);text-decoration:none;font-size:16px" style-hover="background:var(--a1);color:#1a1512">Get in touch</a>
+        </div>
+        <img src="./images/ashi.svg" alt="Ashi the cat" style="display:block;height:150px;width:auto" />
+      </div>
+
+      <div style="margin-top:36px;padding-top:20px;border-top:1px solid var(--line)">
+        <p style="margin:0 0 18px;font-size:16px;color:var(--fg-soft)">Next up</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px">
+          <a href="./Case Study Tagalong.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="sf-next-1" shape="rect" fit="cover" src="./images/tagalong-cover.webp" placeholder="Tagalong cover" role="img" aria-label="Tagalong cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Tagalong</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">Group travel app · UX/UI</p>
+            </div>
+          </a>
+          <a href="./Case Study Gymboo.dc.html" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit">
+            <div style="aspect-ratio:4/5;border-radius:18px 13px 20px 14px;overflow:hidden;border:1px solid var(--line)">
+              <div style="width:100%;height:100%;transform:scale(1.09);transition:transform .5s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1)">
+                <image-slot id="sf-next-2" shape="rect" fit="cover" src="./images/gymboo-cover.webp" placeholder="Gymboo cover" role="img" aria-label="Gymboo cover"></image-slot>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-family:'Solway',serif;font-size:20px">Gymboo</p>
+              <p style="margin:0;font-size:15px;color:var(--fg-soft)">App design &amp; user research</p>
+            </div>
+          </a>
+        </div>
+        <a href="./Projects.dc.html" style="display:inline-block;margin-top:24px;font-size:17px">See all work →</a>
+      </div>
+    </main>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">
+class Component extends DCLogic {
+  state = { active: "overview" };
+  componentDidMount() {
+    const ids = this.vals().toc.map(t => t.href.slice(1));
+    this.io = new IntersectionObserver((entries) => {
+      const vis = entries.filter(e => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (vis && vis.target.id !== this.state.active) this.setState({ active: vis.target.id });
+    }, { rootMargin: "-20% 0px -65% 0px", threshold: 0 });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) this.io.observe(el); });
+  }
+  componentWillUnmount() { if (this.io) this.io.disconnect(); }
+  renderVals() {
+    const vals = this.vals();
+    vals.toc = vals.toc.map(t => {
+      const on = t.href.slice(1) === this.state.active;
+      return { ...t, color: on ? "var(--a1-ink)" : "var(--fg-soft)", shift: on ? "10px" : "0px" };
+    });
+    return vals;
+  }
+  vals() {
+    return {
+      toc: [
+        { label: "Intro", href: "#overview" },
+        { label: "Research", href: "#research" },
+        { label: "Prototype", href: "#prototype" },
+        { label: "Playtest", href: "#playtest" },
+        { label: "Data Collection", href: "#data-collection" },
+        { label: "Takeaways", href: "#takeaways" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

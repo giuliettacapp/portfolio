@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section id="contact" style="margin-top:90px">
+  <div style="height:110px;background:var(--fg);border-radius:100% 100% 0 0 / 110px 110px 0 0"></div>
+  <div style="background:var(--fg);color:var(--bg);padding:10px 24px 56px;text-align:center">
+    <div style="max-width:820px;margin:0 auto">
+      <h2 style="font-family:'Solway',serif;font-weight:400;font-size:clamp(38px,6.6vw,76px);line-height:1;letter-spacing:-.01em;margin:0">Let's make<br><span style="white-space:nowrap">something <span aria-hidden="true" style="position:relative;display:inline-block;vertical-align:baseline;font-family:'Shantell Sans',cursive;font-weight:600;color:var(--a1);width:{{ boxWidth }}"><span ref="{{ measureRef }}" aria-hidden="true" style="position:absolute;left:0;top:0;visibility:hidden;white-space:nowrap;pointer-events:none"></span><span aria-hidden="true" style="display:inline-block;width:0;overflow:hidden;visibility:hidden">beautiful</span><sc-for list="{{ words }}" as="w" hint-placeholder-count="6"><span style="position:absolute;left:0;top:0;white-space:nowrap;opacity:{{ w.opacity }};transform:translateY({{ w.shift }}) rotate({{ w.tilt }});transition:opacity .35s ease,transform .35s ease">{{ w.text }}</span></sc-for></span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">{{ srWord }}</span></span><br>together.</h2>
+      
+      <a href="mailto:giuliettacapp@gmail.com" style="display:inline-block;margin-top:28px;padding:15px 34px;border-radius:999px;background:var(--bg);color:var(--fg);text-decoration:none;font-size:18px;font-weight:500" style-hover="background:var(--a1);color:#1a1512">giuliettacapp@gmail.com</a>
+      <div style="display:flex;gap:20px;justify-content:center;margin-top:36px;font-size:15px;opacity:.7">
+        <a href="https://www.linkedin.com/in/giulietta-cappelletti" target="_blank" rel="noopener" style="color:inherit">LinkedIn</a>
+        <a href="https://www.behance.net/giulietcappell" target="_blank" rel="noopener" style="color:inherit">Behance</a>
+        <a href="./Resume.dc.html" style="color:inherit">Resume</a>
+      </div>
+      <p style="margin:40px 0 0;font-family:'Shantell Sans',cursive;font-size:16px;opacity:.55">built with curiosity, caffeine and overthinking</p>
+      <p style="margin:10px 0 0;font-size:14px;opacity:.45">© 2026 Giulietta Cappelletti</p>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { i: 0, widths: null };
+  list = ["odd", "fun", "useful", "beautiful", "strange", "clear"];
+  measureRef = React.createRef();
+
+  // il box si adatta alla parola corrente invece di restare largo come la più
+  // lunga: misuriamo ogni parola e animiamo la larghezza
+  measure = () => {
+    const el = this.measureRef.current;
+    if (!el) return;
+    const widths = this.list.map((w) => {
+      el.textContent = w;
+      return el.getBoundingClientRect().width;
+    });
+    el.textContent = "";
+    this.setState({ widths });
+  };
+
+  componentDidMount() {
+    this.measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(this.measure);
+    this._onResize = this.measure;
+    window.addEventListener("resize", this._onResize);
+    this._t = setInterval(
+      () => this.setState((s) => ({ i: (s.i + 1) % this.list.length })),
+      2400
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._t);
+    window.removeEventListener("resize", this._onResize);
+  }
+
+  renderVals() {
+    const w = this.state.widths;
+    return {
+      measureRef: this.measureRef,
+      srWord: this.list[this.state.i],
+      // larghezza fissa sulla parola più lunga: "something" non si sposta mai
+      boxWidth: w ? Math.ceil(Math.max.apply(null, w)) + "px" : "auto",
+      words: this.list.map((text, n) => {
+        const on = n === this.state.i;
+        return {
+          text,
+          opacity: on ? 1 : 0,
+          shift: on ? "0px" : "-12px",
+          tilt: on ? "-2deg" : "-6deg"
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>
