@@ -42,3 +42,4 @@ Motivo: l'export è un artefatto del tool di design, non un sito pronto da pubbl
 - **Contorni soft** (scelta di Giulietta): in `Nav.dc.html` la regola CSS `[style*="border:1px solid var(--line)"]` mette il bordo trasparente e un'ombra morbida su card e riquadri (i filetti border-top/left restano). Rifai la modifica nel helmet del Nav dopo ogni export.
 - **Nav mobile**: hamburger sotto 820px, niente toggle dark/light; `html,body{overflow-x:clip}`.
 - `reveal.js` ignora i nodi `<i>` della scia del cursore; `hero-scene.js` salta il parallasse quando l'hero e' fuori schermo.
+- `image-slot.js`: nella regola `.ring{` aggiungi `display:none!important;` (anello tratteggiato degli slot vuoti: restava visibile sopra le immagini, es. Playground > VR car configurator).
