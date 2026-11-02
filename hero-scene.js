@@ -321,6 +321,8 @@ class HeroScene extends HTMLElement {
       const box = this.getBoundingClientRect();
       const raw = window.innerHeight / 2 - (box.top + box.height / 2);
       const limit = box.height || 400;
+      // hero fuori schermo: niente da muovere
+      if (box.bottom < -100 || box.top > window.innerHeight + 100) return;
       const progress = Math.max(-limit, Math.min(limit, raw));
       const shift = (el) => {
         const d = parseFloat(el.dataset.depth) || 0;

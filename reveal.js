@@ -56,6 +56,14 @@
     requestAnimationFrame(() => { queued = false; scan(); });
   };
   schedule();
-  new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
+  // i puntini della scia del cursore (<i>) e l'anello nascono e muoiono di continuo:
+  // non sono contenuto, quindi non devono far ripartire la scansione
+  new MutationObserver((muts) => {
+    for (const m of muts) {
+      for (const n of m.addedNodes) {
+        if (n.nodeType === 1 && n.tagName !== "I" && !n.style?.pointerEvents) { schedule(); return; }
+      }
+    }
+  }).observe(document.body, { childList: true, subtree: true });
   window.addEventListener("load", schedule);
 })();
