@@ -22,7 +22,7 @@ Lavora su una cartella nuova, poi copia qui sopra (lasciando stare `.git`, `CLAU
 1. Estrai lo zip **senza** `uploads/`. Elimina `.thumbnail` e il `CLAUDE.md` dell'export (non questo file).
 2. `cp Portfolio.dc.html index.html`.
 3. Rinomina `.image-slots.state.json` → `image-slots.state.json` e aggiorna `STATE_FILE` in `image-slot.js`: più di 26 immagini esistono solo lì dentro in base64, e un dotfile è fragile sugli host.
-4. Correggi `image-slot.js` perché l'`<img>` abbia alt = attributo `alt` || `placeholder`.
+4. Correggi `image-slot.js` perché l'`<img>` abbia alt = attributo `alt` || `placeholder`. Sempre in `image-slot.js`: in `.frame img` cambia `touch-action:none` in `touch-action:pan-y pinch-zoom`, altrimenti lo scroll da telefono si blocca quando il dito parte da un'immagine.
 5. Converti PNG/JPG/GIF → WebP con l'ffmpeg di Shotcut (`C:\Program Files\Shotcut\ffmpeg.exe`, include libwebp; ffprobe vuole `</dev/null`, non `-nostdin`). Aggiorna i nomi dei file in tutti i `.dc.html`.
 6. Ricodifica gli MP4: h264 CRF 26, `-an` (il sito li riproduce muti).
 7. Cancella i file che nessun HTML/JS referenzia.
