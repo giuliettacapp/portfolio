@@ -37,3 +37,8 @@ Lavora su una cartella nuova, poi copia qui sopra (lasciando stare `.git`, `CLAU
 **Cose che lei gestisce già in Claude Design (non rifarle, controlla solo che ci siano):** titoli, descrizioni e og tag per ogni pagina, `favicon.svg`, contrasto tramite `--a1-ink` (testo) e `--a1` (grafica).
 
 Motivo: l'export è un artefatto del tool di design, non un sito pronto da pubblicare. Ogni passaggio corregge un problema visto davvero su Netlify/Cloudflare.
+
+## Patch grafiche rifatte a ogni export
+- **Contorni soft** (scelta di Giulietta): in `Nav.dc.html` la regola CSS `[style*="border:1px solid var(--line)"]` mette il bordo trasparente e un'ombra morbida su card e riquadri (i filetti border-top/left restano). Rifai la modifica nel helmet del Nav dopo ogni export.
+- **Nav mobile**: hamburger sotto 820px, niente toggle dark/light; `html,body{overflow-x:clip}`.
+- `reveal.js` ignora i nodi `<i>` della scia del cursore; `hero-scene.js` salta il parallasse quando l'hero e' fuori schermo.
