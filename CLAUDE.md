@@ -64,6 +64,7 @@ Le pagine pubblicate hanno nomi corti, Cloudflare le serve senza `.html` (`/proj
 - Niente numeri nei titoli (scelta di Giulietta: lo trova un pattern da testo generato). Vale anche per i titoli nuovi.
 - Furbrawl: frasi generiche riscritte. Gymboo: ruolo esplicito (ricerca, wireframe, UI in un progetto di gruppo).
 - Projects: Booklings subito dopo Tagalong, i due progetti universitari in fondo.
+- Titolo della scheda della home: "Giulietta Cappelletti — UX/UI & Visual Designer" (title, og:title, twitter:title): si candida anche a ruoli visual e graphic, quindi il posizionamento resta largo.
 - Footer: `font-size:min(clamp(38px,6.6vw,76px),8.4vw)` sul titolo, altrimenti "something beautiful" esce dallo schermo sui telefoni.
 
 ## Patch grafiche rifatte a ogni export
