@@ -65,7 +65,7 @@ Le pagine pubblicate hanno nomi corti, Cloudflare le serve senza `.html` (`/proj
 - Furbrawl: frasi generiche riscritte. Gymboo: ruolo esplicito (ricerca, wireframe, UI in un progetto di gruppo).
 - Projects: Booklings subito dopo Tagalong, i due progetti universitari in fondo.
 - Titolo della scheda della home: "Giulietta Cappelletti — UX/UI & Visual Designer" (title, og:title, twitter:title): si candida anche a ruoli visual e graphic, quindi il posizionamento resta largo.
-- Tagalong, cover in alto (`tg-hero`): l'immagine vera stava solo in `image-slots.state.json`, mentre `src` puntava a `tagalong-cover.webp`, che compariva per un attimo prima di quella giusta. Ora e' il file `images/tagalong-hero.webp` e lo slot non ha piu' `u` nello state. Dopo un export, controlla che nessuno slot abbia insieme `src` e una `u` diversa nello state.
+- Tagalong, cover in alto (`tg-hero`): l'immagine vera stava solo in `image-slots.state.json`, mentre `src` puntava a `tagalong-cover.webp`, che compariva per un attimo prima di quella giusta. Ora e' il file `images/tagalong-hero.webp` e lo slot non ha piu' `u` nello state. Dopo un export, controlla che nessuno slot abbia insieme `src` e una `u` diversa nello state. Stesso trattamento per le cover di Furbrawl (`cs-hero` -> `images/furbrawl-hero.webp`) e Gymboo (`gb-hero` -> `images/gymboo-hero.webp`), che prima arrivavano solo dallo state e comparivano in ritardo.
 - Footer: `font-size:min(clamp(38px,6.6vw,76px),8.4vw)` sul titolo, altrimenti "something beautiful" esce dallo schermo sui telefoni.
 
 ## Patch grafiche rifatte a ogni export
